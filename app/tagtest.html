@@ -4,10 +4,56 @@
     <!--testing meta tag-->
 	<meta charset="UTF-8">
 	<title>Tag Testing</title>
-
-    <!--testing script tag-->
-    <button type="button" onclick="document.getElementById('demo').innerHTML = Date()">
-        Click me to display Date and Time.
-    </button>
 </head>
 <body>
+    <h2>HW1 - Part 2</h2>
+    <h2>CSE 134B - Summer 2017</h2>
+    <h3>1. Button and script test </h3>
+    <!--testing script, button tag-->
+    <button type="button" onclick="displayMessage()">
+        Click me to display a Welcome message.
+    </button>
+    <p id = "scriptMessage">......</p>
+    <script>
+        function displayMessage() {
+            document.getElementById("scriptMessage").innerHTML = "Hello!";
+    }
+    </script>
+    <noscript>No script enabled</noscript>
+
+    <!--form and input test-->
+    <h3>2. Form and Input tests</h3>
+    <h4>Using text fields, radio buttons and checkboxes</h4>
+    <p>Enter the text you want to display, and select some options</p>
+    <form>
+        Enter Text: <br>
+        <input type = "text" id = "textInput" placeholder = "e.g. A Little Blue Moped">
+        <br><br>Choose options: <br>
+        <input type="radio" id="u_case" name = "caseValue" value="Uppercase" checked> Uppercase
+        <input type="radio" id="l_case" name = "caseValue" value="Lowercase"> Lowercase<br>
+        <input type = "checkbox" id="reverse" value="Reverse"> Reverse string<br><br>
+        <input type="button" value="Convert Case" onclick="convertCase()">
+    </form>
+    <p>Result: </p>
+    <p id = "result"></p>
+    <script>
+    function convertCase() {
+        var input = document.getElementById("textInput").value;
+        var uppercase = document.getElementById("u_case").checked;
+        var lowercase = document.getElementById("l_case").checked;
+        var reverse = document.getElementById("reverse").checked;
+        if(uppercase)
+            input = input.toUpperCase();
+        else if(lowercase)
+            input = input.toUpperCase();
+        if(reverse)
+            input = input.split("").reverse().join("");
+        document.getElementById("result").innerHTML = input;
+    }
+    </script>
+
+
+
+
+</body>
+</html>
