@@ -1,0 +1,39 @@
+body {
+	background: url("https://s-media-cache-ak0.pinimg.com/736x/fd/d9/44/fdd944a6dbc68f22c171fb5a42fa8358--painting-wallpaper-iphone-iphone--wallpaper-simple.jpg");
+}
+
+h1 {
+	margin-left: 1.66%;
+	font-family: 'Pacifico', cursive;
+	text-align: center;
+}
+
+h2 {
+	margin-left: 1.66%;
+	font-family: 'Lobster', cursive;
+}
+
+
+#photo {
+	width: 30%;
+	float: left;
+	margin: 1.66%;
+}
+
+/*ul {
+	font-family: 'Satisfy', cursive;
+	font-size: 30px;
+	margin-left: 1.66%;
+	font-weight: 800;
+	padding-bottom: 10px;
+	float: left;
+}*/
+
+li {
+	font-family: 'Satisfy', cursive;
+	font-size: 30px;
+	margin: 1.66%;
+	font-weight: 800;
+	float: left;
+	width: 30%;
+}
