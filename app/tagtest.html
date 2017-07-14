@@ -20,40 +20,59 @@
     <script>
         function displayMessage() {
             document.getElementById("scriptMessage").innerHTML = "Hello!";
-    }
+    	}
     </script>
     <noscript>No script enabled</noscript>
 
     <!--form and input test-->
     <h3>2. Form and Input tests</h3>
-    <h4>Using text fields, radio buttons and checkboxes</h4>
+    <h4>Using text fields, form, fieldset, radio buttons and checkboxes</h4>
     <p>Enter the text you want to display, and select some options</p>
     <form>
-        <b>Enter Text: </b><br>
-        <input type = "text" id = "textInput" placeholder = "e.g. A Little Blue Moped">
-        <br><br><b>Choose options:</b><br>
-        <input type="radio" id="u_case" name = "caseValue" value="Uppercase"> Uppercase
-        <input type="radio" id="l_case" name = "caseValue" value="Lowercase"> Lowercase<br>
-        <input type = "checkbox" id="reverse" value="Reverse"> Reverse string<br><br>
-        <input type="button" value="Convert Case" onclick="convertCase()">
-        <input type="reset">
+        <fieldset>
+            <b>Enter Text: </b><br>
+            <input type = "text" id = "textInput" placeholder = "e.g. A Little Blue Moped">
+            <br><br><b>Choose options:</b><br>
+            <input type="radio" id="u_case" name = "caseValue" value="Uppercase"> Uppercase
+            <input type="radio" id="l_case" name = "caseValue" value="Lowercase"> Lowercase<br>
+            <input type = "checkbox" id="reverse" value="Reverse"> Reverse string<br><br>
+            <input type="button" value="Convert Case" onclick="convertCase()">
+            <input type="reset">
+        </fieldset>
+		<p><b>Result: </b></p>
+	    <p id = "result"></p><br>
+		<fieldset>
+			Hmm, what's the date today?
+			<b><br>Enter today's date</b>
+			<input type = "date" id="date">
+			<br><b>Is today your birthday?<b>
+			<select>
+				<optgroup label = "Normal answer">
+					<option value="Yes">Yes</option>
+					<option value="No">No</option>
+				</optgroup>
+				<optgroup label = "&quot;Attitude&quot; answer">
+				<option value="Maybe">None of your business</option>
+				<option value="Maybe2">Leave me alone</option>
+			</select>
+		</fieldset>
     </form>
-    <p><b>Result: </b></p>
-    <p id = "result"></p>
     <script>
-    function convertCase() {
-        var input = document.getElementById("textInput").value;
-        var uppercase = document.getElementById("u_case").checked;
-        var lowercase = document.getElementById("l_case").checked;
-        var reverse = document.getElementById("reverse").checked;
-        if(uppercase)
-            input = input.toUpperCase();
-        else if(lowercase)
-            input = input.toLowerCase();
-        if(reverse)
-            input = input.split("").reverse().join("");
-        document.getElementById("result").innerHTML = input;
-    }
+	    function convertCase() {
+	        var input = document.getElementById("textInput").value;
+	        var uppercase = document.getElementById("u_case").checked;
+	        var lowercase = document.getElementById("l_case").checked;
+	        var reverse = document.getElementById("reverse").checked;
+	        if(uppercase)
+	            input = input.toUpperCase();
+	        else if(lowercase)
+	            input = input.toLowerCase();
+			if(!(uppercase || lowercase))
+				alert("No case selected");
+	        if(reverse)
+	            input = input.split("").reverse().join("");
+	        document.getElementById("result").innerHTML = input;
+	    }
     </script>
 
     <!--Object and param tests-->
