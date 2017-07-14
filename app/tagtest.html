@@ -65,7 +65,7 @@
 			</select>
 		</fieldset>
     </form>
-    <script>
+        <script>
 	    function convertCase() {
 	        var input = document.getElementById("textInput").value;
 	        var uppercase = document.getElementById("u_case").checked;
@@ -81,100 +81,118 @@
 	            input = input.split("").reverse().join("");
 	        document.getElementById("result").innerHTML = input;
 	    }
-    </script>
+        </script>
 
-            <section>
-                <!--Object and param tests-->
-                <br><br>
-                <h3>3. Object and Param test </h3>
-                <h4>Embedding our team page as an object </h4>
-                <object width = "800" height = "600" data="index.html"></object>
-                <h4>Embedding a video as an object with param tag's autoplay param set to true</h4>
-                <!--object data="http://dota2.gamepedia.com/File:Scree%E2%80%99auk%E2%80%99s_Talon_Wave_of_Terror.gif"-->
-                <object data="https://www.myinstants.com/media/sounds/magic_immune.mp3">
-                    <param name="autoplay" value="true">
-                </object>
-            </section>
 
-            <section>
-                <br><br>
-                <h3>4. TextArea, Iframe and Hyperlink tag test</h3>
-                <dl>
-                    <dt>Current Pages</dt>
-                    <dd>index.html</dd>
-                    <dd>tagtest.html</dd>
-                    <dd>soundboard-part1a.html</dd>
-                    <dd>soundboard-part1b.html</dd>
-                </dl>
-                <textarea id = "textAreaInput" placeholder="Enter a html you want to view in the frame." rows = "5" cols = "50"></textarea>
-                <input type="button" value="Submit" onclick="EditHyperLink()">
-                <br><br>
-                <iframe id= "innerframe" width = "400" height = "400" src="https://weeb-applications.firebaseapp.com"></iframe>
-                <br>
-                <a id = "hyperlink" href="https://weeb-applications.firebaseapp.com">Main Page</a>
-                <script>
-                    function EditHyperLink() {
-                        var input = document.getElementById('textAreaInput').value;
-                        document.getElementById("hyperlink").innerHTML = input;
-                        document.getElementById("hyperlink").href = ""+input;
-                        document.getElementById("innerframe").src= ""+	input;
-                    }
-                </script>
-            </section>
+        <!--Object and param tests-->
+        <br><br>
+        <h3>3. Object and Param test </h3>
+        <h4>Embedding our team page as an object </h4>
+        <object width = "800" height = "600" data="index.html"></object>
+        <h4>Embedding a video as an object with param tag's autoplay param set to true</h4>
+        <!--object data="http://dota2.gamepedia.com/File:Scree%E2%80%99auk%E2%80%99s_Talon_Wave_of_Terror.gif"-->
+        <object data="https://www.myinstants.com/media/sounds/magic_immune.mp3">
+            <param name="autoplay" value="true">
+        </object>
 
-            <section>
-                <br><br>
-                <h3>5. Additional Fieldset and Input Test</h3>
-                <form>
-                    <fieldset>
-	                    <legend>Personalia:</legend>
-	                    User name:<input type="text" name="username"><br>
-	                    User password:<input type="password" name="psw"><br>
-	                    Name: <input type="text"><br>
-	                    Email: <input type="text"><br>
-	                    Date of birth: <input type="date"><br>
-	                    Age: <input type="number">
-                        <br><input type = "submit">
-                    </fieldset>
-                </form>
-            </section>
+        <br><br>
+        <h3>4. TextArea, Iframe and Hyperlink tag test</h3>
+        <dl>
+            <dt>Current Pages</dt>
+            <dd>index.html</dd>
+            <dd>tagtest.html</dd>
+            <dd>soundboard-part1a.html</dd>
+            <dd>soundboard-part1b.html</dd>
+        </dl>
+        <textarea id = "textAreaInput" placeholder="Enter a html you want to view in the frame." rows = "5" cols = "50"></textarea>
+        <input type="button" value="Submit" onclick="EditHyperLink()">
+        <br><br>
+        <iframe id= "innerframe" width = "400" height = "400" src="https://weeb-applications.firebaseapp.com"></iframe>
+        <br>
+        <a id = "hyperlink" href="https://weeb-applications.firebaseapp.com">Main Page</a>
+        <script>
+            function EditHyperLink() {
+                var input = document.getElementById('textAreaInput').value;
+                document.getElementById("hyperlink").innerHTML = input;
+                document.getElementById("hyperlink").href = ""+input;
+                document.getElementById("innerframe").src= ""+	input;
+            }
+        </script>
 
-			<h3>6. List elements - li, ol, ul, dl, dd, dt tests</h3>
-				<h4>Chocolate Cake Ingredients:</h4>
+        <br><br>
+        <h3>5. Additional Fieldset and Input Test</h3>
+        <form>
+            <fieldset>
+                <legend>Personalia:</legend>
+                User name:<input type="text" name="username"><br>
+                User password:<input type="password" name="psw"><br>
+                Name: <input type="text"><br>
+                Email: <input type="text"><br>
+                Date of birth: <input type="date"><br>
+                Age: <input type="number">
+                <br><input type = "submit">
+            </fieldset>
+        </form>
+
+        <h3>6. List elements - li, ol, ul, dl, dd, dt tests</h3>
+            <h4>Chocolate Cake Ingredients:</h4>
 					<ol>
-						<li>3/4 cups butter or margarine, softened.</li>
-						<li>3 eggs.</li>
-						<li>2 cups sugar.</li>
-						<li>2 cups flour.</li>
-						<li>3/4 cup unsweetened cocoa powder.</li>
-						<li>1 teaspoon baking soda.</li>
-						<li>3/4 teaspoon baking powder.</li>
-						<li>2 teaspoon vanilla.</li>
-					</ol><br>
+                    <li>3/4 cups butter or margarine, softened.</li>
+                    <li>3 eggs.</li>
+                    <li>2 cups sugar.</li>
+                    <li>2 cups flour.</li>
+                    <li>3/4 cup unsweetened cocoa powder.</li>
+                    <li>1 teaspoon baking soda.</li>
+                    <li>3/4 teaspoon baking powder.</li>
+                    <li>2 teaspoon vanilla.</li>
+                </ol><br>
 
-					<h4>Reasons to eat cake</h4>
-					<ul>
-						<li>Tastes awesome</li>
-						<li>Do you need any more reasons</li>
-					</ul>
-					<h4>There are different types of cakes - here are some examples</h4>
-					<dl>
-						<dt>Layer cakes</dt>
-							<dd>Black Forest</dd>
-							<dd>Red Velvet</dd>
-							<dd>Vanilla Bean</dd>
-						<dt>Pound Cakes</dt>
-						<dt>Sponge Cakes</dt>
-							<dd>Angel Food cake</dd>
-							<dd>Lemon Drizzle</dd>
-					</dl>
+                <h4>Reasons to eat cake</h4>
+                <ul>
+                    <li>Tastes awesome</li>
+                    <li>Do you need any more reasons</li>
+                </ul>
+                <h4>There are different types of cakes - here are some examples</h4>
+                <dl>
+                    <dt>Layer cakes</dt>
+                        <dd>Black Forest</dd>
+                        <dd>Red Velvet</dd>
+                        <dd>Vanilla Bean</dd>
+                    <dt>Pound Cakes</dt>
+                    <dt>Sponge Cakes</dt>
+                        <dd>Angel Food cake</dd>
+                        <dd>Lemon Drizzle</dd>
+                </dl>
 
-            <section>
-                <br><br>
-                <h3>7. ins and del Test</h3>
-                <p>We <del>cheated</del> <ins>did not cheat</ins> on this homework!</p>
-            </section>
-
+            <h3>7. ins and del Test</h3>
+            <p>We <del>cheated</del> <ins>did not cheat</ins> on this homework!</p>
+            
+            <br><br>
+            <h3>8. section, header, img and picture Test</h3>
+            <article>
+                <header>
+                    <section>New Header Test</section>
+                    <section>Header Section 2</section>
+                </header>
+                <section>Image Test</section>
+                <p>GIF:</p><br>
+                <img src="http://cdn.osxdaily.com/wp-content/uploads/2013/07/dancing-banana.gif" width="100" height="100"><br>
+                <p>PNG:</p><br>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/66/Android_robot.png" width="100" height="100"><br>
+                <p>JPG:</p><br>
+                <img src="https://pbs.twimg.com/profile_images/54789364/JPG-logo-highres_400x400.jpg" width="100" height="100">
+                <p>WEBP:</p><br>
+                <img src="http://www.gstatic.com/webp/gallery/1.webp" width="100" height="100">
+                <p>SVG:</p><br>
+                <img src="http://thenewcode.com/assets/images/thumbnails/homer-simpson.svg" width="100" height="100"><br><br>
+                <p>Picture test:</p><br>
+                <picture>
+                    <source media="(min-width: 100px)" srcset="https://www.statuscake.com/wp-content/uploads/2016/02/100-uptime-SLAs.jpg">
+                    <source media="(min-width: 100px)" srcset="https://upload.wikimedia.org/wikipedia/commons/6/66/Android_robot.png">
+                    <img src="some_image.jpg" style="width:auto;">
+                </picture>
+            </article>
+            
         </main>
     </font>
 </body>
