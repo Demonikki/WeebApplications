@@ -88,13 +88,13 @@
                 <br><br>
                 <h3>4. TextArea, Iframe and Hyperlink tag test</h3>
                 <textarea id = "textAreaInput" placeholder="Enter an website you want to view." rows = "5" cols = "50"></textarea>
-                <input type="button" value="Submit" onclick="createHyperlink()">
+                <input type="submit" value="Submit" onclick="Edithyperlink()">
                 <br><br>
                 <iframe id= "innerframe" width = "400" height = "400" src="https://weeb-applications.firebaseapp.com"></iframe>
                 <br>
                 <a id = "hyperlink" href="https://weeb-applications.firebaseapp.com">Main Page</a>
                 <script>
-                    function createHyperlink() {
+                    function Edithyperlink() {
                         var input = document.getElementById('textAreaInput').value;
                         document.getElementById("hyperlink").innerHTML = input;
                         document.getElementById("hyperlink").href = input;
@@ -109,9 +109,12 @@
                 <form>
                     <fieldset>
                     <legend>Personalia:</legend>
+                    User name:<input type="text" name="username"><br>
+                    User password:<input type="password" name="psw"><br>
                     Name: <input type="text"><br>
                     Email: <input type="text"><br>
-                    Date of birth: <input type="text">
+                    Date of birth: <input type="date"><br>
+                    Age: <input type="number">
                     </fieldset>
                 </form>
             </section>
