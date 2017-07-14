@@ -3,6 +3,7 @@
 <head>
     <!--testing meta tag-->
 	<meta charset="UTF-8">
+    <meta http-equiv="X-Frame-Options" content="allow">
 	<title>Tag Testing</title>
 </head>
 <body>
@@ -55,6 +56,15 @@
     }
     </script>
 
+    <!--Object and param tests-->
+    <br><h3>3. Object and Param test </h3>
+    <h4>Embedding our team page as an object </h4>
+    <object width = "800" height = "600" data="index.html"></object>
+    <h4>Embedding a video as an object with param tag's autoplay param set to true</h4>
+    <!--object data="http://dota2.gamepedia.com/File:Scree%E2%80%99auk%E2%80%99s_Talon_Wave_of_Terror.gif"-->
+    <object data="https://www.myinstants.com/media/sounds/magic_immune.mp3">
+        <param name="autoplay" value="true">
+    </object>
 
 </font>
 
