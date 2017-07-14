@@ -45,8 +45,10 @@
             <input type="button" value="Convert Case" onclick="convertCase()">
             <input type="reset">
         </fieldset>
-		<p><b>Result: </b></p>
-	    <p id = "result"></p><br>
+        <fieldset>
+            <legend><b>Result: </b></legend>
+            <p id = "result"></p><br>
+        </fieldset>
 		<fieldset>
 			Hmm, what's the date today?
 			<b><br>Enter today's date</b>
@@ -98,7 +100,7 @@
                 <br><br>
                 <h3>4. TextArea, Iframe and Hyperlink tag test</h3>
                 <textarea id = "textAreaInput" placeholder="Enter an website you want to view." rows = "5" cols = "50"></textarea>
-                <input type="submit" value="Submit" onclick="EditHyperLink()">
+                <input type="button" value="Submit" onclick="EditHyperLink()">
                 <br><br>
                 <iframe id= "innerframe" width = "400" height = "400" src="https://weeb-applications.firebaseapp.com"></iframe>
                 <br>
@@ -115,7 +117,7 @@
 
             <section>
                 <br><br>
-                <h3>5. Fieldset Test</h3>
+                <h3>5. Additional Fieldset and Input Test</h3>
                 <form>
                     <fieldset>
 	                    <legend>Personalia:</legend>
@@ -125,11 +127,12 @@
 	                    Email: <input type="text"><br>
 	                    Date of birth: <input type="date"><br>
 	                    Age: <input type="number">
+                        <br><input type = "submit">
                     </fieldset>
                 </form>
             </section>
 
-			<h3>6. List elements</h3>
+			<h3>6. List elements - li, ol, ul, dl, dd, dt tests</h3>
 				<h4>Chocolate Cake Ingredients:</h4>
 					<ol>
 						<li>3/4 cups butter or margarine, softened.</li>
@@ -158,6 +161,14 @@
 							<dd>Angel Food cake</dd>
 							<dd>Lemon Drizzle</dd>
 					</dl>
+
+            <section>
+                <br><br>
+                <h3>7. ins and del Test</h3>
+                <p>We <del>cheated</del> <ins>did not cheat</ins> on this homework!</p>
+            </section>
+
+        </main>
     </font>
 </body>
 <footer>
