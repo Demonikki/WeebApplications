@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html>
+<style>
+    body {
+        background-color: powderblue;
+    }
+</style>
 <head>
     <!--testing meta tag-->
 	<meta charset="UTF-8">
     <meta http-equiv="X-Frame-Options" content="allow">
+    <link rel="stylesheet" type="text/css" href="tagtest.css">
 	<title>Tag Testing</title>
 </head>
 <body>
@@ -75,17 +81,57 @@
 	    }
     </script>
 
-    <!--Object and param tests-->
-    <br><h3>3. Object and Param test </h3>
-    <h4>Embedding our team page as an object </h4>
-    <object width = "800" height = "600" data="index.html"></object>
-    <h4>Embedding a video as an object with param tag's autoplay param set to true</h4>
-    <!--object data="http://dota2.gamepedia.com/File:Scree%E2%80%99auk%E2%80%99s_Talon_Wave_of_Terror.gif"-->
-    <object data="https://www.myinstants.com/media/sounds/magic_immune.mp3">
-        <param name="autoplay" value="true">
-    </object>
+            <section>
+                <!--Object and param tests-->
+                <br><br>
+                <h3>3. Object and Param test </h3>
+                <h4>Embedding our team page as an object </h4>
+                <object width = "800" height = "600" data="index.html"></object>
+                <h4>Embedding a video as an object with param tag's autoplay param set to true</h4>
+                <!--object data="http://dota2.gamepedia.com/File:Scree%E2%80%99auk%E2%80%99s_Talon_Wave_of_Terror.gif"-->
+                <object data="https://www.myinstants.com/media/sounds/magic_immune.mp3">
+                    <param name="autoplay" value="true">
+                </object>
+            </section>
 
-</font>
+            <section>
+                <br><br>
+                <h3>4. TextArea, Iframe and Hyperlink tag test</h3>
+                <textarea id = "textAreaInput" placeholder="Enter an website you want to view." rows = "5" cols = "50"></textarea>
+                <input type="submit" value="Submit" onclick="EditHyperLink()">
+                <br><br>
+                <iframe id= "innerframe" width = "400" height = "400" src="https://weeb-applications.firebaseapp.com"></iframe>
+                <br>
+                <a id = "hyperlink" href="https://weeb-applications.firebaseapp.com">Main Page</a>
+                <script>
+                    function EditHyperLink() {
+                        var input = document.getElementById('textAreaInput').value;
+                        document.getElementById("hyperlink").innerHTML = input;
+                        document.getElementById("hyperlink").href = ""+input;
+                        document.getElementById("innerframe").src= ""+	input;
+                    }
+                </script>
+            </section>
 
+            <section>
+                <br><br>
+                <h3>5. Fieldset Test</h3>
+                <form>
+                    <fieldset>
+	                    <legend>Personalia:</legend>
+	                    User name:<input type="text" name="username"><br>
+	                    User password:<input type="password" name="psw"><br>
+	                    Name: <input type="text"><br>
+	                    Email: <input type="text"><br>
+	                    Date of birth: <input type="date"><br>
+	                    Age: <input type="number">
+                    </fieldset>
+                </form>
+            </section>
+        </main>
+    </font>
 </body>
+<footer>
+	  Developers: Nikhilesh Sankara Narayanan, Ting Gu and Ziyao Zhou
+</footer>
 </html>
