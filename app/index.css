@@ -25,12 +25,21 @@ a {
 	font-weight: 800;
 }
 
-#photo {
+#photo1 {
 	width: 30%;
 	float: left;
 	margin: 1.66%;
 }
-
+#photo2 {
+	width: 30%;
+	float: left;
+	margin: 1.66%;
+}
+#photo3 {
+	width: 30%;
+	float: left;
+	margin: 1.66%;
+}
 /*ul {
 	font-family: 'Satisfy', cursive;
 	font-size: 30px;
