@@ -157,13 +157,34 @@ img {
   display: block;
   margin: 0 auto;
 }
-footer,span {
+div + span {
+  display: block;
   text-align: center;
   padding: 10px;
 }
-footer > span:nth-child(1):hover {
-
+footer div span:hover{
+  /*opacity: 0;*/
+  display: block;
+  margin-left: 400px;
+  position: relative;
+  width: 200px;
+  height: 100px;
+  text-align: center;
+  line-height: 100px;
+  background-color: #fff;
+  border: 8px solid black;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+  -webkit-box-shadow: 2px 2px 4px #888;
+  -moz-box-shadow: 2px 2px 4px #888;
+  box-shadow: 2px 2px 4px #888;
+  transition:2s;
 }
+
+/*footer div img:hover span{
+  opacity: 1;
+}*/
 
 
 /* Solution given should be below 250 lines, solution we had was below 200 easily */
