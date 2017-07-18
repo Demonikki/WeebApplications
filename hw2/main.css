@@ -8,6 +8,7 @@
 
 body {
   background-image: url("background.png");
+  background-attachment: fixed;
 }
 
 main {
@@ -38,6 +39,7 @@ section {
   margin-right: 20px;
   display: flex;
   flex-direction: column-reverse;
+  flex-wrap: wrap;
 }
 section > div {
     /* font is 'Comic Sans MS, text is automatically adjusted to lowercase do not mod the HTML */
