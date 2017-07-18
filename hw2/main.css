@@ -121,4 +121,22 @@ svg {
 }
 
 
+svg:hover {
+
+    animation-name: spin;
+    animation-duration: 4s;
+    animation-timing-function: linear;
+}
+
+@keyframes spin {
+    0% {
+        transform:rotate(0deg);
+    }
+    100% {
+        transform: rotate(1080deg);
+    }
+
+}
+
+
 /* Solution given should be below 250 lines, solution we had was below 200 easily */
