@@ -30,16 +30,12 @@ header > div {
     font-size: 100px;
 }
 section {
-	/* color rgb(243,234,95) is used */
-  background-color: rgb(243,234,95);
-  /*height: 30%;
-  width: 80%;*/
-  position: relative;
-  margin-left: 20px;
-  margin-right: 20px;
-  display: flex;
-  flex-direction: column-reverse;
-  flex-wrap: wrap;
+    background-color: rgb(243,234,95);
+    position: relative;
+    display: flex;
+    display: -webkit-flex;
+    -webkit-flex-direction: column-reverse;
+    flex-direction: column-reverse;
 }
 section > div {
     /* font is 'Comic Sans MS, text is automatically adjusted to lowercase do not mod the HTML */
@@ -50,43 +46,43 @@ section > div {
     text-transform: lowercase;
 
 }
-section > div:nth-child(1) {
-  /* it */
-  background-color: rgb(192,77,249);
-  padding: 10px;
-  width: 50%;
-  align-self: flex-end;
 
+section > div:nth-child(1),div:nth-child(3) {
+    /* ANastNthChildSelectorToWrite means what it says it isn't an indetifier */
+    /* background color is  rgb(192,77,249) */
+    width: 50%;
+    background-color: rgb(192,77,249);
+    padding-left: 10px;
+    align-self: flex-end;
 }
 
-section > div:nth-child(3) { /* loves */
-  background-color: rgb(192,77,249);
-  padding: 10px;
-  width: 50%;
-  align-self: flex-end;
+section > div:nth-child(2),div:nth-child(4){
+    /* ANastNthChildSelectorToWrite means what it says it isn't an indetifier */
+    /* background color is  rgb(43,209,252) */
+    width: 50%;
+    background-color: rgb(43,209,252);
+    padding-right: 10px;
+    text-align: right;
 }
 
-section > div:nth-child(2){ /* using */
-  background-color: rgb(43,209,252);
-  padding:10px;
-  text-align: right;
-  width: 50%;
-  /*position: absolute;*/
 
+@media only screen and (max-width: 768px) {
+    section > div:nth-child(1),div:nth-child(3) {
+        width: 100%;
+        background-color: rgb(192,77,249);
+        padding-right: 10px;
+        text-align: center;
+    }
+    
+    section > div:nth-child(2),div:nth-child(4){
+        width: 100%;
+        background-color: rgb(43,209,252);
+        padding-left: 10px;
+        text-align: center;
+    }
 }
 
-section > div:nth-child(4){ /* everybody */
-	/* ANastNthChildSelectorToWrite means what it says it isn't an indetifier */
-  background-color: rgb(43,209,252);
-  padding-right: 10px;
-  padding: 10px;
-  text-align: right;
-  width: 50%;
-  right: 10%;
-  align-self: flex-start;
 
-  /*position: absolute;*/
-}
 section > div:nth-child(3):after {
 	/* gave you the nth child after selector for free to inspire you */
 	/* generated content in here ... a property can do that */
