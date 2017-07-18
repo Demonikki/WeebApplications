@@ -159,9 +159,10 @@ img {
 }
 footer,span {
   text-align: center;
+  padding: 10px;
 }
 footer > span:nth-child(1):hover {
-  
+
 }
 
 
