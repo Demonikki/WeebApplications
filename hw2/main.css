@@ -119,21 +119,21 @@ svg:hover {
     animation-duration: 4s;
     animation-timing-function: linear;
     -webkit-animation-name: spin;
-    -webkit-animation-duration: 4s;
+    -webkit-animation-duration: 2s;
     -webkit-animation-timing-function: linear;
 }
 
-
-
 @-webkit-keyframes spin {
-    0%   {       transform:scale(1) rotate(0deg);       }
-    10%  {       transform:scale(5) rotate(0deg);      }
-    100% {       transform: scale(5) rotate(1080deg);   }
+    0%   {       transform:scale(1) rotate(0deg);    }
+    10%  {       transform:scale(5) rotate(0deg);    }
+    70%  {       transform: scale(5) rotate(1080deg); filter: brightness(1)  }
+    100% {       transform: scale(1) rotate(1080deg); filter: brightness(0); }
 }
 @keyframes spin {
-    0%   {       transform:scale(1) rotate(0deg);       }
-    10%  {       transform:scale(5) rotate(0deg);      }
-    100% {       transform: scale(5) rotate(1080deg);   }
+    0%   {       transform:scale(1) rotate(0deg);    }
+    10%  {       transform:scale(5) rotate(0deg);    }
+    70%  {       transform: scale(5) rotate(1080deg); filter: brightness(1)  }
+    100% {       transform: scale(1) rotate(1080deg); filter: brightness(0); }
 }
 
 
