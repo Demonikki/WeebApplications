@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="part2.css">
+    <title></title>
+  </head>
+  <body>
+    <h4>Embedding our team page as an object </h4>
+    <object width = "800" height = "600" data="index.html"></object>
+    <h4>Embedding a video as an object</h4>
+    <!--object data="http://dota2.gamepedia.com/File:Scree%E2%80%99auk%E2%80%99s_Talon_Wave_of_Terror.gif"-->
+    <object data="https://www.myinstants.com/media/sounds/magic_immune.mp3"></object>
+    <style>
+    h4 {color: gray;}
+    p {color: pink;}
+    </style>
+    <h4>Test for Param</h4>
+    <object data = "https://ccrma.stanford.edu/~jos/wav/pno-cs.wav">
+      <param name = "autoplay" value = "true">
+    </object>
+    <p id="d1"></p>
+    <script>
+    document.getElementById("d1").innerHTML = "Hello JavaScript!";
+    </script>
+    <p> Test for Form </p>
+    <form action= "/action_page.php">
+      First Name: <input type = "text" name = "fname" value = "onlybaby"><br>
+      Last Name: <input type = "text" name = "lname" value = "wang"><br>
+      <input type = "submit" value = "submit">
+    </form>
+    <form>
+      <fieldset>
+        <legend> Personal Info:</legend>
+        Name: <input type = "text"><br>
+        Email: <input type = "text"><br>
+        Date of birth: <input type = "text">
+      </fieldset>
+    </form>
+    <form>
+      <fieldset>
+        First name: <input type="text" name="fname"><br>
+        Last name: <input type="text" name="lname"><br>
+        Gender: Female <input type="radio" name = "female" value = "female">
+                Male <input type="radio" name = "male" value = "male"><br>
+        Password: <input type = "password"><br>
+        Date: <input type="date"><br>
+        Cell phone number: <input type = "number"><br>
+        Agree with the term <input type="checkbox">
+      </fieldset>
+    </form>
+    <noscript>Your browser does not support JavsScript!<noscript>
+  </body>
+</html>
