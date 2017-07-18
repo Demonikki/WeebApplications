@@ -73,7 +73,7 @@ section > div:nth-child(2),div:nth-child(4){
         padding-right: 10px;
         text-align: center;
     }
-    
+
     section > div:nth-child(2),div:nth-child(4){
         width: 100%;
         background-color: rgb(43,209,252);
@@ -122,16 +122,19 @@ svg:hover {
     animation-name: spin;
     animation-duration: 4s;
     animation-timing-function: linear;
+    -webkit-animation-name: spin;
+    -webkit-animation-duration: 4s;
+    -webkit-animation-timing-function: linear;
+
 }
 
+@-webkit-keyframes spin {
+    0%   {        transform:rotate(0deg);       }
+    100% {        transform: rotate(1080deg);   }
+}
 @keyframes spin {
-    0% {
-        transform:rotate(0deg);
-    }
-    100% {
-        transform: rotate(1080deg);
-    }
-
+    0%   {        transform:rotate(0deg);       }
+    100% {        transform: rotate(1080deg);   }
 }
 
 
