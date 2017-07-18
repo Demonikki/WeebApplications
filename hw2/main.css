@@ -52,6 +52,7 @@ section > div:nth-child(1),div:nth-child(3) {
     /* background color is  rgb(192,77,249) */
     width: 50%;
     background-color: rgb(192,77,249);
+    padding-left: 10px;
     align-self: flex-end;
 }
 
@@ -60,41 +61,32 @@ section > div:nth-child(2),div:nth-child(4){
     /* background color is  rgb(43,209,252) */
     width: 50%;
     background-color: rgb(43,209,252);
+    padding-right: 10px;
     text-align: right;
 }
+
 
 @media only screen and (max-width: 768px) {
     section > div:nth-child(1),div:nth-child(3) {
         width: 100%;
         background-color: rgb(192,77,249);
+        padding-right: 10px;
         text-align: center;
     }
     
     section > div:nth-child(2),div:nth-child(4){
         width: 100%;
         background-color: rgb(43,209,252);
+        padding-left: 10px;
         text-align: center;
     }
 }
+
+
 section > div:nth-child(3):after {
 	/* gave you the nth child after selector for free to inspire you */
 	/* generated content in here ... a property can do that */
 	}
-
-
-@media only screen and (max-width: 768px) {
-    section > div:nth-child(1),div:nth-child(3) {
-        width: 100%;
-        background-color: rgb(192,77,249);
-        text-align: center;
-    }
-    
-    section > div:nth-child(2),div:nth-child(4){
-        width: 100%;
-        background-color: rgb(43,209,252);
-        text-align: center;
-    }
-}
 
 	/* a freebie for fun */
 aside {
