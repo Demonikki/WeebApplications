@@ -1,6 +1,6 @@
 /* Hint: use relative measurements you'll find them useful! */
 
-@import url();  /* Set this for Monton...figure out their syntax */
+@import url("https://fonts.googleapis.com/css?family=Monoton");  /* Set this for Monoton...figure out their syntax */
 
 * {
     box-sizing: border-box;
@@ -22,11 +22,32 @@ main {
 }
 /*header {
 }*/
-header > div {
+header {
   /*-webkit-text-stroke: 1px red;*/
+    /* display:inline-flex; */
+    margin-top: 30px;
 }
-@media only screen and (min-width: 861px){
+
+.logo{
+    margin: 20px;
+    background: #ff80d5;
+    padding: 10px 20px 10px 20px;
+
+	-moz-border-radius: 80%;
+    -webkit-border-radius: 80%;
+    border-radius: 80%;
+    
+    font-size: 50px;
+    font-family: 'Monoton';
+    font-weight: "bold";
+    color: black;
+    box-shadow: 0px 5px 5px #4f4f4f;
+    text-decoration: none;
+}
+
+@media only screen and (min-width: 1001px){
     .fun {
+        margin-top: -70px;
         line-height: .70em;
         margin-bottom: 70px;
         color: white;
@@ -39,16 +60,17 @@ header > div {
         -webkit-box-reflect: below 0 linear-gradient(transparent, white);
     }
 }
-@media only screen and (max-width: 860px){
-.fun {
-        margin-bottom: 70px;
-        color: white;
-        font-size: 85px;
-        /*left, bottom, bottom2, right, top shadows*/
-        text-shadow: -3px 0 #eb6661, 0 3px 0px #eb6661, 0 5px 2px #eb6661, 3px 0 #eb6661, 0 -2px 1px #eb6661 ;
-        font-family: "Courier New";
-        text-transform: uppercase;
-        text-align: left;
+@media only screen and (max-width: 1000px){
+    .fun {
+            margin-top: 30px;
+            margin-bottom: 10px;
+            color: white;
+            font-size: 85px;
+            /*left, bottom, bottom2, right, top shadows*/
+            text-shadow: -3px 0 #eb6661, 0 3px 0px #eb6661, 0 5px 2px #eb6661, 3px 0 #eb6661, 0 -2px 1px #eb6661 ;
+            font-family: "Courier New";
+            text-transform: uppercase;
+            text-align: left;
     }
 }
 /* Custom kerning */
