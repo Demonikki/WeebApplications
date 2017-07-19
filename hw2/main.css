@@ -6,11 +6,19 @@
     box-sizing: border-box;
 }
 
+/*
+ * Set Background to a png file and make 
+ * it fixed
+ */
 body {
   background-image: url("background.png");
   background-attachment: fixed;
 }
 
+/*
+ *  Set border to the main and set the attribute
+ *  of border such as background color and margin
+ */
 main {
   border: 10px solid;
   -webkit-border-image: url(./border.gif) 30 round;
@@ -28,6 +36,12 @@ header {
     margin-top: 30px;
 }
 
+/*
+ * Drawing css logo.
+ * We technically just draw a oval background for
+ * the text css first. Then, we set the text-decoration
+ * to none to make the text without a look of hyperlink
+ */
 .logo{
     margin: 20px;
     background: #ff80d5;
@@ -45,6 +59,19 @@ header {
     text-decoration: none;
 }
 
+/*
+ * We split the windows width checking by 1001.
+ * If we detect the windows size is smaller than
+ * 1001 we set the text its fun align to left.
+ * Otherwise, to the right.
+ * 
+ * For the reflection only on the desktop, we use 
+ * box-reflect and put linear-gradient for making 
+ * the reflection fade into transparent.
+ * 
+ * Set the characters to uppercase and set the
+ * windows shadows.
+ */
 @media only screen and (min-width: 1001px){
     .fun {
         margin-top: -70px;
@@ -73,11 +100,19 @@ header {
             text-align: left;
     }
 }
-/* Custom kerning */
+/* Custom kerning 
+ *
+ * Setting the spacing between letter closer
+ */
 #kern1, #kern2, #kern3 {
     letter-spacing:-0.2em;
 }
 
+/*
+ *  Set the background color to yellow first
+ *  Then, set section as a flex for its children
+ *  to reverse order by using column-reverse.
+ */
 section {
     background-color: rgb(243,234,95);
     position: relative;
@@ -87,6 +122,10 @@ section {
     flex-direction: column-reverse;
     margin: 15px;
 }
+
+/*
+ *  Set the font attribute
+ */
 section > div {
     /* font is 'Comic Sans MS, text is automatically adjusted to lowercase do not mod the HTML */
     font-family: "Comic Sans MS";
@@ -94,9 +133,15 @@ section > div {
     font-weight: bold;
     font-size: 20px;
     text-transform: lowercase;
-
 }
 
+/*
+ *   Set Color.
+ *
+ *   Set the alignment of the first and third texts
+ *   and set the width to the 50% of the width of 
+ *   section.
+ */
 section > div:nth-child(1),div:nth-child(3) {
     /* ANastNthChildSelectorToWrite means what it says it isn't an indetifier */
     /* background color is  rgb(192,77,249) */
@@ -107,6 +152,13 @@ section > div:nth-child(1),div:nth-child(3) {
 
 }
 
+/*
+ *   Set Color and text alignment.
+ *
+ *   Set the alignment of the second and fourth texts
+ *   and set the width to the 50% of the width of
+ *   section as well.
+ */
 section > div:nth-child(2),div:nth-child(4){
     /* ANastNthChildSelectorToWrite means what it says it isn't an indetifier */
     /* background color is  rgb(43,209,252) */
@@ -117,7 +169,10 @@ section > div:nth-child(2),div:nth-child(4){
     height:30px;
 }
 
-
+/*
+ *  For mobile, reverse some of the setting
+ *  and set text-alignment to center
+ */
 @media only screen and (max-width: 861px) {
     section > div:nth-child(1),div:nth-child(3) {
         width: 100%;
@@ -134,6 +189,9 @@ section > div:nth-child(2),div:nth-child(4){
     }
 }
 
+  /*
+   *  Add content to child 3 of section
+   */
   section > div:nth-child(3):after {
     content: " ♥♥♥";
   }
@@ -158,15 +216,28 @@ aside {
 }
 
 
-/* Opps truncated the file for you to fill in */
+/*
+ * Set bug's color to white
+ */
 path {
   fill: white;
 }
+
+/*
+ * Set bug's box height and width
+ */
 svg {
   height: 45px;
   width: 45px;
 }
 
+/*
+ *  Set animation of the bug during
+ *  hovering.
+ *  For color changing part,
+ *  we simply changed the brightness
+ *  of the bug.
+ */
 svg:hover {
     animation-name: spin;
     animation-duration: 2s;
@@ -197,6 +268,9 @@ svg:hover {
     100% {       transform: scale(1) rotate(1080deg); filter: brightness(0); }
 }
 
+/*
+ *    Draw footer
+ */
 footer {
   display: block;
   background-color: #ff80d5;
@@ -207,6 +281,10 @@ footer {
   padding-top: 10px;
   font-family: "lucida calligraphy";
 }
+
+/*
+ *  Set img attribute of cat
+ */
 img {
   height: 100px;
   display: block;
@@ -227,6 +305,10 @@ footer div span {
   opacity: 0;
 }
 
+/*
+ * After hovering over the cat,
+ * the meow dispears.
+ */
 footer div:hover span:after {
   content: ' ';
   position: absolute;
@@ -239,6 +321,10 @@ footer div:hover span:after {
   border-right:10px solid;
 }
 
+/*
+ * Set the footer hovering attribute
+ * and draw border
+ */
 footer div:hover span{
   opacity: 1;
   display: block;
