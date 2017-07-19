@@ -148,43 +148,67 @@ svg:hover {
 }
 
 footer {
+  display: block;
   background-color: #ff80d5;
   padding: 0;
-  margin-top: 50px;
+  /*height: 100%;*/
+  height: 160px;
+  width: 849px;
+  margin-top: 10%;
+  padding-top: 10px;
 }
 img {
   height: 100px;
   display: block;
   margin: 0 auto;
 }
+
 div + span {
   display: block;
   text-align: center;
-  padding: 10px;
-}
-footer div span:hover{
-  /*opacity: 0;*/
-  display: block;
-  margin-left: 400px;
   position: relative;
-  width: 200px;
-  height: 100px;
-  text-align: center;
-  line-height: 100px;
-  background-color: #fff;
-  border: 8px solid black;
-  -webkit-border-radius: 30px;
-  -moz-border-radius: 30px;
-  border-radius: 30px;
-  -webkit-box-shadow: 2px 2px 4px #888;
-  -moz-box-shadow: 2px 2px 4px #888;
-  box-shadow: 2px 2px 4px #888;
-  transition:2s;
+  bottom: 10px;
+  /*padding: 100px;*/
+
 }
 
-/*footer div img:hover span{
+footer div span {
+  /*margin-left: 500px;*/
+  opacity: 0;
+}
+
+footer div:hover span:after {
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: -20%;
+  margin-top: 8px;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right:10px solid;
+}
+
+
+footer div:hover span{
   opacity: 1;
-}*/
+  display: block;
+  margin-left: 60%;
+  padding-top: 0%;
+  padding-bottom: 0%;
+  top: -80px;
+  position: relative;
+  width: 70px;
+  height: 40px;
+  text-align: center;
+  line-height: 30px;
+  background-color: #fff;
+  border: 4px solid black;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  -moz-box-shadow: 1px 1px 2px #888;
+}
 
 
 /* Solution given should be below 250 lines, solution we had was below 200 easily */
