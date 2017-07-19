@@ -24,10 +24,27 @@ main {
 }*/
 header > div {
   /*-webkit-text-stroke: 1px red;*/
-   color: white;
-   text-shadow: -2px 0 #ff8566, 0 2px #ff8566, 2px 0 #ff8566, 0 -2px #ff8566;
-    font-size: 100px;
+
+
+
 }
+.fun {
+    line-height: .70em;
+    margin-bottom: 70px;
+    color: white;
+    font-size: 85px;
+    /*left, bottom, bottom2, right, top shadows*/
+    text-shadow: -3px 0 #eb6661, 0 3px 0px #eb6661, 0 5px 2px #eb6661, 3px 0 #eb6661, 0 -2px 1px #eb6661 ;
+    -webkit-box-reflect: below 0 linear-gradient(transparent, white);
+    font-family: "Courier New";
+    text-transform: uppercase;
+    text-align: right;
+}
+/* Custom kerning */
+#kern1, #kern2, #kern3 {
+    letter-spacing:-0.2em;
+}
+
 section {
     background-color: rgb(243,234,95);
     position: relative;
@@ -55,7 +72,6 @@ section > div:nth-child(1),div:nth-child(3) {
     padding-left: 10px;
     align-self: flex-end;
 
-
 }
 
 section > div:nth-child(2),div:nth-child(4){
@@ -65,6 +81,7 @@ section > div:nth-child(2),div:nth-child(4){
     background-color: rgb(43,209,252);
     padding-right: 10px;
     text-align: right;
+    height:30px;
 }
 
 
@@ -143,7 +160,7 @@ svg:hover {
 @keyframes spin {
     0%   {       transform:scale(1) rotate(0deg);    }
     10%  {       transform:scale(5) rotate(0deg);    }
-    70%  {       transform: scale(5) rotate(1080deg); filter: brightness(1)  }
+    70%  {       transform: scale(5) rotate(1080deg); filter: brightness(1); }
     100% {       transform: scale(1) rotate(1080deg); filter: brightness(0); }
 }
 
@@ -153,7 +170,6 @@ footer {
   padding: 0;
   /*height: 100%;*/
   height: 160px;
-  width: 849px;
   margin-top: 10%;
   padding-top: 10px;
 }
