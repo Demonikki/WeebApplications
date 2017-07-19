@@ -24,21 +24,32 @@ main {
 }*/
 header > div {
   /*-webkit-text-stroke: 1px red;*/
-
-
-
 }
+@media only screen and (min-width: 861px){
+    .fun {
+        line-height: .70em;
+        margin-bottom: 70px;
+        color: white;
+        font-size: 85px;
+        /*left, bottom, bottom2, right, top shadows*/
+        text-shadow: -3px 0 #eb6661, 0 3px 0px #eb6661, 0 5px 2px #eb6661, 3px 0 #eb6661, 0 -2px 1px #eb6661 ;
+        font-family: "Courier New";
+        text-transform: uppercase;
+        text-align: right;
+        -webkit-box-reflect: below 0 linear-gradient(transparent, white);
+    }
+}
+@media only screen and (max-width: 860px){
 .fun {
-    line-height: .70em;
-    margin-bottom: 70px;
-    color: white;
-    font-size: 85px;
-    /*left, bottom, bottom2, right, top shadows*/
-    text-shadow: -3px 0 #eb6661, 0 3px 0px #eb6661, 0 5px 2px #eb6661, 3px 0 #eb6661, 0 -2px 1px #eb6661 ;
-    -webkit-box-reflect: below 0 linear-gradient(transparent, white);
-    font-family: "Courier New";
-    text-transform: uppercase;
-    text-align: right;
+        margin-bottom: 70px;
+        color: white;
+        font-size: 85px;
+        /*left, bottom, bottom2, right, top shadows*/
+        text-shadow: -3px 0 #eb6661, 0 3px 0px #eb6661, 0 5px 2px #eb6661, 3px 0 #eb6661, 0 -2px 1px #eb6661 ;
+        font-family: "Courier New";
+        text-transform: uppercase;
+        text-align: left;
+    }
 }
 /* Custom kerning */
 #kern1, #kern2, #kern3 {
@@ -85,7 +96,7 @@ section > div:nth-child(2),div:nth-child(4){
 }
 
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 861px) {
     section > div:nth-child(1),div:nth-child(3) {
         width: 100%;
         background-color: rgb(192,77,249);
@@ -204,7 +215,6 @@ footer div:hover span:after {
   border-bottom: 10px solid transparent;
   border-right:10px solid;
 }
-
 
 footer div:hover span{
   opacity: 1;
