@@ -25,8 +25,18 @@ main {
 header > div {
   /*-webkit-text-stroke: 1px red;*/
    color: white;
-   text-shadow: -2px 0 #ff8566, 0 2px #ff8566, 2px 0 #ff8566, 0 -2px #ff8566;
-    font-size: 100px;
+   /*left, bottom, bottom2, right, top shadows*/
+   text-shadow: -3px 0 #eb6661, 0 3px 0px #eb6661, 0 5px 2px #eb6661, 3px 0 #eb6661, 0 -2px 1px #eb6661 ;
+   font-size: 85px;
+
+
+}
+.fun {
+    -webkit-box-reflect: below 0 linear-gradient(transparent, white);
+    font-family: "Courier New";
+    text-transform: uppercase;
+    float: right;
+
 }
 section {
     background-color: rgb(243,234,95);
@@ -143,7 +153,7 @@ svg:hover {
 @keyframes spin {
     0%   {       transform:scale(1) rotate(0deg);    }
     10%  {       transform:scale(5) rotate(0deg);    }
-    70%  {       transform: scale(5) rotate(1080deg); filter: brightness(1)  }
+    70%  {       transform: scale(5) rotate(1080deg); filter: brightness(1); }
     100% {       transform: scale(1) rotate(1080deg); filter: brightness(0); }
 }
 
@@ -162,8 +172,8 @@ div + span {
   text-align: center;
   padding: 10px;
 }
-footer div span:hover{
-  /*opacity: 0;*/
+footer div img:hover {
+  opacity: 0;
   display: block;
   margin-left: 400px;
   position: relative;
@@ -182,9 +192,8 @@ footer div span:hover{
   transition:2s;
 }
 
-/*footer div img:hover span{
+footer div span:hover{
   opacity: 1;
-}*/
-
+}
 
 /* Solution given should be below 250 lines, solution we had was below 200 easily */
