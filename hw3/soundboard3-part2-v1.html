@@ -1,12 +1,15 @@
+<!-- Page Loading Time: 3s -->
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Soundboard Part 1a</title>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Used to Support Mobile Device's resolution -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+	<!-- Top Navigation Bar For the Page -->
 	<nav class="navbar navbar-default" style="background-color:#191414">
 		<div class="container">
 			<div class="navbar-header">
@@ -24,15 +27,18 @@
 		</div>
 	</nav>
 	<main style="margin-top: -20px; background-image: url('http://designwoop.com/uploads/2012/03/01_free_subtle_textures_apple_ios_linen_texture.jpg')">
+		    <!-- We have a grid system that contains three rows and each row has four columns -->
 			<div id="grid" class="container">
                 <div class="row justify-content-md-center">
 					<div class="col-sm-3" style="margin-top: 10px;">
+						<!-- We have a panel for each cell, and each photo has a panel as well. Then we added button and progress bar below the photo. -->
 						<div class="panel panel-default" style="background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGGcLEolyoYvBDEfc0pwsaFJrE7TJROiRSuCxYJbMD8_np9pSB');">
 							<div class="panel-body">
 								<div class="panel panel-default">
 										<img src="./media/img0.jpg"  style="width: 100%; height: auto; margin-left: auto;" alt="song1_album"/>
 								</div>
 								<div id="sound1" class="soundBtn" style="width: 80%; max-width: 30em;">
+									<!-- Set Sound button with a button and a progress bar. We have a row to display this and set their ratio as 10 to 2 -->
 									<div class="row">
 										<span class="col-sm-10">
 											<div class="progress" style="width: 100%; height: 5px; margin-top: auto; margin-bottom: auto;  display: inline-block;">
@@ -45,6 +51,7 @@
 											</button>
 										</span>
 									</div>
+									<!-- Clip Sound -->
 									<audio id="clip1">
 										<source src="https://firebasestorage.googleapis.com/v0/b/weeb-applications.appspot.com/o/Bridge%20-%20%E8%80%81%E5%A4%A7.mp3?alt=media&token=6d9c2650-88cc-4690-9005-9bb7b9334aa2" type="audio/mp3">
 									</audio>
@@ -344,14 +351,15 @@
 					</div>		
 				</div>
 			</div>
-
+		<!-- Secret Sound -->		
 		<audio id="audio_play">
 		  <source src="https://ccrma.stanford.edu/~jos/wav/pno-cs.wav" type="audio/wav" />
-    	  <!-- <source src="http://www.w3schools.com/tags/horse.mp3" type="audio/mpeg" /> -->
 		  Your browser does not support the <code>audio</code> element.
 		</audio>
 	</main>
 	<script>
+		// Inspired by the script provided by Professor for part 1. Script Used to do interact with users on button and progress bar.
+		// https://cse134summer2017.slack.com/files/tpowell/F6C4F8URJ/Max_JS_in_HW2_Example.html
     	var els = document.querySelectorAll('#grid .soundBtn');
     	for (var i = 0, len = els.length; i < len; i++) {
 			els[i].addEventListener('click', function () {
@@ -359,7 +367,7 @@
 
 				sound = this.getElementsByTagName('audio')[0];
 				icon = this.getElementsByTagName('button')[0];
-				progressbar = this.getElementsByClassName('progress-bar')[0];
+				progress = this.getElementsByClassName('progress')[0];
 
 				if (sound.paused) {
 					sound.play();
@@ -370,12 +378,12 @@
 				}
 
 				sound.onended = function () {
-					progressbar.style='background-color: #aab8c2; width: 0%';
+					progress.innerHTML = '<div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%; height: 5px; background-color: #aab8c2;"></div>';
 					icon.innerHTML = "<img src='https://png.icons8.com/play-button/ios7/25' title='Play Button' width='25px' height='25px'></img>";
 				}
-				
+			
 				sound.addEventListener("timeupdate", function(){
-				 	progressbar.style='background-color: #aab8c2;; width: '+100*sound.currentTime/sound.duration+'%';
+					progress.innerHTML = '<div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: '+Math.round(100*sound.currentTime/sound.duration)+'%; height: 5px; background-color: #aab8c2;"></div>';
 				}, false);
 
 			}, false)
