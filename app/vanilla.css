@@ -1,4 +1,20 @@
 /* Vanilla CSS for HW2 Part 2.2*/
+/*
+*** Detailed Performance information ***
+
+* File Size on local machine
+     * bootstrap CSS - 119 KB
+     * vanilla.css - 5 KB
+     * Size of vanilla.css is 4.20% the size of bootstrap's css.
+
+* Network tests (results averaged over 3 tests)
+    *Regular test on Wi-Fi
+        *Bootstrap - 3.05s
+        *Vanilla - 1.67s
+*Throttled to Good 3G (1.5Mbps)
+*Bootstrap - 1.13s
+*Vanilla - 332ms
+*/
 
 html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}
 body{
