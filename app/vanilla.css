@@ -11,9 +11,9 @@
     *Regular test on Wi-Fi
         *Bootstrap - 3.05s
         *Vanilla - 1.67s
-*Throttled to Good 3G (1.5Mbps)
-*Bootstrap - 1.13s
-*Vanilla - 332ms
+    *Throttled to Good 3G (1.5Mbps)
+        *Bootstrap - 1.13s
+        *Vanilla - 332ms
 */
 
 html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}
