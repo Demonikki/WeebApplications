@@ -35,7 +35,7 @@
 					<div id = "col" class="col-lg-3 col-sm-6 pic" >
 							<img class = "soImg"></img>
 							<!-- <button id = "bb" type = "button"> -->
-           		<img id = "btn" class = "pBtn"></img>
+           		<img id = "btn" class = "pBtn" onclick="playSound(event)"></img>
 							<!-- </button> -->
 							<audio id="clip2">
 								<source type="audio/mp3">
@@ -44,33 +44,32 @@
 				<!-- </div> -->
 	</template>
 	<script>
-	// function supportsTemplate() {
-  // 	return 'content' in document.createElement('template');
-	// }
-	//
-	// window.onload = function () {
-	// 	if (supportsTemplate()) {
-	// 		renderSoundBoard();
-	// 	} else {
-	// 	}
-	// }
-	// function renderSoundBoard() {
+	function supportsTemplate() {
+  	return 'content' in document.createElement('template');
+	}
+
+	window.onload = function () {
+		if (supportsTemplate()) {
+			renderSoundBoard();
+		} else {
+		}
+	}
+	var template = document.querySelector('#myTemplt');
+	function renderSoundBoard() {
 		var arr = [
 			{img: "./media/img0.jpg", btn: "./media/pBtn.png", sound: "https://goo.gl/WSSLvh"},
-			{img: "./media/img1.jpg", btn: "./media/pBtn.png", sound: "https://goo.gl/WSSLvh"},
-			{img: "./media/img2.jpg", btn: "./media/pBtn.png", sound: "https://goo.gl/WSSLvh"},
-			{img: "./media/img3.jpg", btn: "./media/pBtn.png", sound: "https://goo.gl/WSSLvh"},
-			{img: "./media/img4.jpg", btn: "./media/pBtn.png", sound: "https://goo.gl/WSSLvh"},
-			{img: "./media/img5.jpg", btn: "./media/pBtn.png", sound: "https://goo.gl/WSSLvh"},
-			{img: "./media/img6.jpg", btn: "./media/pBtn.png", sound: "https://goo.gl/WSSLvh"},
-			{img: "./media/img7.png", btn: "./media/pBtn.png", sound: "https://goo.gl/WSSLvh"},
-			{img: "./media/img8.png", btn: "./media/pBtn.png", sound: "https://goo.gl/WSSLvh"},
-			{img: "./media/img9.png", btn: "./media/pBtn.png", sound: "https://goo.gl/WSSLvh"},
-			{img: "./media/img10.jpg", btn: "./media/pBtn.png", sound: "https://goo.gl/WSSLvh"},
-			{img: "./media/img11.jpg", btn: "./media/pBtn.png", sound: "https://goo.gl/WSSLvh"}
+			{img: "./media/img1.jpg", btn: "./media/pBtn.png", sound: "https://goo.gl/YU92FD"},
+			{img: "./media/img2.jpg", btn: "./media/pBtn.png", sound: "https://goo.gl/pH7NXT"},
+			{img: "./media/img3.jpg", btn: "./media/pBtn.png", sound: "https://goo.gl/pnaW19"},
+			{img: "./media/img4.jpg", btn: "./media/pBtn.png", sound: "https://goo.gl/sz4jLE"},
+			{img: "./media/img5.jpg", btn: "./media/pBtn.png", sound: "https://goo.gl/q7CGJ7"},
+			{img: "./media/img6.jpg", btn: "./media/pBtn.png", sound: "https://goo.gl/qjDAEB"},
+			{img: "./media/img7.png", btn: "./media/pBtn.png", sound: "https://goo.gl/GWsNEU"},
+			{img: "./media/img8.png", btn: "./media/pBtn.png", sound: "https://goo.gl/QSQ8Ao"},
+			{img: "./media/img9.png", btn: "./media/pBtn.png", sound: "https://goo.gl/QQCNbH"},
+			{img: "./media/img10.jpg", btn: "./media/pBtn.png", sound: "https://goo.gl/t7G8aM"},
+			{img: "./media/img11.jpg", btn: "./media/pBtn.png", sound: "https://goo.gl/AxTGba"}
 		];
-		var template = document.querySelector('#myTemplt');
-
 		for(var i = 0; i < arr.length; i++){
 			// for(var j = 0; j < 4; j++){
 				var soundTrack = arr[i];
@@ -82,32 +81,52 @@
 				// document.body.appendChild(clone);
 			// }
 		}
-	// }
- </script>
-	<script>
-    	var els = document.querySelectorAll('.pic');
-    	for (var i = 0, len = els.length; i < len; i++)	 {
-			els[i].addEventListener('click', function () {
-				var sound, icon;
-				sound = this.getElementsByTagName('audio')[0];
-				icon = this.getElementsByTagName('img')[1];
-				// progressbar = this.getElementsByClassName('progress-bar')[0];
+	}
+
+	function playSound(e) {
+		// alert(e.target.parentNode.childNodes[9]);
+		sound = e.target.parentNode.childNodes[9];
+		// sound = e.target.parentNode.audio;
 				if (sound.paused) {
 					sound.play();
-					icon.innerHTML = "<img src='https://png.icons8.com/pause/Dusk_Wired/25' title='Pause Button' width='50%' height='50%'></img>";
+					e.target.src = "./media/pauseBtn.png";
+					e.target.style.opacity = "0.5";
 				} else {
 					sound.pause();
-					icon.innerHTML = "<img src='https://png.icons8.com/play-button/ios7/25' title='Play Button' width='50%' height='50%'></img>";
+					e.target.src = "./media/pBtn.png";
+					e.target.style.opacity = "1";
+					// document.getElementsByTagName("img")[2].src = "./media/pBtn.png";
+					// icon.innerHTML = "";
 				}
 				sound.onended = function () {
-					// progressbar.style='background-color: #aab8c2; width: 0%';
-					icon.innerHTML = "<img src='https://png.icons8.com/play-button/ios7/25' title='Play Button' width='25px' height='25px'></img>";
+					e.target.src = "./media/pBtn.png";
+					e.target.style.opacity = "1";
 				}
-				// sound.addEventListener("timeupdate", function(){
-				//  	progressbar.style='background-color: #aab8c2;; width: '+100*sound.currentTime/sound.duration+'%';
-				// }, false);
-			}, false)
-    }
+	}
+ </script>
+	<script>
+    // 	var els = document.querySelectorAll('.pic');
+    // 	for (var i = 0, len = els.length; i < len; i++) {
+		// 	els[i].addEventListener('click', function () {
+		// 		var sound, icon;
+		// 		sound = this.getElementsByTagName('audio')[0];
+		// 		icon = this.getElementsByTagName('img')[1];
+		// 		if (sound.paused) {
+		// 			sound.play();
+		// 			document.getElementById("#btn").style.backgroundImage = "url('pBtn.png')";
+		// 			icon.innerHTML = "";
+		// 		} else {
+		// 			sound.pause();
+		// 			document.getElementById("#btn").style.backgroundImage = "url('./media/pauseBtn.png')";
+		// 			icon.innerHTML = "";
+		// 		}
+		// 		sound.onended = function () {
+		// 			icon.innerHTML = "<img src='https://png.icons8.com/play-button/ios7/25' title='Play Button' width='25px' height='25px'></img>";
+		// 		}
+		// 	}, false)
+    // }
+
+
 	</script>
 	<script>
 	  document.getElementById("navB").style.backgroundColor = "#191414";
