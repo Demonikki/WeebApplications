@@ -9,13 +9,18 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-	<nav class="navbar navbar-default" style="background-color:#191414">
+	<nav class="navbar navbar-default" id = "navB">
 		<div class="container">
 			<div class="navbar-header">
 				<a href="#" class="navbar-brand">Soundboard</a>
 			</div>
 			<ul class="nav navbar-nav">
-				<li><a href="#">Soundtracks</a></li>
+				<li><a href="#">Theme</a></li>
+				<select id = "myTheme" onChange="changeTheme()">
+					<option value= "black">black</option>
+					<option value="blue">blue</option>
+					<option value="purple">purple</option>
+				</select>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="./login.html">Login</a></li>
@@ -103,6 +108,25 @@
 				// }, false);
 			}, false)
     }
+	</script>
+	<script>
+	  document.getElementById("navB").style.backgroundColor = "#191414";
+		document.body.style.backgroundImage = "url('http://designwoop.com/uploads/2012/03/01_free_subtle_textures_apple_ios_linen_texture.jpg')";
+		function changeTheme(){
+			var ele = document.getElementById("myTheme");
+			var theme = ele.options[ele.selectedIndex].value;
+			if (theme === "blue") {
+				document.body.style.backgroundImage = "url('./media/b13.jpg')";
+				document.getElementById("navB").style.backgroundImage = "url('./media/nav0.jpg')";
+			} else if (theme === "purple"){
+				document.body.style.backgroundImage = "url('./media/b5.jpg')";
+				document.getElementById("navB").style.backgroundImage = "url('./media/b2.jpg')";
+			} else {
+				document.getElementById("navB").style.backgroundImage = "";
+				document.getElementById("navB").style.backgroundColor = "#191414";
+				document.body.style.backgroundImage = "url('http://designwoop.com/uploads/2012/03/01_free_subtle_textures_apple_ios_linen_texture.jpg')";
+			}
+		}
 	</script>
 
 	<footer>
