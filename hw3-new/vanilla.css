@@ -113,12 +113,9 @@ img{
   position: relative;
 }
 .pBtn{
-  /*position: relative;*/
-  /* z-index: 999; */
   position: absolute;
   left: 25%;
   top: 25%;
   width: 50%;
   height: 50%;
-  /*justify-content: center;*/
 }
