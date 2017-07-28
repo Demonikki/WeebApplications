@@ -20,7 +20,7 @@ color: white;
   position: relative;
 }
 .pBtn{
-  position: absolute; visibility: hidden;
+  position: relative; width: 7%; height: auto;
 }
 
 a { color: white;}
