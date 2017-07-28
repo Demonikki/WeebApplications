@@ -29,7 +29,6 @@
 			<div id="grid" class="container">
         <div class="row justify-content-md-center">
 					<div class="col-lg-3 col-sm-6 pic" >
-
 							<img class = "soImg"></img>
 							<!-- <button id = "bb" type = "button"> -->
            		<img id = "btn" class = "pBtn"></img>
@@ -63,9 +62,9 @@
 			{img: "./media/img4.jpg", btn: "./media/pBtn.png", sound: "https://goo.gl/WSSLvh"},
 			{img: "./media/img5.jpg", btn: "./media/pBtn.png", sound: "https://goo.gl/WSSLvh"},
 			{img: "./media/img6.jpg", btn: "./media/pBtn.png", sound: "https://goo.gl/WSSLvh"},
-			{img: "./media/img7.jpg", btn: "./media/pBtn.png", sound: "https://goo.gl/WSSLvh"},
-			{img: "./media/img8.jpg", btn: "./media/pBtn.png", sound: "https://goo.gl/WSSLvh"},
-			{img: "./media/img9.jpg", btn: "./media/pBtn.png", sound: "https://goo.gl/WSSLvh"},
+			{img: "./media/img7.png", btn: "./media/pBtn.png", sound: "https://goo.gl/WSSLvh"},
+			{img: "./media/img8.png", btn: "./media/pBtn.png", sound: "https://goo.gl/WSSLvh"},
+			{img: "./media/img9.png", btn: "./media/pBtn.png", sound: "https://goo.gl/WSSLvh"},
 			{img: "./media/img10.jpg", btn: "./media/pBtn.png", sound: "https://goo.gl/WSSLvh"},
 			{img: "./media/img11.jpg", btn: "./media/pBtn.png", sound: "https://goo.gl/WSSLvh"}
 		];
@@ -93,10 +92,10 @@
 
 				if (sound.paused) {
 					sound.play();
-					icon.innerHTML = "<img src='https://png.icons8.com/pause/Dusk_Wired/25' title='Pause Button' width='25px' height='25px'></img>";
+					icon.innerHTML = "<img src='https://png.icons8.com/pause/Dusk_Wired/25' title='Pause Button' width='50%' height='50%'></img>";
 				} else {
 					sound.pause();
-					icon.innerHTML = "<img src='https://png.icons8.com/play-button/ios7/25' title='Play Button' width='25px' height='25px'></img>";
+					icon.innerHTML = "<img src='https://png.icons8.com/play-button/ios7/25' title='Play Button' width='50%' height='50%'></img>";
 				}
 
 				sound.onended = function () {
