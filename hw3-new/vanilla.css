@@ -20,7 +20,10 @@ html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:1
 body{
 font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
 font-size:14px;line-height:1.42857143;
-color:#333;background-color:#fff}
+background-image: url('http://designwoop.com/uploads/2012/03/01_free_subtle_textures_apple_ios_linen_texture.jpg');
+/*color:#333;*/
+/*background-color:#fff;*/
+}
 button,input,select,optgroup,textarea{
   font-family:inherit;
   font-size:inherit;
@@ -99,7 +102,8 @@ img{
 }
 .pic{
   width: 25%;
-  margin-top: 10px;
+  margin-top: 20px;
+
 }
 
 .soImg{
@@ -117,8 +121,4 @@ img{
   width: 50%;
   height: 50%;
   /*justify-content: center;*/
-}
-
-template {
-  background-image: url('http://designwoop.com/uploads/2012/03/01_free_subtle_textures_apple_ios_linen_texture.jpg'
 }
