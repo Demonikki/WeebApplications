@@ -15,18 +15,18 @@
 				<a href="#" class="navbar-brand">Soundboard</a>
 			</div>
 			<ul class="nav navbar-nav">
-				<li><a href="#">Theme</a></li>
+				<li><a href="#" id = "theme">Theme</a></li>
 				<select id = "myTheme" onChange="changeTheme()">
 					<option value= "black">black</option>
 					<option value="blue">blue</option>
 					<option value="purple">purple</option>
 				</select>
+
+
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="./login.html">Login</a></li>
-				<li><a href="#">
-					<img id="settings" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/WMF-Agora-Settings_424242.svg/2000px-WMF-Agora-Settings_424242.svg.png" style="height: 18px; width: auto" alt="settings" />
-				</a></li>
+				<li><a href="#" id = "compact" onClick = "compactView();">Compact View</a></li>
+				<!-- <input type="checkbox" name="compact" id="compact" onClick = "compactView();"> -->
 			</ul>
 		</div>
 	</nav>
@@ -86,7 +86,7 @@
  </script>
 	<script>
     	var els = document.querySelectorAll('.pic');
-    	for (var i = 0, len = els.length; i < len; i++) {
+    	for (var i = 0, len = els.length; i < len; i++)	 {
 			els[i].addEventListener('click', function () {
 				var sound, icon;
 				sound = this.getElementsByTagName('audio')[0];
@@ -126,8 +126,39 @@
 				document.getElementById("navB").style.backgroundColor = "#191414";
 				document.body.style.backgroundImage = "url('http://designwoop.com/uploads/2012/03/01_free_subtle_textures_apple_ios_linen_texture.jpg')";
 			}
+
 		}
 	</script>
+
+	<script>
+		function compactView() {
+			if(compactView.checkedValue == undefined) {
+				compactView.checkedValue = true; //first call
+				console.log("first call");
+			}
+
+			if(compactView.checkedValue == true) {
+				compactView.oldColor = document.getElementById("navB").style.backgroundColor;
+				compactView.oldBG = document.body.style.backgroundImage;
+
+				// document.body.style.backgroundImage = "url('http://cdn.wallpapersafari.com/34/31/3i4PEU.png')";
+				document.getElementById("navB").style.backgroundColor = "rgb(120,120,120)";
+				document.getElementsByTagName("link")[0].href = "compact.css";
+				document.body.style.backgroundSize = "cover";
+				document.getElementById("compact").innerHTML = "Regular View";
+				compactView.checkedValue = false;
+			}
+			else if(compactView.checkedValue == false) {
+				document.body.style.backgroundSize = "auto";
+				document.getElementsByTagName("link")[0].href = "vanilla.css";
+				compactView.checkedValue = true;
+				document.getElementById("navB").style.backgroundColor = compactView.oldColor;
+				document.body.style.backgroundImage = compactView.oldBG;
+				document.getElementById("compact").innerHTML = "Compact View";
+			}
+		}
+	</script>
+
 
 	<footer>
 	  Copyright info

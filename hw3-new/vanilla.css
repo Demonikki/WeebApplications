@@ -12,7 +12,7 @@ button,input,select,optgroup,textarea{
   font-size:inherit;
   line-height:inherit
   }
-a{color:#337ab7;text-decoration:none}
+a {color:#337ab7;text-decoration:none}
 * { box-sizing: border-box;}
 
 /* All navbar stuff reduced from bootstrap*/
@@ -31,7 +31,7 @@ a{color:#337ab7;text-decoration:none}
 .nav>li>a>img {max-width: none; border: 0}
 .nav > li > a {position: relative; display: block; padding: 15px 15px;}
 @media all and (min-width:768px){
-.navbar-right { float: right !important; margin-right: -15px;}}
+.navbar-right { float: right !important; margin-right: -15px; color: white;}}
 .navbar-right~.navbar-right{margin-right:0}}
 .nav-tabs{border-bottom:1px solid #ddd}
 .navbar-brand{float:left;height:50px;padding:15px 15px;font-size:18px;line-height:20px;text-decoration:none}
@@ -106,6 +106,9 @@ img{
   height: 50%;
   /*justify-content: center;*/
 }
+
+#compact { color: rgb(250,230,250); }
+
 select {
   position: absolute;
   /*width: 50%;*/
