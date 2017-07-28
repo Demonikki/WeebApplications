@@ -101,18 +101,24 @@ img{
   width: 25%;
   margin-top: 10px;
 }
+
 .soImg{
   width: 100%;
   height: auto;
   margin-left: auto;
-
+  position: relative;
 }
 .pBtn{
   /*position: relative;*/
-  z-index: 999;
-  top:-200px;
+  /* z-index: 999; */
+  position: absolute;
+  left: 25%;
+  top: 25%;
   width: 50%;
   height: 50%;
-  right: -50px;
   /*justify-content: center;*/
+}
+
+template {
+  background-image: url('http://designwoop.com/uploads/2012/03/01_free_subtle_textures_apple_ios_linen_texture.jpg'
 }
