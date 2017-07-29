@@ -8,7 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-	<main id='m'>
+	<main>
 		<nav class="navbar navbar-default" id = "navB">
 			<div class="container">
 				<div class="navbar-header">
@@ -31,7 +31,7 @@
 
 			</div>
 		</nav>
-		
+
 		<template id= "myTemplt" >
 					<div id = "col" class="col-lg-3 col-sm-6 pic" >
 							<img class = "soImg">
@@ -45,7 +45,7 @@
 					</div>
 		</template>
 	</main>
-	
+
 	<script>
 		function supportsTemplate() {
 			return 'content' in document.createElement('template');
@@ -54,6 +54,7 @@
 		window.onload = function () {
 			if (supportsTemplate()) 
 				renderSoundBoard(0);
+
 		}
 
 		function renderSoundBoard(list){
@@ -66,7 +67,7 @@
 			xmlhttp.onreadystatechange = function() {
 				if (xmlhttp.readyState == XMLHttpRequest.DONE ) {
 					var template = document.querySelector('#myTemplt');
-					
+
 					if (xmlhttp.status == 200) {
 						try {
 							var jobj = JSON.parse(xmlhttp.responseText);
@@ -74,7 +75,7 @@
 							var soundCells = jobj.WeebApplications_SoundBoard;
 							var imgs = soundCells.img[list];
 							var sounds = soundCells.sound[list];
-							
+
 							for(var i = 0; i < 12; i++){
 								template.content.querySelectorAll('img')[0].src = imgs[i];
 								template.content.querySelectorAll('source')[0].src = sounds[i];
@@ -115,7 +116,7 @@
 			xmlhttp.open("GET", "./load_config.json", true);
 			xmlhttp.send();
 		}
-		
+
 		function playSound(e) {
 			sound = e.target.parentNode.querySelector('audio');
 			
@@ -141,7 +142,7 @@
 			var ele = document.getElementById("myTheme");
 			var theme = ele.options[ele.selectedIndex].value;
 			if (theme === "light") {
-				// document.getElementById("navB").style.backgroundImage = "url('./media/nav0.jpg')";
+				document.getElementById("navB").style.backgroundImage = "";
 				document.body.style.backgroundImage = "url('./media/b14.jpg')";
 				document.getElementsByTagName("link")[0].href = "light.css";
 			} else if (theme === "anime"){

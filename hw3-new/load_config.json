@@ -40,17 +40,18 @@
                 "https://goo.gl/QQCNbH",
                 "https://goo.gl/t7G8aM",
                 "https://goo.gl/AxTGba"],
-                ["./media/sound0.wav",
-                "./media/sound1.wav",
-                "./media/sound2.wav",
-                "./media/sound3.wav",
-                "./media/sound4.wav",
-                "./media/sound5.wav",
-                "./media/sound6.wav",
-                "./media/sound7.wav",
-                "./media/sound8.wav",
-                "./media/sound9.wav",
-                "./media/sound10.mp3",
-                "./media/sound11.wav"]]
+                ["./version 2.0 soundtracks/sound0.mp3",
+                "./version 2.0 soundtracks/sound1.mp3",
+                "./version 2.0 soundtracks/sound2.mp3",
+                "./version 2.0 soundtracks/sound3.mp3",
+                "./version 2.0 soundtracks/sound4.mp3",
+                "./version 2.0 soundtracks/sound5.mp3",
+                "./version 2.0 soundtracks/sound6.mp3",
+                "./version 2.0 soundtracks/sound7.mp3",
+                "./version 2.0 soundtracks/sound8.mp3",
+                "./version 2.0 soundtracks/sound9.mp3",
+                "./version 2.0 soundtracks/sound10.mp3",
+                "./version 2.0 soundtracks/sound11.mp3"]
+        ]
     }
 }
