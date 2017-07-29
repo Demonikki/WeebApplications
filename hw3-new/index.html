@@ -74,10 +74,11 @@
 								template.parentNode.appendChild(clone);
 							}
 						} catch (e) {
-							if (e instanceof SyntaxError) {
-								alert("System Error");
-							} else {
-								alert("System Error");
+							alert("System Error");
+								for(var i = 0; i < 12; i++){
+								template.content.querySelectorAll('img')[0].src = "./media/error-img.jpg";
+								var clone = document.importNode(template.content, true);
+								template.parentNode.appendChild(clone);
 							}
 						}
 					}
@@ -100,7 +101,7 @@
 					}
 				}
 			}
-			xmlhttp.open("GET", "./SoundBoard_Data.json", true);
+			xmlhttp.open("GET", "./load_config.json", true);
 			xmlhttp.send();
 		}
 		
