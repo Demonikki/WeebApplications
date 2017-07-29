@@ -57,29 +57,41 @@
 			xmlhttp.onreadystatechange = function() {
 				if (xmlhttp.readyState == XMLHttpRequest.DONE ) {
 					var template = document.querySelector('#myTemplt');
-					if (xmlhttp.status == 0) {
-						var soundCells = JSON.parse(xmlhttp.responseText).WeebApplications_SoundBoard;
-						var imgs = soundCells.img;
-						var btns = soundCells.btn;
-						
+					
+					if (xmlhttp.status == 200) {
+						try {
+							var jobj = JSON.parse(xmlhttp.responseText);
+
+							var soundCells = jobj.WeebApplications_SoundBoard;
+							var imgs = soundCells.img;
+							var btns = soundCells.btn;
+							
+							for(var i = 0; i < 12; i++){
+								template.content.querySelectorAll('img')[0].src = imgs[i];
+								template.content.querySelectorAll('img')[1].src = "./media/playBtn.png";
+								template.content.querySelectorAll('source')[0].src = soundCells.sound[i];
+								var clone = document.importNode(template.content, true);
+								template.parentNode.appendChild(clone);
+							}
+						} catch (e) {
+							if (e instanceof SyntaxError) {
+								alert("System Error");
+							} else {
+								alert("System Error");
+							}
+						}
+					}
+					else if (xmlhttp.status == 404){
+						alert('Network Error: 404\nSoundBoard Can\'t be Loaded.\nWould you like to retry with a button to do that.');
 						for(var i = 0; i < 12; i++){
-							template.content.querySelectorAll('img')[0].src = imgs[i];
-							template.content.querySelectorAll('img')[1].src = "./media/playBtn.png";
-							template.content.querySelectorAll('source')[0].src = soundCells.sound[i];
+							template.content.querySelectorAll('img')[0].src = "./media/error-img.jpg";
 							var clone = document.importNode(template.content, true);
 							template.parentNode.appendChild(clone);
 						}
 					}
-					else if (xmlhttp.status == 400) {
-						alert('There was an error 400');
-						for(var i = 0; i < 12; i++){
-							template.content.querySelectorAll('img')[0].src = ".media/error-img.jpg";
-							var clone = document.importNode(template.content, true);
-							template.parentNode.appendChild(clone);
-						}
-					}
+
 					else {
-						alert('something else other than 200 was returned');
+						alert('Network Error: '+xmlhttp.status);
 						for(var i = 0; i < 12; i++){
 							template.content.querySelectorAll('img')[0].src = "./media/error-img.jpg";
 							var clone = document.importNode(template.content, true);
@@ -94,10 +106,6 @@
 		
 		function playSound(e) {
 			sound = e.target.parentNode.querySelector('audio');
-			if (sound.src == ""){
-				return;
-			}
-			
 			if (sound.paused) {
 				sound.play();
 				e.target.src = "./media/pauseBtn.png";
