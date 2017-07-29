@@ -23,20 +23,14 @@
 							<a href='#' onclick="changeTheme('anime');">Hello Kitty!</a>
 						</div>
 					</div>
-
-
-					<!--<li><a href="#" id = "theme">Theme</a></li>
-						<select id = "myTheme" onChange="changeTheme()">
-						<option value= "dark">Dark</option>
-						<option value="light">Light</option>
-						<option value="anime">Hello Kitty!</option>
-					</select> -->
-
-
 				</ul>
+				
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#" id = "compact" onClick = "compactView();">Compact View</a></li>
+					<li><a href="#" id = "list1" onClick = "renderSoundBoard(0);">List1</a></li>
+					<li><a href="#" id = "list2" onClick = "renderSoundBoard(1);">List2</a></li>
 				</ul>
+
 			</div>
 		</nav>
 
@@ -48,6 +42,7 @@
 
 							<audio id="clip">
 								<source type="audio/mp3">
+								<source type="audio/wav">
 							</audio>
 					</div>
 		</template>
@@ -59,10 +54,17 @@
 		}
 
 		window.onload = function () {
-			if (supportsTemplate())
-				renderSoundBoard();
+			if (supportsTemplate()) 
+				renderSoundBoard(0);
+
 		}
-		function renderSoundBoard(){
+
+		function renderSoundBoard(list){
+			var main = document.querySelector('#myTemplt').parentNode;
+			for (var i = main.childNodes.length; i > 5; i--){
+				main.removeChild(main.lastChild);
+			}
+
 			var xmlhttp = new XMLHttpRequest();
 			xmlhttp.onreadystatechange = function() {
 				if (xmlhttp.readyState == XMLHttpRequest.DONE ) {
@@ -73,21 +75,23 @@
 							var jobj = JSON.parse(xmlhttp.responseText);
 
 							var soundCells = jobj.WeebApplications_SoundBoard;
-							var imgs = soundCells.img;
-							var btns = soundCells.btn;
+							var imgs = soundCells.img[list];
+							var sounds = soundCells.sound[list];
 
 							for(var i = 0; i < 12; i++){
 								template.content.querySelectorAll('img')[0].src = imgs[i];
+								template.content.querySelectorAll('source')[0].src = sounds[i];
 								template.content.querySelectorAll('img')[1].src = "./media/playBtn.png";
-								template.content.querySelectorAll('source')[0].src = soundCells.sound[i];
 								var clone = document.importNode(template.content, true);
 								template.parentNode.appendChild(clone);
 							}
+							
 						} catch (e) {
-							if (e instanceof SyntaxError) {
-								alert("System Error");
-							} else {
-								alert("System Error");
+							alert("System Error");
+							for(var i = 0; i < 12; i++){
+								template.content.querySelectorAll('img')[0].src = "./media/error-img.jpg";
+								var clone = document.importNode(template.content, true);
+								template.parentNode.appendChild(clone);
 							}
 						}
 					}
@@ -110,12 +114,14 @@
 					}
 				}
 			}
-			xmlhttp.open("GET", "./SoundBoard_Data.json", true);
+
+			xmlhttp.open("GET", "./load_config.json", true);
 			xmlhttp.send();
 		}
 
 		function playSound(e) {
 			sound = e.target.parentNode.querySelector('audio');
+			
 			if (sound.paused) {
 				sound.play();
 				e.target.src = "./media/pauseBtn.png";
@@ -185,7 +191,7 @@
 			}
 		}
 	</script>
-
+</main>
 
 	<footer>
 	  <!-- <div id="bottom_nav" class="navbar">
