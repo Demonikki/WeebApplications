@@ -1,0 +1,18 @@
+{
+    "img": ["./media/img0.jpg",
+            "./media/img1.jpg",
+            "./media/img2.jpg",
+            "./media/img3.jpg",
+            "./media/img4.jpg",
+            "./media/img5.jpg",
+            "./media/img6.jpg",
+            "./media/img7.png",
+            "./media/img8.png",
+            "./media/img9.png",
+            "./media/img10.jpg",
+            "./media/img11.jpg",
+            "./media/img12.jpg"],
+    "btn": ["./media/playBtn.png",
+            "./media/pauseBtn.png"],
+    "sound": ["https://goo.gl/WSSLvh"]
+}

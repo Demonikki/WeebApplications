@@ -10,24 +10,28 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-	<main>
-		<nav class="navbar navbar-default" style="background-color:#191414">
-			<div class="container">
-				<div class="navbar-header">
-					<a href="#" class="navbar-brand">Soundboard</a>
-				</div>
-				<ul class="nav navbar-nav">
-					<li><a href="#">Soundtracks</a></li>
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="./login.html">Login</a></li>
-					<li><a href="#">
-						<img id="settings" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/WMF-Agora-Settings_424242.svg/2000px-WMF-Agora-Settings_424242.svg.png" style="height: 18px; width: auto" alt="settings" />
-					</a></li>
-				</ul>
+	<nav class="navbar navbar-default" id = "navB">
+		<div class="container">
+			<div class="navbar-header">
+				<a href="#" class="navbar-brand">Soundboard</a>
 			</div>
-		</nav>
-	</main>
+			<ul class="nav navbar-nav">
+				<li><a href="#">Theme</a></li>
+				<select id = "myTheme" onChange="changeTheme()">
+					<option value= "black">black</option>
+					<option value="blue">blue</option>
+					<option value="purple">purple</option>
+				</select>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="./login.html">Login</a></li>
+				<li><a href="#">
+					<img id="settings" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/WMF-Agora-Settings_424242.svg/2000px-WMF-Agora-Settings_424242.svg.png" style="height: 18px; width: auto" alt="settings" />
+				</a></li>
+			</ul>
+		</div>
+	</nav>
+    
 	<template id= "myTemplt" >
 				<div id = "col" class="col-lg-3 col-sm-6 pic" >
 						<img class = "soImg">
@@ -38,49 +42,42 @@
 						</audio>
 				</div>
 	</template>
-	<script>
-	// function supportsTemplate() {
-  // 	return 'content' in document.createElement('template');
-	// }
-	//
-	// window.onload = function () {
-	// 	if (supportsTemplate()) {
-	// 		renderSoundBoard();
-	// 	} else {
-	// 	}
-	// }
-	// function renderSoundBoard() {
-		var arr = [
-			{img: "./media/img0.jpg", btn: "./media/pBtn.png", sound: "https://goo.gl/WSSLvh"},
-			{img: "./media/img1.jpg", btn: "./media/pBtn.png", sound: "https://goo.gl/WSSLvh"},
-			{img: "./media/img2.jpg", btn: "./media/pBtn.png", sound: "https://goo.gl/WSSLvh"},
-			{img: "./media/img3.jpg", btn: "./media/pBtn.png", sound: "https://goo.gl/WSSLvh"},
-			{img: "./media/img4.jpg", btn: "./media/pBtn.png", sound: "https://goo.gl/WSSLvh"},
-			{img: "./media/img5.jpg", btn: "./media/pBtn.png", sound: "https://goo.gl/WSSLvh"},
-			{img: "./media/img6.jpg", btn: "./media/pBtn.png", sound: "https://goo.gl/WSSLvh"},
-			{img: "./media/img7.png", btn: "./media/pBtn.png", sound: "https://goo.gl/WSSLvh"},
-			{img: "./media/img8.png", btn: "./media/pBtn.png", sound: "https://goo.gl/WSSLvh"},
-			{img: "./media/img9.png", btn: "./media/pBtn.png", sound: "https://goo.gl/WSSLvh"},
-			{img: "./media/img10.jpg", btn: "./media/pBtn.png", sound: "https://goo.gl/WSSLvh"},
-			{img: "./media/img11.jpg", btn: "./media/pBtn.png", sound: "https://goo.gl/WSSLvh"}
-		];
-		var template = document.querySelector('#myTemplt');
 
-		for(var i = 0; i < arr.length; i++){
-			// for(var j = 0; j < 4; j++){
-				var soundTrack = arr[i];
-				template.content.querySelectorAll('img')[0].src = soundTrack.img;
-				template.content.querySelectorAll('img')[1].src = soundTrack.btn;
-				template.content.querySelectorAll('source')[0].src = soundTrack.sound;
-				var clone = document.importNode(template.content, true);
-				template.parentNode.appendChild(clone);
-				// document.body.appendChild(clone);
-			// }
-		}
-	// }
- </script>
+	<script type="text/javascript">
+		var xmlhttp = new XMLHttpRequest();
+
+		xmlhttp.onreadystatechange = function() {
+			if (xmlhttp.readyState == XMLHttpRequest.DONE ) {
+				if (xmlhttp.status == 200) {
+					var soundCells = JSON.parse(xmlhttp.responseText);
+					var template = document.getElementById("myTemplt");
+					
+					var imgs = soundCells.img;
+					var btns = soundCells.btn;
+					
+					for(var i = 0; i < 12; i++){
+						template.content.querySelectorAll('img')[0].src = imgs[i];
+						template.content.querySelectorAll('img')[1].src = btns[0];
+						template.content.querySelectorAll('source')[0].src = soundCells.sound[0];
+						var clone = document.importNode(template.content, true);
+						template.parentNode.appendChild(clone);
+					}
+				}
+				else if (xmlhttp.status == 400) {
+					alert('There was an error 400');
+				}
+				else {
+					alert('something else other than 200 was returned');
+				}
+			}
+		};
+
+		xmlhttp.open("GET", "./SoundBoard_Data.json", true);
+		xmlhttp.send();
+	</script>
 	<script>
-    	var els = document.querySelectorAll('.pic');
+		var els = document.querySelectorAll('template');
+		alert(els.length);
     	for (var i = 0, len = els.length; i < len; i++) {
 			els[i].addEventListener('click', function () {
 				var sound, icon;
@@ -89,16 +86,35 @@
 
 				if (sound.paused) {
 					sound.play();
-					icon.innerHTML = "<img src='https://png.icons8.com/pause/Dusk_Wired/25' title='Pause Button' width='50%' height='50%'></img>";
-				} else {
+				} 
+				else {
 					sound.pause();
-					icon.innerHTML = "<img src='https://png.icons8.com/play-button/ios7/25' title='Play Button' width='50%' height='50%'></img>";
 				}
+
 				sound.onended = function () {
-					icon.innerHTML = "<img src='https://png.icons8.com/play-button/ios7/25' title='Play Button' width='25px' height='25px'></img>";
+
 				}
 			}, false)
-    }
+    	}
+	</script>
+	<script>
+	  document.getElementById("navB").style.backgroundColor = "#191414";
+		document.body.style.backgroundImage = "url('http://designwoop.com/uploads/2012/03/01_free_subtle_textures_apple_ios_linen_texture.jpg')";
+		function changeTheme(){
+			var ele = document.getElementById("myTheme");
+			var theme = ele.options[ele.selectedIndex].value;
+			if (theme === "blue") {
+				document.body.style.backgroundImage = "url('./media/b13.jpg')";
+				document.getElementById("navB").style.backgroundImage = "url('./media/nav0.jpg')";
+			} else if (theme === "purple"){
+				document.body.style.backgroundImage = "url('./media/b5.jpg')";
+				document.getElementById("navB").style.backgroundImage = "url('./media/b2.jpg')";
+			} else {
+				document.getElementById("navB").style.backgroundImage = "";
+				document.getElementById("navB").style.backgroundColor = "#191414";
+				document.body.style.backgroundImage = "url('http://designwoop.com/uploads/2012/03/01_free_subtle_textures_apple_ios_linen_texture.jpg')";
+			}
+		}
 	</script>
 
 	<footer>
