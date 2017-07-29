@@ -141,6 +141,7 @@ select {
     position: relative;
     top:16px;
 }
+
 .dropdown-content {
     display: none;
     position: absolute;
@@ -150,6 +151,7 @@ select {
     padding: 12px 16px;
     z-index: 1;
 }
+
 .dropdown:hover .dropdown-content {
     display: block;
 }
