@@ -1,6 +1,8 @@
 {
     "WeebApplications_SoundBoard":{
-        "img": ["./media/img0.jpg",
+        "img": [
+            [
+            "./media/img0.jpg",
             "./media/img1.jpg",
             "./media/img2.jpg",
             "./media/img3.jpg",
@@ -12,8 +14,21 @@
             "./media/img9.png",
             "./media/img10.jpg",
             "./media/img11.jpg",
-            "./media/img12.jpg"],
-        "sound": ["https://goo.gl/WSSLvh",
+            "./media/img12.jpg"], 
+            ["./version 2.0 soundtracks/img.jpg",
+            "./version 2.0 soundtracks/img1.jpg",
+            "./version 2.0 soundtracks/img2.jpg",
+            "./version 2.0 soundtracks/img3.jpg",
+            "./version 2.0 soundtracks/img4.jpg",
+            "./version 2.0 soundtracks/img5.jpg",
+            "./version 2.0 soundtracks/img6.jpg",
+            "./version 2.0 soundtracks/img7.jpg",
+            "./version 2.0 soundtracks/img8.jpg",
+            "./version 2.0 soundtracks/img9.jpg",
+            "./version 2.0 soundtracks/img10.jpg",
+            "./version 2.0 soundtracks/img11.jpg"]
+        ],
+        "sound": [["https://goo.gl/WSSLvh",
                 "https://goo.gl/YU92FD",
                 "https://goo.gl/pH7NXT",
                 "https://goo.gl/pnaW19",
@@ -24,6 +39,18 @@
                 "https://goo.gl/QSQ8Ao",
                 "https://goo.gl/QQCNbH",
                 "https://goo.gl/t7G8aM",
-                "https://goo.gl/AxTGba"]
+                "https://goo.gl/AxTGba"],
+                ["./media/sound0.wav",
+                "./media/sound1.wav",
+                "./media/sound2.wav",
+                "./media/sound3.wav",
+                "./media/sound4.wav",
+                "./media/sound5.wav",
+                "./media/sound6.wav",
+                "./media/sound7.wav",
+                "./media/sound8.wav",
+                "./media/sound9.wav",
+                "./media/sound10.mp3",
+                "./media/sound11.wav"]]
     }
 }
