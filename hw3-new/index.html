@@ -3,12 +3,12 @@
 <head>
 	<title>Soundboard Part 1a</title>
 	<meta charset="UTF-8">
-
 	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
 	<link rel="stylesheet" href="vanilla.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+<<<<<<< HEAD
 	<nav class="navbar navbar-default" id = "navB">
 		<div class="container">
 			<div class="navbar-header">
@@ -21,115 +21,123 @@
 					<option value="light">Light</option>
 					<option value="anime">Hello Kitty!</option>
 				</select>
+=======
+	<main>
+		<nav class="navbar navbar-default" id = "navB">
+			<div class="container">
+				<div class="navbar-header">
+					<a href="#" class="navbar-brand">Soundboard</a>
+				</div>
+				<ul class="nav navbar-nav">
+					<li><a href="#" id = "theme">Theme</a></li>
+					<select id = "myTheme" onChange="changeTheme()">
+						<option value= "black">black</option>
+						<option value="blue">blue</option>
+						<option value="purple">purple</option>
+					</select>
+>>>>>>> 4f51753ffb2af25709f73eb515b740c414417ace
 
 
-			</ul>
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#" id = "compact" onClick = "compactView();">Compact View</a></li>
-				<!-- <input type="checkbox" name="compact" id="compact" onClick = "compactView();"> -->
-			</ul>
-		</div>
-	</nav>
-	<template id= "myTemplt" >
-        <!-- <div class="row justify-content-md-center"> -->
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#" id = "compact" onClick = "compactView();">Compact View</a></li>
+				</ul>
+			</div>
+		</nav>
+		
+		<template id= "myTemplt" >
 					<div id = "col" class="col-lg-3 col-sm-6 pic" >
-							<img class = "soImg"></img>
-							<!-- <button id = "bb" type = "button"> -->
-           		<img id = "btn" class = "pBtn" onclick="playSound(event)"></img>
-							<!-- </button> -->
-							<audio id="clip2">
+							<img class = "soImg">
+								<img id = "btn" class = "pBtn" onclick="playSound(event)"></img>
+							</img>
+
+							<audio id="clip">
 								<source type="audio/mp3">
 							</audio>
 					</div>
-				<!-- </div> -->
-	</template>
+		</template>
+	</main>
+	
 	<script>
-	function supportsTemplate() {
-  	return 'content' in document.createElement('template');
-	}
-
-	window.onload = function () {
-		if (supportsTemplate()) {
-			renderSoundBoard();
-		} else {
+		function supportsTemplate() {
+			return 'content' in document.createElement('template');
 		}
-	}
-	var template = document.querySelector('#myTemplt');
-	function renderSoundBoard() {
-		var arr = [
-			{img: "./media/img0.jpg", btn: "./media/pBtn.png", sound: "https://goo.gl/WSSLvh"},
-			{img: "./media/img1.jpg", btn: "./media/pBtn.png", sound: "https://goo.gl/YU92FD"},
-			{img: "./media/img2.jpg", btn: "./media/pBtn.png", sound: "https://goo.gl/pH7NXT"},
-			{img: "./media/img3.jpg", btn: "./media/pBtn.png", sound: "https://goo.gl/pnaW19"},
-			{img: "./media/img4.jpg", btn: "./media/pBtn.png", sound: "https://goo.gl/sz4jLE"},
-			{img: "./media/img5.jpg", btn: "./media/pBtn.png", sound: "https://goo.gl/q7CGJ7"},
-			{img: "./media/img6.jpg", btn: "./media/pBtn.png", sound: "https://goo.gl/qjDAEB"},
-			{img: "./media/img7.png", btn: "./media/pBtn.png", sound: "https://goo.gl/GWsNEU"},
-			{img: "./media/img8.png", btn: "./media/pBtn.png", sound: "https://goo.gl/QSQ8Ao"},
-			{img: "./media/img9.png", btn: "./media/pBtn.png", sound: "https://goo.gl/QQCNbH"},
-			{img: "./media/img10.jpg", btn: "./media/pBtn.png", sound: "https://goo.gl/t7G8aM"},
-			{img: "./media/img11.jpg", btn: "./media/pBtn.png", sound: "https://goo.gl/AxTGba"}
-		];
-		for(var i = 0; i < arr.length; i++){
-			// for(var j = 0; j < 4; j++){
-				var soundTrack = arr[i];
-				template.content.querySelectorAll('img')[0].src = soundTrack.img;
-				template.content.querySelectorAll('img')[1].src = soundTrack.btn;
-				template.content.querySelectorAll('source')[0].src = soundTrack.sound;
-				var clone = document.importNode(template.content, true);
-				template.parentNode.appendChild(clone);
-				// document.body.appendChild(clone);
-			// }
+
+		window.onload = function () {
+			if (supportsTemplate()) 
+				renderSoundBoard();
 		}
-	}
+		function renderSoundBoard(){
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function() {
+				if (xmlhttp.readyState == XMLHttpRequest.DONE ) {
+					var template = document.querySelector('#myTemplt');
+					
+					if (xmlhttp.status == 200) {
+						try {
+							var jobj = JSON.parse(xmlhttp.responseText);
 
-	function playSound(e) {
-		// alert(e.target.parentNode.childNodes[9]);
-		sound = e.target.parentNode.childNodes[9];
-		// sound = e.target.parentNode.audio;
-				if (sound.paused) {
-					sound.play();
-					e.target.src = "./media/pauseBtn.png";
-					e.target.style.opacity = "0.5";
-				} else {
-					sound.pause();
-					e.target.src = "./media/pBtn.png";
-					e.target.style.opacity = "1";
-					// document.getElementsByTagName("img")[2].src = "./media/pBtn.png";
-					// icon.innerHTML = "";
+							var soundCells = jobj.WeebApplications_SoundBoard;
+							var imgs = soundCells.img;
+							var btns = soundCells.btn;
+							
+							for(var i = 0; i < 12; i++){
+								template.content.querySelectorAll('img')[0].src = imgs[i];
+								template.content.querySelectorAll('img')[1].src = "./media/playBtn.png";
+								template.content.querySelectorAll('source')[0].src = soundCells.sound[i];
+								var clone = document.importNode(template.content, true);
+								template.parentNode.appendChild(clone);
+							}
+						} catch (e) {
+							if (e instanceof SyntaxError) {
+								alert("System Error");
+							} else {
+								alert("System Error");
+							}
+						}
+					}
+					else if (xmlhttp.status == 404){
+						alert('Network Error: 404\nSoundBoard Can\'t be Loaded.\nWould you like to retry with a button to do that.');
+						for(var i = 0; i < 12; i++){
+							template.content.querySelectorAll('img')[0].src = "./media/error-img.jpg";
+							var clone = document.importNode(template.content, true);
+							template.parentNode.appendChild(clone);
+						}
+					}
+
+					else {
+						alert('Network Error: '+xmlhttp.status);
+						for(var i = 0; i < 12; i++){
+							template.content.querySelectorAll('img')[0].src = "./media/error-img.jpg";
+							var clone = document.importNode(template.content, true);
+							template.parentNode.appendChild(clone);
+						}
+					}
 				}
-				sound.onended = function () {
-					e.target.src = "./media/pBtn.png";
-					e.target.style.opacity = "1";
-				}
-	}
- </script>
+			}
+			xmlhttp.open("GET", "./SoundBoard_Data.json", true);
+			xmlhttp.send();
+		}
+		
+		function playSound(e) {
+			sound = e.target.parentNode.querySelector('audio');
+			if (sound.paused) {
+				sound.play();
+				e.target.src = "./media/pauseBtn.png";
+				e.target.style.opacity = "0.5";
+			} else {
+				sound.pause();
+				e.target.src = "./media/playBtn.png";
+				e.target.style.opacity = "1";
+			}
+			sound.onended = function () {
+				e.target.src = "./media/playBtn.png";
+				e.target.style.opacity = "1";
+			}
+		}
+ 	</script>
 	<script>
-    // 	var els = document.querySelectorAll('.pic');
-    // 	for (var i = 0, len = els.length; i < len; i++) {
-		// 	els[i].addEventListener('click', function () {
-		// 		var sound, icon;
-		// 		sound = this.getElementsByTagName('audio')[0];
-		// 		icon = this.getElementsByTagName('img')[1];
-		// 		if (sound.paused) {
-		// 			sound.play();
-		// 			document.getElementById("#btn").style.backgroundImage = "url('pBtn.png')";
-		// 			icon.innerHTML = "";
-		// 		} else {
-		// 			sound.pause();
-		// 			document.getElementById("#btn").style.backgroundImage = "url('./media/pauseBtn.png')";
-		// 			icon.innerHTML = "";
-		// 		}
-		// 		sound.onended = function () {
-		// 			icon.innerHTML = "<img src='https://png.icons8.com/play-button/ios7/25' title='Play Button' width='25px' height='25px'></img>";
-		// 		}
-		// 	}, false)
-    // }
-
-
-	</script>
-	<script>
-	  document.getElementById("navB").style.backgroundColor = "#191414";
+	  	document.getElementById("navB").style.backgroundColor = "#191414";
 		document.body.style.backgroundImage = "url('http://designwoop.com/uploads/2012/03/01_free_subtle_textures_apple_ios_linen_texture.jpg')";
 		function changeTheme(){
 			var ele = document.getElementById("myTheme");
@@ -164,7 +172,6 @@
 				compactView.oldColor = document.getElementById("navB").style.backgroundColor;
 				compactView.oldBG = document.body.style.backgroundImage;
 
-				// document.body.style.backgroundImage = "url('http://cdn.wallpapersafari.com/34/31/3i4PEU.png')";
 				document.getElementById("navB").style.backgroundColor = "rgb(120,120,120)";
 				document.getElementsByTagName("link")[0].href = "compact.css";
 				document.body.style.backgroundSize = "cover";
@@ -184,8 +191,14 @@
 
 
 	<footer>
-	  Copyright info
-	  Soundtracks taken from "https://ccrma.stanford.edu/~jos/pasp/Sound_Examples.html"
+	  <!-- <div id="bottom_nav" class="navbar">
+			<a href="#home">Home</a>
+			<a href="#news">News</a>
+			<a href="#contact">Contact</a>
+			<a href="#about">About</a> -->
+		Copyright info
+		Soundtracks taken from "https://ccrma.stanford.edu/~jos/pasp/Sound_Examples.html"
+		</div>
 	</footer>
 </body>
 </html>
