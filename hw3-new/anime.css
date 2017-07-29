@@ -114,9 +114,17 @@ img{
   /*justify-content: center;*/
 }
 
-#compact { color: #4e4e4e; }
-#compact:hover { color: #cc1961; background-repeat: no-repeat;}
-#theme{ color: white; background-color: rgb(255,0,102); font-size: 18px; border: 12px solid transparent;}
+#compact { color: #4e4e4e; background-image: -webkit-linear-gradient(top,  #ffc0cb , #f068ba); }
+#compact:hover { color: #cc1961; background-repeat: no-repeat; background-image: url('./media/heart.jpg'); }
+#theme{ color: white; background-color: rgb(255,0,102); font-size: 18px; border: 8px solid transparent;}
+#theme:hover{
+    background-image: url('./media/heart.jpg');
+    color: #cc1961;
+    background-color: transparent;
+    background-position: center;
+    font-size: 18px;
+    border: 15px solid transparent;
+}
 
 select {
   position: absolute;
