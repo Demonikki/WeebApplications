@@ -166,3 +166,22 @@ select {
     display: block;
 }
 .dropdown-content a:hover {background-color: #ffdce2; color: magenta;}
+
+#bottom_nav {
+  overflow: hidden;
+  background-color: #ff008d;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  margin-bottom: 0px;
+}
+
+#bottom_nav > a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
