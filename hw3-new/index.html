@@ -65,7 +65,6 @@
 						for(var i = 0; i < 12; i++){
 							template.content.querySelectorAll('img')[0].src = imgs[i];
 							template.content.querySelectorAll('img')[1].src = "./media/playBtn.png";
-							template.content.querySelectorAll('img')[1].style.opacity="0.5";
 							template.content.querySelectorAll('source')[0].src = soundCells.sound[i];
 							var clone = document.importNode(template.content, true);
 							template.parentNode.appendChild(clone);
@@ -95,7 +94,10 @@
 		
 		function playSound(e) {
 			sound = e.target.parentNode.querySelector('audio');
-
+			if (sound.src == ""){
+				return;
+			}
+			
 			if (sound.paused) {
 				sound.play();
 				e.target.src = "./media/pauseBtn.png";
