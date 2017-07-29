@@ -17,9 +17,9 @@
 			<ul class="nav navbar-nav">
 				<li><a href="#" id = "theme">Theme</a></li>
 				<select id = "myTheme" onChange="changeTheme()">
-					<option value= "black">black</option>
-					<option value="blue">blue</option>
-					<option value="purple">purple</option>
+					<option value= "dark">Dark</option>
+					<option value="light">Light</option>
+					<option value="anime">Hello Kitty!</option>
 				</select>
 
 
@@ -134,16 +134,20 @@
 		function changeTheme(){
 			var ele = document.getElementById("myTheme");
 			var theme = ele.options[ele.selectedIndex].value;
-			if (theme === "blue") {
-				document.body.style.backgroundImage = "url('./media/b13.jpg')";
-				document.getElementById("navB").style.backgroundImage = "url('./media/nav0.jpg')";
-			} else if (theme === "purple"){
-				document.body.style.backgroundImage = "url('./media/b5.jpg')";
-				document.getElementById("navB").style.backgroundImage = "url('./media/b2.jpg')";
+			if (theme === "light") {
+				// document.getElementById("navB").style.backgroundImage = "url('./media/nav0.jpg')";
+				document.body.style.backgroundImage = "url('./media/b14.jpg')";
+				document.getElementsByTagName("link")[0].href = "light.css";
+			} else if (theme === "anime"){
+				document.body.style.backgroundImage = "url('./media/b16.jpg')";
+				document.getElementById("navB").style.backgroundImage = "url('./media/navbar.jpg')";
+				document.getElementById("navB").style.backgroundSize = "contain";
+				document.getElementsByTagName("link")[0].href = "anime.css";
 			} else {
 				document.getElementById("navB").style.backgroundImage = "";
 				document.getElementById("navB").style.backgroundColor = "#191414";
 				document.body.style.backgroundImage = "url('http://designwoop.com/uploads/2012/03/01_free_subtle_textures_apple_ios_linen_texture.jpg')";
+				document.getElementsByTagName("link")[0].href = "vanilla.css";
 			}
 
 		}

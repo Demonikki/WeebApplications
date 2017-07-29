@@ -1,0 +1,124 @@
+/* Style1 CSS for HW3*/
+
+html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}
+body{
+font-family: "Trebuchet MS" ,Helvetica,Arial,sans-serif;
+font-size:14px;line-height:1.42857143;
+/*color:#333;*/
+/*background-color:#fff;*/
+}
+button,input,select,optgroup,textarea{
+  font-family:inherit;
+  font-size:inherit;
+  line-height:inherit
+  }
+a {color:#337ab7;text-decoration:none}
+* { box-sizing: border-box;}
+
+/* All navbar stuff reduced from bootstrap*/
+.navbar{position:relative;min-height:50px;margin-bottom:20px;border:1px solid transparent}
+@media (min-width:768px){.navbar{border-radius:4px}}
+.navbar-default{    background-image: -webkit-linear-gradient(top, #e4e4e4, #726a6a); }
+.navbar-header{float:left}
+@media all and (min-width:768px) {.navbar-nav {float: left; margin: 0; }}
+.navbar-nav>li>a{padding-top:10px;padding-bottom:10px;line-height:20px;}
+.container>.navbar-header{margin-right:-15px;margin-left:-15px}
+@media (min-width:768px){.container>.navbar-header{margin-right:0;margin-left:0}}
+.navbar-header:after,.navbar-header:before,.navbar:after,.navbar:before,.panel-body:after,.panel-body:before,.row:after,.row:before{display:table;content:" "}
+.navbar-header:after,.navbar:after,.row:after{clear:both}
+.navbar-nav > li {float: left;  }
+.nav>li>a>img {max-width: none; border: 0}
+.nav > li > a {position: relative; display: block; padding: 15px 15px;}
+@media all and (min-width:768px){
+.navbar-right { float: right !important; margin-right: -15px; color: white;}}
+.navbar-right~.navbar-right{margin-right:0}}
+.nav-tabs{border-bottom:1px solid #ddd}
+.navbar-brand{float:left;height:50px;padding:15px 15px;font-size:18px;line-height:20px;text-decoration:none}
+.navbar-brand:focus,.navbar-brand:hover{text-decoration:none}
+.navbar-brand>img{
+  display:block
+}
+
+.navbar-text{color:#777}
+.navbar-default .navbar-nav>li>a{color: #4e4e4e; background-image: -webkit-linear-gradient(top, #e4e4e4, #726a6a); border-radius: 4px 4px 4px 4px;}
+.navbar-brand:hover{color:#e4e4e4;background-color:transparent}
+.navbar-brand{color:#4e4e4e;  background-image: -webkit-linear-gradient(top, #e4e4e4, #726a6a); border-radius: 4px 4px 4px 4px; }
+.navbar-default .navbar-nav>li>a:focus,.navbar-default .navbar-nav>li>a:hover{color:#e4e4e4;background-color:transparent; background-image: -webkit-linear-gradient(top, #e4e4e4, #555555);}
+img{vertical-align: middle; border: 0}
+.nav{list-style: none; padding-left: 0px;}
+
+/* Row and column stuff */
+
+.col-sm-2 { width: 16.66%;}
+.col-sm-3 {
+  -webkit-box-flex:0;
+  -webkit-flex:0 0 25%;
+  max-width:25%;
+  /*padding-right:15px;
+  padding-left:15px*/
+}
+.col-sm-10, .col-sm-3, .col-sm-2, .col-lg-10, .col-lg-2, .col-lg-3, .col-md-10, .col-md-2, .col-md-3{
+    position: relative;
+    min-height: 1px;
+    /*padding-right: 15px;
+    padding-left: 15px;*/
+    float: left;
+}
+
+
+
+.container{padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}
+
+@media (min-width:1200px){.container{width:1170px; }}
+
+
+img{
+  position: relative;
+}
+
+.pic{
+  width: 14%;
+  margin-top: 20px;
+  border: 8px outset transparent;
+  border-radius: 8px 8px 8px 8px ;
+  border-color: #969696;
+  margin-left: 10px;
+  margin-right: 10px;
+
+}
+
+@media (max-width:750px) {
+    .pic{
+      width: 85%;
+      margin-top: 20px;
+      left:7%;
+    }
+}
+
+.soImg{
+  width: 100%;
+  height: auto;
+  margin-left: auto;
+  position: relative;
+}
+.pBtn{
+  /*position: relative;*/
+  /* z-index: 999; */
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  width: 25%;
+  height: 25%;
+  /*justify-content: center;*/
+}
+
+#compact { color: #4e4e4e; }
+#compact:hover { color: #f4f4f4; }
+
+select {
+  position: absolute;
+  /*width: 50%;*/
+  /*display: inline;*/
+  /*float: right;*/
+  top:15px;
+}
