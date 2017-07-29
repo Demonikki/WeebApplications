@@ -91,9 +91,9 @@ img{
 
 @media (max-width:600px) {
     .pic{
-      width: 65%;
+      width: 55%;
       margin-top: 20px;
-      left:15%;
+      left:5%;
     }
 }
 

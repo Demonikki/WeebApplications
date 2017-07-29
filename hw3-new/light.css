@@ -14,6 +14,8 @@ button,input,select,optgroup,textarea{
   }
 a {color:#337ab7;text-decoration:none}
 * { box-sizing: border-box;}
+#theme { color: #404040; }
+
 
 /* All navbar stuff reduced from bootstrap*/
 .navbar{position:relative;min-height:50px;margin-bottom:20px;border:1px solid transparent}
@@ -115,6 +117,7 @@ img{
 #compact { color: #4e4e4e; }
 #compact:hover { color: #f4f4f4; }
 
+
 select {
   position: absolute;
   /*width: 50%;*/
@@ -122,3 +125,28 @@ select {
   /*float: right;*/
   top:15px;
 }
+
+.dropdown {
+    position: relative;
+    top:16px;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #b0b0b0;
+    min-width: 120px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 6px 6px;
+    text-decoration: none;
+    display: block;
+}
+.dropdown-content a:hover {background-color: #4b4b4b; color: white;}
