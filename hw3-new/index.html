@@ -15,12 +15,14 @@
 					<a href="#" class="navbar-brand">Soundboard</a>
 				</div>
 				<ul class="nav navbar-nav">
-					<li><a href="#" id = "theme" >Theme</a></li>
-					<select id = "myTheme" onChange="changeTheme()">
-						<option value="dark">Dark</option>
-						<option value="light">Light</option>
-						<option value="anime">Hello Kitty!</option>
-					</select>
+					<div class = "dropdown">
+						<li><a href="#" id = "theme">Theme</a></li>
+						<div class="dropdown-content">
+							<a href='#' onclick="changeTheme('dark');">Dark</a>
+							<a href='#' onclick="changeTheme('light');">Light</a>
+							<a href='#' onclick="changeTheme('anime');">Hello Kitty!</a>
+						</div>
+					</div>
 				</ul>
 				
 				<ul class="nav navbar-nav navbar-right">
@@ -138,9 +140,10 @@
 	<script>
 	  	document.getElementById("navB").style.backgroundColor = "#191414";
 		document.body.style.backgroundImage = "url('http://designwoop.com/uploads/2012/03/01_free_subtle_textures_apple_ios_linen_texture.jpg')";
-		function changeTheme(){
-			var ele = document.getElementById("myTheme");
-			var theme = ele.options[ele.selectedIndex].value;
+		function changeTheme(theme){
+			// var ele = document.getElementById("myTheme");
+			// var theme = ele.options[ele.selectedIndex].value;
+			console.log(theme);
 			if (theme === "light") {
 				document.getElementById("navB").style.backgroundImage = "";
 				document.body.style.backgroundImage = "url('./media/b14.jpg')";
