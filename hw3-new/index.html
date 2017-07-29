@@ -30,7 +30,6 @@
 					<li><a href="#" id = "list1" onClick = "renderSoundBoard(0);">List1</a></li>
 					<li><a href="#" id = "list2" onClick = "renderSoundBoard(1);">List2</a></li>
 				</ul>
-
 			</div>
 		</nav>
 
@@ -56,7 +55,6 @@
 		window.onload = function () {
 			if (supportsTemplate()) 
 				renderSoundBoard(0);
-
 		}
 
 		function renderSoundBoard(list){
@@ -89,34 +87,36 @@
 						} catch (e) {
 							alert("System Error");
 							for(var i = 0; i < 12; i++){
-								template.content.querySelectorAll('img')[0].src = "./media/error-img.jpg";
-								var clone = document.importNode(template.content, true);
-								template.parentNode.appendChild(clone);
+								setErrorTemplate(template);
 							}
 						}
 					}
 					else if (xmlhttp.status == 404){
 						alert('Network Error: 404\nSoundBoard Can\'t be Loaded.\nWould you like to retry with a button to do that.');
 						for(var i = 0; i < 12; i++){
-							template.content.querySelectorAll('img')[0].src = "./media/error-img.jpg";
-							var clone = document.importNode(template.content, true);
-							template.parentNode.appendChild(clone);
+							setErrorTemplate(template);
 						}
 					}
 
 					else {
 						alert('Network Error: '+xmlhttp.status);
 						for(var i = 0; i < 12; i++){
-							template.content.querySelectorAll('img')[0].src = "./media/error-img.jpg";
-							var clone = document.importNode(template.content, true);
-							template.parentNode.appendChild(clone);
+							setErrorTemplate(template);
 						}
 					}
 				}
 			}
 
-			xmlhttp.open("GET", "./load_config.json", true);
+			xmlhttp.open("GET", "https://firebasestorage.googleapis.com/v0/b/weeb-applications.appspot.com/o/load_config.json?alt=media&token=0fc08737-b67b-4d67-ab05-54b8efb03313", true);
 			xmlhttp.send();
+		}
+
+		function setErrorTemplate(template){
+			template.content.querySelectorAll('source')[0].src = "";
+			template.content.querySelectorAll('img')[0].src = "./media/error-img.jpg";
+			template.content.querySelectorAll('img')[1].style.visibility = "hidden";
+			var clone = document.importNode(template.content, true);
+			template.parentNode.appendChild(clone);
 		}
 
 		function playSound(e) {
@@ -194,13 +194,11 @@
 </main>
 
 	<footer>
-	  <!-- <div id="bottom_nav" class="navbar">
+		<div id="bottom_nav" class="navbar">
 			<a href="#home">Home</a>
 			<a href="#news">News</a>
 			<a href="#contact">Contact</a>
-			<a href="#about">About</a> -->
-		Copyright info
-		Soundtracks taken from "https://ccrma.stanford.edu/~jos/pasp/Sound_Examples.html"
+			<a href="#about">About</a>
 		</div>
 	</footer>
 </body>

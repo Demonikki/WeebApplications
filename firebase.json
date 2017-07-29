@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "build/turnin/",
+    "public": "./hw3-new",
     "rewrites": [
       {
         "source": "!/__/**",
