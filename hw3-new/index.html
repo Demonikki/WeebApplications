@@ -27,7 +27,6 @@
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="#" id = "compact" onClick = "compactView();">Compact View</a></li>
-				<!-- <input type="checkbox" name="compact" id="compact" onClick = "compactView();"> -->
 			</ul>
 		</div>
 	</nav>
@@ -35,7 +34,7 @@
 	<template id= "myTemplt" >
 				<div id = "col" class="col-lg-3 col-sm-6 pic" >
 						<img class = "soImg">
-							<img id = "btn" class = "pBtn"></img>
+							<img id = "btn" class = "pBtn" onclick="playSound(event)"></img>
 						</img>
 						<audio id="clip">
 							<source type="audio/mp3">
@@ -57,37 +56,37 @@
 		
 		function renderSoundBoard(){
 			var xmlhttp = new XMLHttpRequest();
-
 			xmlhttp.onreadystatechange = function() {
-			if (xmlhttp.readyState == XMLHttpRequest.DONE ) {
-				if (xmlhttp.status == 200) {
-					var soundCells = JSON.parse(xmlhttp.responseText);
-					var imgs = soundCells.img;
-					var btns = soundCells.btn;
-					
-					for(var i = 0; i < 12; i++){
-						template.content.querySelectorAll('img')[0].src = imgs[i];
-						template.content.querySelectorAll('img')[1].src = btns[0];
-						template.content.querySelectorAll('source')[0].src = soundCells.sound[0];
-						var clone = document.importNode(template.content, true);
-						template.parentNode.appendChild(clone);
+				if (xmlhttp.readyState == XMLHttpRequest.DONE ) {
+					if (xmlhttp.status == 200) {
+						var soundCells = JSON.parse(xmlhttp.responseText);
+						var imgs = soundCells.img;
+						var btns = soundCells.btn;
+						
+						for(var i = 0; i < 12; i++){
+							template.content.querySelectorAll('img')[0].src = imgs[i];
+							template.content.querySelectorAll('img')[1].src = btns[0];
+							template.content.querySelectorAll('source')[0].src = soundCells.sound[i];
+							var clone = document.importNode(template.content, true);
+							alert(soundCells.sound[i]);
+							template.parentNode.appendChild(clone);
+						}
+					}
+					else if (xmlhttp.status == 400) {
+						alert('There was an error 400');
+					}
+					else {
+						alert('something else other than 200 was returned');
 					}
 				}
-				else if (xmlhttp.status == 400) {
-					alert('There was an error 400');
-				}
-				else {
-					alert('something else other than 200 was returned');
-				}
 			}
-		};
-
-		xmlhttp.open("GET", "./SoundBoard_Data.json", true);
-		xmlhttp.send();
+			xmlhttp.open("GET", "./SoundBoard_Data.json", true);
+			xmlhttp.send();
 		}
-
+		
 		function playSound(e) {
-			sound = e.target.parentNode.childNodes[9];		
+			sound = e.target.parentNode.childNodes[9];
+
 			if (sound.paused) {
 				sound.play();
 				e.target.src = "./media/pauseBtn.png";
@@ -104,7 +103,7 @@
 		}
  	</script>
 	<script>
-	  document.getElementById("navB").style.backgroundColor = "#191414";
+	  	document.getElementById("navB").style.backgroundColor = "#191414";
 		document.body.style.backgroundImage = "url('http://designwoop.com/uploads/2012/03/01_free_subtle_textures_apple_ios_linen_texture.jpg')";
 		function changeTheme(){
 			var ele = document.getElementById("myTheme");

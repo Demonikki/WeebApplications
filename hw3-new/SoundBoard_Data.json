@@ -14,5 +14,16 @@
             "./media/img12.jpg"],
     "btn": ["./media/playBtn.png",
             "./media/pauseBtn.png"],
-    "sound": ["https://goo.gl/WSSLvh"]
+    "sound": ["https://goo.gl/WSSLvh",
+            "https://goo.gl/YU92FD",
+            "https://goo.gl/pH7NXT",
+            "https://goo.gl/pnaW19",
+            "https://goo.gl/sz4jLE",
+            "https://goo.gl/q7CGJ7",
+            "https://goo.gl/qjDAEB",
+            "https://goo.gl/GWsNEU",
+            "https://goo.gl/QSQ8Ao",
+            "https://goo.gl/QQCNbH",
+            "https://goo.gl/t7G8aM",
+            "https://goo.gl/AxTGba"]
 }
