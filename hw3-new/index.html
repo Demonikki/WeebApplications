@@ -140,6 +140,7 @@
 	<script>
 	  	document.getElementById("navB").style.backgroundColor = "#191414";
 		document.body.style.backgroundImage = "url('http://designwoop.com/uploads/2012/03/01_free_subtle_textures_apple_ios_linen_texture.jpg')";
+		var preColor;
 		function changeTheme(theme){
 			// var ele = document.getElementById("myTheme");
 			// var theme = ele.options[ele.selectedIndex].value;
@@ -148,6 +149,9 @@
 				document.getElementById("navB").style.backgroundImage = "";
 				document.body.style.backgroundImage = "url('./media/b14.jpg')";
 				document.getElementsByTagName("link")[0].href = "light.css";
+				document.getElementById("compact").innerHTML = "Compact View";
+				compactView.checkedValue = true;
+				preColor = "rgb(120,120,120)";
 			} else if (theme === "anime"){
 				document.body.style.backgroundImage = "url('./media/b16.jpg')";
 				document.body.style.backgroundSize = "100%";
@@ -155,17 +159,22 @@
 				document.getElementById("navB").style.backgroundImage = "url('./media/navbar.jpg')";
 				document.getElementById("navB").style.backgroundSize = "contain";
 				document.getElementsByTagName("link")[0].href = "anime.css";
+				document.getElementById("compact").innerHTML = "Compact View";
+				compactView.checkedValue = true;
+				preColor = "url('./media/navbar.jpg')";
+				animeMode = true;
 			} else {
 				document.getElementById("navB").style.backgroundImage = "";
 				document.getElementById("navB").style.backgroundColor = "#191414";
 				document.body.style.backgroundImage = "url('http://designwoop.com/uploads/2012/03/01_free_subtle_textures_apple_ios_linen_texture.jpg')";
 				document.getElementsByTagName("link")[0].href = "vanilla.css";
+				preColor = document.getElementById("navB").style.backgroundColor;
+				compactView.checkedValue = true;
+				document.getElementById("compact").innerHTML = "Compact View";
 			}
 
 		}
-	</script>
 
-	<script>
 		function compactView() {
 			if(compactView.checkedValue == undefined) {
 				compactView.checkedValue = true; //first call
@@ -173,11 +182,11 @@
 			}
 
 			if(compactView.checkedValue == true) {
-				compactView.oldColor = document.getElementById("navB").style.backgroundColor;
+				compactView.oldColor = preColor;
 				compactView.oldBG = document.body.style.backgroundImage;
 				compactView.oldCSS = document.getElementsByTagName("link")[0].href;
 				console.log(compactView.oldCSS);
-				document.getElementById("navB").style.backgroundColor = "rgb(120,120,120)";
+				document.getElementById("navB").style.backgroundColor = compactView.oldColor;
 				document.getElementsByTagName("link")[0].href = "compact.css";
 				document.body.style.backgroundSize = "cover";
 				document.getElementById("compact").innerHTML = "Regular View";
