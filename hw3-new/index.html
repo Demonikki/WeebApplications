@@ -5,42 +5,43 @@
 	<meta charset="UTF-8">
 	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
 	<link rel="stylesheet" href="vanilla.css">
-
-	<script type = "text/javascript" src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-	<nav class="navbar navbar-default" id = "navB">
-		<div class="container">
-			<div class="navbar-header">
-				<a href="#" class="navbar-brand">Soundboard</a>
-			</div>
-			<ul class="nav navbar-nav">
-				<li><a href="#" id = "theme">Theme</a></li>
-				<select id = "myTheme" onChange="changeTheme()">
-					<option value= "black">black</option>
-					<option value="blue">blue</option>
-					<option value="purple">purple</option>
-				</select>
-
-
-			</ul>
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#" id = "compact" onClick = "compactView();">Compact View</a></li>
-			</ul>
-		</div>
-	</nav>
-    
-	<template id= "myTemplt" >
-				<div id = "col" class="col-lg-3 col-sm-6 pic" >
-						<img class = "soImg">
-							<img id = "btn" class = "pBtn" onclick="playSound(event)"></img>
-						</img>
-						<audio id="clip">
-							<source type="audio/mp3">
-						</audio>
+	<main>
+		<nav class="navbar navbar-default" id = "navB">
+			<div class="container">
+				<div class="navbar-header">
+					<a href="#" class="navbar-brand">Soundboard</a>
 				</div>
-	</template>
+				<ul class="nav navbar-nav">
+					<li><a href="#" id = "theme">Theme</a></li>
+					<select id = "myTheme" onChange="changeTheme()">
+						<option value= "black">black</option>
+						<option value="blue">blue</option>
+						<option value="purple">purple</option>
+					</select>
+
+
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#" id = "compact" onClick = "compactView();">Compact View</a></li>
+				</ul>
+			</div>
+		</nav>
+		
+		<template id= "myTemplt" >
+					<div id = "col" class="col-lg-3 col-sm-6 pic" >
+							<img class = "soImg">
+								<img id = "btn" class = "pBtn" onclick="playSound(event)"></img>
+							</img>
+
+							<audio id="clip">
+								<source type="audio/mp3">
+							</audio>
+					</div>
+		</template>
+	</main>
 	<script>
 		function supportsTemplate() {
 			return 'content' in document.createElement('template');
@@ -52,13 +53,14 @@
 			} else {
 			}
 		}
-		var template = document.querySelector('#myTemplt');
 		
 		function renderSoundBoard(){
 			var xmlhttp = new XMLHttpRequest();
 			xmlhttp.onreadystatechange = function() {
 				if (xmlhttp.readyState == XMLHttpRequest.DONE ) {
 					if (xmlhttp.status == 200) {
+
+						var template = document.querySelector('#myTemplt');
 						var soundCells = JSON.parse(xmlhttp.responseText);
 						var imgs = soundCells.img;
 						var btns = soundCells.btn;
@@ -68,7 +70,6 @@
 							template.content.querySelectorAll('img')[1].src = btns[0];
 							template.content.querySelectorAll('source')[0].src = soundCells.sound[i];
 							var clone = document.importNode(template.content, true);
-							alert(soundCells.sound[i]);
 							template.parentNode.appendChild(clone);
 						}
 					}
@@ -85,7 +86,7 @@
 		}
 		
 		function playSound(e) {
-			sound = e.target.parentNode.childNodes[9];
+			sound = e.target.parentNode.querySelector('audio');
 
 			if (sound.paused) {
 				sound.play();
@@ -93,11 +94,11 @@
 				e.target.style.opacity = "0.5";
 			} else {
 				sound.pause();
-				e.target.src = "./media/pBtn.png";
+				e.target.src = "./media/playBtn.png";
 				e.target.style.opacity = "1";
 			}
 			sound.onended = function () {
-				e.target.src = "./media/pBtn.png";
+				e.target.src = "./media/playBtn.png";
 				e.target.style.opacity = "1";
 			}
 		}
