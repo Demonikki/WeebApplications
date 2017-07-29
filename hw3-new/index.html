@@ -3,6 +3,12 @@
 <head>
 	<title>Soundboard Part 1a</title>
 	<meta charset="UTF-8">
+
+	<!-- BEGIN TRACKJS -->
+	<script type="text/javascript">window._trackJs = { token: '9771c887775d4dffbb3e0be5aef4b917' };</script>
+	<script type="text/javascript" src="https://cdn.trackjs.com/releases/current/tracker.js"></script>
+	<!-- END TRACKJS -->
+
 	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
 	<link rel="stylesheet" href="vanilla.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -46,14 +52,14 @@
 					</div>
 		</template>
 	</main>
-
 	<script>
+		
 		function supportsTemplate() {
 			return 'content' in document.createElement('template');
 		}
 
 		window.onload = function () {
-			if (supportsTemplate()) 
+			if (supportsTemplate())
 				renderSoundBoard(0);
 		}
 
@@ -83,7 +89,7 @@
 								var clone = document.importNode(template.content, true);
 								template.parentNode.appendChild(clone);
 							}
-							
+
 						} catch (e) {
 							alert("System Error");
 							for(var i = 0; i < 12; i++){
@@ -121,7 +127,7 @@
 
 		function playSound(e) {
 			sound = e.target.parentNode.querySelector('audio');
-			
+
 			if (sound.paused) {
 				sound.play();
 				e.target.src = "./media/pauseBtn.png";
@@ -140,6 +146,7 @@
 	<script>
 	  	document.getElementById("navB").style.backgroundColor = "#191414";
 		document.body.style.backgroundImage = "url('http://designwoop.com/uploads/2012/03/01_free_subtle_textures_apple_ios_linen_texture.jpg')";
+		var preColor;
 		function changeTheme(theme){
 			// var ele = document.getElementById("myTheme");
 			// var theme = ele.options[ele.selectedIndex].value;
@@ -148,22 +155,32 @@
 				document.getElementById("navB").style.backgroundImage = "";
 				document.body.style.backgroundImage = "url('./media/b14.jpg')";
 				document.getElementsByTagName("link")[0].href = "light.css";
+				document.getElementById("compact").innerHTML = "Compact View";
+				compactView.checkedValue = true;
+				preColor = "rgb(120,120,120)";
 			} else if (theme === "anime"){
 				document.body.style.backgroundImage = "url('./media/b16.jpg')";
+				document.body.style.backgroundSize = "100%";
+				document.body.style.backgroundAttachment = "fixed";
 				document.getElementById("navB").style.backgroundImage = "url('./media/navbar.jpg')";
 				document.getElementById("navB").style.backgroundSize = "contain";
 				document.getElementsByTagName("link")[0].href = "anime.css";
+				document.getElementById("compact").innerHTML = "Compact View";
+				compactView.checkedValue = true;
+				preColor = "url('./media/navbar.jpg')";
+				animeMode = true;
 			} else {
 				document.getElementById("navB").style.backgroundImage = "";
 				document.getElementById("navB").style.backgroundColor = "#191414";
 				document.body.style.backgroundImage = "url('http://designwoop.com/uploads/2012/03/01_free_subtle_textures_apple_ios_linen_texture.jpg')";
 				document.getElementsByTagName("link")[0].href = "vanilla.css";
+				preColor = document.getElementById("navB").style.backgroundColor;
+				compactView.checkedValue = true;
+				document.getElementById("compact").innerHTML = "Compact View";
 			}
 
 		}
-	</script>
 
-	<script>
 		function compactView() {
 			if(compactView.checkedValue == undefined) {
 				compactView.checkedValue = true; //first call
@@ -171,11 +188,11 @@
 			}
 
 			if(compactView.checkedValue == true) {
-				compactView.oldColor = document.getElementById("navB").style.backgroundColor;
+				compactView.oldColor = preColor;
 				compactView.oldBG = document.body.style.backgroundImage;
 				compactView.oldCSS = document.getElementsByTagName("link")[0].href;
 				console.log(compactView.oldCSS);
-				document.getElementById("navB").style.backgroundColor = "rgb(120,120,120)";
+				document.getElementById("navB").style.backgroundColor = compactView.oldColor;
 				document.getElementsByTagName("link")[0].href = "compact.css";
 				document.body.style.backgroundSize = "cover";
 				document.getElementById("compact").innerHTML = "Regular View";
@@ -191,6 +208,7 @@
 			}
 		}
 	</script>
+	<noscript>Your browser does not support JavaScript!</noscript>
 </main>
 
 	<footer>

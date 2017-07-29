@@ -133,6 +133,13 @@ select {
   /*float: right;*/
   top:15px;
 }
+
+@media(max-width:768px) {
+    #theme { padding-left: 7px; }
+    #compact { float:right; }
+    .dropdown { max-width: 100px; left: 7px; padding-bottom: 10px;}
+
+}
 .dropdown {
     position: relative;
     top:5px;
