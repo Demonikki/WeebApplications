@@ -167,7 +167,8 @@
 			if(compactView.checkedValue == true) {
 				compactView.oldColor = document.getElementById("navB").style.backgroundColor;
 				compactView.oldBG = document.body.style.backgroundImage;
-
+				compactView.oldCSS = document.getElementsByTagName("link")[0].href;
+				console.log(compactView.oldCSS);
 				document.getElementById("navB").style.backgroundColor = "rgb(120,120,120)";
 				document.getElementsByTagName("link")[0].href = "compact.css";
 				document.body.style.backgroundSize = "cover";
@@ -176,7 +177,7 @@
 			}
 			else if(compactView.checkedValue == false) {
 				document.body.style.backgroundSize = "auto";
-				document.getElementsByTagName("link")[0].href = "vanilla.css";
+				document.getElementsByTagName("link")[0].href = compactView.oldCSS;
 				compactView.checkedValue = true;
 				document.getElementById("navB").style.backgroundColor = compactView.oldColor;
 				document.body.style.backgroundImage = compactView.oldBG;
