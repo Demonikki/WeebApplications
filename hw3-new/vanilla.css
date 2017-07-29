@@ -18,8 +18,7 @@ a {color:#337ab7;text-decoration:none}
 /* All navbar stuff reduced from bootstrap*/
 .navbar{position:relative;min-height:50px;margin-bottom:20px;border:1px solid transparent}
 @media (min-width:768px){.navbar{border-radius:4px}}
-.navbar-default{
-  border-color:#e7e7e7}
+.navbar-default{ border-color:#e7e7e7 }
 .navbar-header{float:left}
 @media all and (min-width:768px) {.navbar-nav {float: left; margin: 0;}}
 .navbar-nav>li>a{padding-top:10px;padding-bottom:10px;line-height:20px;}
@@ -31,7 +30,7 @@ a {color:#337ab7;text-decoration:none}
 .nav>li>a>img {max-width: none; border: 0}
 .nav > li > a {position: relative; display: block; padding: 15px 15px;}
 @media all and (min-width:768px){
-.navbar-right { float: right !important; margin-right: -15px; color: white;}}
+.navbar-right { float: right !important; margin-right: -15px; color: #9d9d9d;}}
 .navbar-right~.navbar-right{margin-right:0}}
 .nav-tabs{border-bottom:1px solid #ddd}
 .navbar-brand{float:left;height:50px;padding:15px 15px;font-size:18px;line-height:20px;text-decoration:none}
@@ -44,7 +43,7 @@ a {color:#337ab7;text-decoration:none}
 .navbar-default .navbar-nav>li>a{color:#777}
 .navbar-brand:hover{color:#5e5e5e;background-color:transparent}
 .navbar-brand{color:#9d9d9d}
-.navbar-default .navbar-nav>li>a:focus,.navbar-default .navbar-nav>li>a:hover{color:#333;background-color:transparent}
+.navbar-default .navbar-nav>li>a:focus,.navbar-default .navbar-nav>li>a:hover{color:white;background-color:transparent}
 img{vertical-align: middle; border: 0}
 .nav{list-style: none; padding-left: 0px;}
 
@@ -82,7 +81,7 @@ img{
   margin-top: 20px;
 }
 
-@media (max-width:750px) {
+@media (max-width:768px) {
     .pic{
       width: 85%;
       margin-top: 20px;
@@ -104,8 +103,6 @@ img{
   height: 50%;
 }
 
-#compact { color: rgb(250,230,250); }
-#theme { color: #cdcdcd; }
 
 select {
   position: absolute;
@@ -137,6 +134,17 @@ select {
   height: 1500px;
 }
 
+
+#compact { color: #9d9d9d; }
+#compact:hover { color: white; }
+#theme { color: #cdcdcd; }
+@media(max-width:768px) {
+    #theme { padding-left: 7px; }
+    #compact { float:right; }
+    .dropdown { max-width: 100px; left: 7px; padding-bottom: 10px;}
+    .dropdown-content {  }
+
+}
 .dropdown {
     position: relative;
     top:16px;
@@ -152,8 +160,10 @@ select {
     z-index: 1;
 }
 
-.dropdown:hover .dropdown-content {
-    display: block;
+/*@media(min-width: 769px) {*/
+    .dropdown:hover .dropdown-content {
+        display: block
+    /*}*/
 }
 
 .dropdown-content a {

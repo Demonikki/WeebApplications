@@ -24,7 +24,7 @@
 						</div>
 					</div>
 				</ul>
-				
+
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#" id = "compact" onClick = "compactView();">Compact View</a></li>
 					<li><a href="#" id = "list1" onClick = "renderSoundBoard(0);">List1</a></li>
@@ -54,7 +54,7 @@
 		}
 
 		window.onload = function () {
-			if (supportsTemplate()) 
+			if (supportsTemplate())
 				renderSoundBoard(0);
 
 		}
@@ -85,7 +85,7 @@
 								var clone = document.importNode(template.content, true);
 								template.parentNode.appendChild(clone);
 							}
-							
+
 						} catch (e) {
 							alert("System Error");
 							for(var i = 0; i < 12; i++){
@@ -121,7 +121,7 @@
 
 		function playSound(e) {
 			sound = e.target.parentNode.querySelector('audio');
-			
+
 			if (sound.paused) {
 				sound.play();
 				e.target.src = "./media/pauseBtn.png";
@@ -150,6 +150,8 @@
 				document.getElementsByTagName("link")[0].href = "light.css";
 			} else if (theme === "anime"){
 				document.body.style.backgroundImage = "url('./media/b16.jpg')";
+				document.body.style.backgroundSize = "100%";
+				document.body.style.backgroundAttachment = "fixed";
 				document.getElementById("navB").style.backgroundImage = "url('./media/navbar.jpg')";
 				document.getElementById("navB").style.backgroundSize = "contain";
 				document.getElementsByTagName("link")[0].href = "anime.css";
@@ -193,13 +195,13 @@
 	</script>
 </main>
 
-	<footer>
+	<footer style="float:left">
 	  <!-- <div id="bottom_nav" class="navbar">
 			<a href="#home">Home</a>
 			<a href="#news">News</a>
 			<a href="#contact">Contact</a>
 			<a href="#about">About</a> -->
-		Copyright info
+		Copyright info:<br>
 		Soundtracks taken from "https://ccrma.stanford.edu/~jos/pasp/Sound_Examples.html"
 		</div>
 	</footer>
