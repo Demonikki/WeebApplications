@@ -3,8 +3,7 @@
 <head>
 	<title>Soundboard Part 1a</title>
 	<meta charset="UTF-8">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="vanilla.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -38,7 +37,7 @@
 		<template id= "myTemplt" >
 					<div id = "col" class="col-lg-3 col-sm-6 pic" >
 							<img class = "soImg" id = 'image'>
-								<img id = "btn" class = "pBtn" onclick="playSound(event)"></img>
+								<img id = "btn" class = "pBtn"></img>
 							</img>
 
 							<audio id="clip">
@@ -62,12 +61,21 @@
       });
 	});
 
-	$('list1').click(function() {
+	$('#list1').click(function() {
 			renderSoundBoard(0);
-	})
-	$('list2').click(function() {
+	});
+
+	$('#list2').click(function() {
 			renderSoundBoard(1);
-	})
+	});
+
+	$('.soImg').click(function() {
+			alert(1);
+		  var audio_element = $(this).parent().siblings("clip");
+			if (audio_element.canPlayType){
+				 audio_element.play();
+			}
+	});
 
   function renderSoundBoard(list){
     var imgs = metaData[0];
@@ -83,25 +91,32 @@
       myTemplateClone.find('audio').attr('src', sound[i]);
       myTemplateClone.find('#btn').attr('src',"./media/playBtn.png");
       myTemplateClone.clone().appendTo('body');
+
+			myTemplateClone.find('#btn').hover(function(){
+          $(this).attr("src", "./media/pBtn2.jpg");
+      });
+      myTemplateClone.find('#btn').mouseleave(function(){
+          $(this).attr("src", "./media/playBtn.png");
+      });
     }
 	}
 	
-	function playSound(e) {
-		sound = e.target.parentNode.querySelector('audio');
-		if (sound.paused) {
-			sound.play();
-			e.target.src = "./media/pauseBtn.png";
-			e.target.style.opacity = "0.5";
-		} else {
-			sound.pause();
-			e.target.src = "./media/playBtn.png";
-			e.target.style.opacity = "1";
-		}
-		sound.onended = function () {
-			e.target.src = "./media/playBtn.png";
-			e.target.style.opacity = "1";
-		}
-	}
+	// function playSound(e) {
+	// 	sound = e.target.parentNode.querySelector('audio');
+	// 	if (sound.paused) {
+	// 		sound.play();
+	// 		e.target.src = "./media/pauseBtn.png";
+	// 		e.target.style.opacity = "0.5";
+	// 	} else {
+	// 		sound.pause();
+	// 		e.target.src = "./media/playBtn.png";
+	// 		e.target.style.opacity = "1";
+	// 	}
+	// 	sound.onended = function () {
+	// 		e.target.src = "./media/playBtn.png";
+	// 		e.target.style.opacity = "1";
+	// 	}
+	// }
 
  	</script>
 	<script>
