@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "./hw3-new",
+    "public": "app",
     "rewrites": [
       {
         "source": "!/__/**",

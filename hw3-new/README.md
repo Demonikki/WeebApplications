@@ -26,3 +26,6 @@ This is likely due to having fewer lines of code.
 No significant difference was observed even throttled to 3G. The JQuery library
 package that gets downloaded is only around 84KB in size, which does not have
 significant impact on loading times.
+
+### TrackJs
+Add in the CDN of trackJS, then the trackJS server will monitor our project afterward.
