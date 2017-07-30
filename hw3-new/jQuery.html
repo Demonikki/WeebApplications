@@ -10,24 +10,28 @@
 </head>
 <body>
 	<main>
-		<nav class="navbar navbar-default" id = "navB">
+    <nav class="navbar navbar-default" id = "navB">
 			<div class="container">
 				<div class="navbar-header">
 					<a href="#" class="navbar-brand">Soundboard</a>
 				</div>
 				<ul class="nav navbar-nav">
-					<li><a href="#" id = "theme">Theme</a></li>
-					<select id = "myTheme" onChange="changeTheme()">
-						<option value= "dark">Dark</option>
-						<option value="light">Light</option>
-						<option value="anime">Hello Kitty!</option>
-					</select>
-
-
+					<div class = "dropdown">
+						<li><a href="#" id = "theme">Theme</a></li>
+						<div class="dropdown-content">
+							<a href='#' onclick="changeTheme('dark');">Dark</a>
+							<a href='#' onclick="changeTheme('light');">Light</a>
+							<a href='#' onclick="changeTheme('anime');">Hello Kitty!</a>
+						</div>
+					</div>
 				</ul>
+
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#" id = "compact" onClick = "compactView();">Compact View</a></li>
+					<li><a href="#" id = "list1" onClick = "renderSoundBoard(0);">List1</a></li>
+					<li><a href="#" id = "list2" onClick = "renderSoundBoard(1);">List2</a></li>
 				</ul>
+
 			</div>
 		</nav>
 
@@ -43,7 +47,6 @@
 					</div>
 		</template>
     <!-- <img id = "test" ></img> -->
-	</main>
 
 	<script>
 	$(document).ready(function() {
@@ -62,12 +65,12 @@
         var imgV2 = soundtracks[1];
         var soundV1 = soundtracks[2];
         var soundV2 = soundtracks[3];
-		
+
         for(var i = 0; i < 12; i++){
           var myTemplate = $('#myTemplt').html().trim();
           var myTemplateClone = $(myTemplate);
           myTemplateClone.find('.soImg').attr('src',imgV1[i]);
-		  myTemplateClone.find('audio').attr('src', soundV1[i]);
+		      myTemplateClone.find('audio').attr('src', soundV1[i]);
           myTemplateClone.find('#btn').attr('src',"./media/playBtn.png");
           myTemplateClone.clone().appendTo('body');
         }
@@ -116,7 +119,44 @@
 		}
 	</script>
 
-	<script>
+  <script>
+	  	document.getElementById("navB").style.backgroundColor = "#191414";
+		document.body.style.backgroundImage = "url('http://designwoop.com/uploads/2012/03/01_free_subtle_textures_apple_ios_linen_texture.jpg')";
+		var preColor;
+		function changeTheme(theme){
+			// var ele = document.getElementById("myTheme");
+			// var theme = ele.options[ele.selectedIndex].value;
+			console.log(theme);
+			if (theme === "light") {
+				document.getElementById("navB").style.backgroundImage = "";
+				document.body.style.backgroundImage = "url('./media/b14.jpg')";
+				document.getElementsByTagName("link")[0].href = "light.css";
+				document.getElementById("compact").innerHTML = "Compact View";
+				compactView.checkedValue = true;
+				preColor = "rgb(120,120,120)";
+			} else if (theme === "anime"){
+				document.body.style.backgroundImage = "url('./media/b16.jpg')";
+				document.body.style.backgroundSize = "100%";
+				document.body.style.backgroundAttachment = "fixed";
+				document.getElementById("navB").style.backgroundImage = "url('./media/navbar.jpg')";
+				document.getElementById("navB").style.backgroundSize = "contain";
+				document.getElementsByTagName("link")[0].href = "anime.css";
+				document.getElementById("compact").innerHTML = "Compact View";
+				compactView.checkedValue = true;
+				preColor = "url('./media/navbar.jpg')";
+				animeMode = true;
+			} else {
+				document.getElementById("navB").style.backgroundImage = "";
+				document.getElementById("navB").style.backgroundColor = "#191414";
+				document.body.style.backgroundImage = "url('http://designwoop.com/uploads/2012/03/01_free_subtle_textures_apple_ios_linen_texture.jpg')";
+				document.getElementsByTagName("link")[0].href = "vanilla.css";
+				preColor = document.getElementById("navB").style.backgroundColor;
+				compactView.checkedValue = true;
+				document.getElementById("compact").innerHTML = "Compact View";
+			}
+
+		}
+
 		function compactView() {
 			if(compactView.checkedValue == undefined) {
 				compactView.checkedValue = true; //first call
@@ -124,10 +164,11 @@
 			}
 
 			if(compactView.checkedValue == true) {
-				compactView.oldColor = document.getElementById("navB").style.backgroundColor;
+				compactView.oldColor = preColor;
 				compactView.oldBG = document.body.style.backgroundImage;
-
-				document.getElementById("navB").style.backgroundColor = "rgb(120,120,120)";
+				compactView.oldCSS = document.getElementsByTagName("link")[0].href;
+				console.log(compactView.oldCSS);
+				document.getElementById("navB").style.backgroundColor = compactView.oldColor;
 				document.getElementsByTagName("link")[0].href = "compact.css";
 				document.body.style.backgroundSize = "cover";
 				document.getElementById("compact").innerHTML = "Regular View";
@@ -135,7 +176,7 @@
 			}
 			else if(compactView.checkedValue == false) {
 				document.body.style.backgroundSize = "auto";
-				document.getElementsByTagName("link")[0].href = "vanilla.css";
+				document.getElementsByTagName("link")[0].href = compactView.oldCSS;
 				compactView.checkedValue = true;
 				document.getElementById("navB").style.backgroundColor = compactView.oldColor;
 				document.body.style.backgroundImage = compactView.oldBG;
@@ -143,7 +184,7 @@
 			}
 		}
 	</script>
-
+</main>
 
 	<footer>
 	  <!-- <div id="bottom_nav" class="navbar">
