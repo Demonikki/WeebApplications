@@ -144,8 +144,8 @@ select {
 .navbar-header > .dropdown { position: relative; top: 0px; }
 .navbar-header>.dropdown>.dropdown-content { top: 37px;}
 @media(max-width:768px) {
-    .navbar-header > .dropdown { position: fixed; left: 40%; }
-    .navbar-header>.dropdown>.dropdown-content { top: 37px;}
+    .navbar-header > .dropdown { position: fixed; left: 40%; z-index: 1; }
+    .navbar-header>.dropdown>.dropdown-content { top: 37px; z-index: 1; }
 }
 
 .dropdown {
