@@ -66,13 +66,10 @@
         for(var i = 0; i < 12; i++){
           var myTemplate = $('#myTemplt').html().trim();
           var myTemplateClone = $(myTemplate);
-		  //console.log(myTemplateClone.find('.soImg').attr('id'));
           myTemplateClone.find('.soImg').attr('src',imgV1[i]);
 		  myTemplateClone.find('audio').attr('src', soundV1[i]);
-          //$('source').attr('src', soundV1[i]);
-          //alert(myTemplateClone.attr('soImg').attr('src'));
-           $('#btn').attr('src',"./media/playBtn.png");
-           myTemplateClone.clone().appendTo('body');
+          myTemplateClone.find('#btn').attr('src',"./media/playBtn.png");
+          myTemplateClone.clone().appendTo('body');
         }
       });
 	});
