@@ -55,53 +55,16 @@
 		</template>
 	</main>
 	<script>
-		
-		function supportsTemplate() {
-			return 'content' in document.createElement('template');
-		}
-
-		window.onload = function () {
-			if (supportsTemplate())
-				renderSoundBoard(0);
-		}
-
-		function renderSoundBoard(list){
-			list = 0;
-			$(document).ready(function(){
+		$(document).ready(function(){
 				$("#myTemplt").load("load_config.json", function(responseTxt, statusTxt, xhr){
-					if(statusTxt == "success")
-						alert("External content loaded successfully!");
+					$("#myTemplt").parent().append($("#myTemplt").attr(img) = );
 					if(statusTxt == "error")
 						alert("Error: " + xhr.status + ": " + xhr.statusText);
 				});
-			});
-		}
+		});
+		
 
-		function setErrorTemplate(template){
-			template.content.querySelectorAll('source')[0].src = "";
-			template.content.querySelectorAll('img')[0].src = "./media/error-img.jpg";
-			template.content.querySelectorAll('img')[1].style.visibility = "hidden";
-			var clone = document.importNode(template.content, true);
-			template.parentNode.appendChild(clone);
-		}
 
-		function playSound(e) {
-			sound = e.target.parentNode.querySelector('audio');
-
-			if (sound.paused) {
-				sound.play();
-				e.target.src = "./media/pauseBtn.png";
-				e.target.style.opacity = "0.5";
-			} else {
-				sound.pause();
-				e.target.src = "./media/playBtn.png";
-				e.target.style.opacity = "1";
-			}
-			sound.onended = function () {
-				e.target.src = "./media/playBtn.png";
-				e.target.style.opacity = "1";
-			}
-		}
  	</script>
 	<script>
 	  	document.getElementById("navB").style.backgroundColor = "#191414";
