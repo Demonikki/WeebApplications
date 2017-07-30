@@ -17,9 +17,9 @@ body{
 }
 
 .pic{
-  width: 34%;
+  width: 50%;
+  height: 40px;
   margin-top: 2px;
-  left:7%;
 }
 .soImg{
   width: 7%;
@@ -29,7 +29,20 @@ body{
   visibility: hidden;
   }
 .pBtn{
-  position: relative; width: 7%; height: auto;
+  position: relative; width: 15px; height: auto;
 }
-#songname { line-height: 20px;}
+#songname {
+    line-height: 5px;
+    top: -50%;
+    width: 100%;
+}
 a { color: white;}
+
+#bottom_nav {
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  margin-bottom: 0px;
+  margin-top: 20px;
+}

@@ -118,6 +118,9 @@ img{
     color:rgb(255,0,102);
     font-family: sans-serif;
     padding-left: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 #compact { color: #4e4e4e; background-image: -webkit-linear-gradient(top,  #ffc0cb , #f068ba); }
 #compact:hover { color: #cc1961; background-repeat: no-repeat; background-image: url('./media/heart.jpg'); }
@@ -187,6 +190,7 @@ select {
   bottom: 0;
   width: 100%;
   margin-bottom: 0px;
+  margin-top: 20px;
 }
 
 #bottom_nav > a {
