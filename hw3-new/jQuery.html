@@ -8,18 +8,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-	<template id= "myTemplt">
-					<div id = "col" class="col-lg-3 col-sm-6 pic" >
-							<img class = "soImg" id = 'image'>
-								<img id = "btn" class = "pBtn"></img>
-							</img>
-
-							<audio id="clip">
-								<source type="audio/mp3">
-							</audio>
-					</div>
-	</template>
-
 	<main id="template_container">
 		<nav class="navbar navbar-default" id = "navB">
 			<div class="container">
@@ -43,12 +31,21 @@
 				</ul>
 			</div>
 		</nav>
+		<template id= "myTemplt">
+		<div id = "col" class="col-lg-3 col-sm-6 pic" >
+				<img class = "soImg" id = "image"></img>
+				<img class = "pBtn" id = "btn" onclick="playSound(event)"></img>
+
+				<audio id="clip">
+					<source type="audio/mp3">
+				</audio>
+		</div>
+	</template>
   	</main>
 	<script>
-  var metaData =[];
-
+  	var metaData =[];
 	$(document).ready(function() {
-      $.getJSON('https://firebasestorage.googleapis.com/v0/b/weeb-applications.appspot.com/o/load_config.json?alt=media&token=0fc08737-b67b-4d67-ab05-54b8efb03313', function(responseText){
+      $.getJSON('https://firebasestorage.googleapis.com/v0/b/weeb-applications.appspot.com/o/load_config.json?alt=media&token=b5d9a580-6d94-4b1f-b381-cacace167751', function(responseText){
         $.each(responseText, function(key, val){
           $.each(val, function(i, result){
               metaData.push(result);
@@ -59,23 +56,14 @@
 	});
 
 	$('#list1').click(function() {
-			$('#template_container #col').remove();
-			renderSoundBoard(0);
+		$('#template_container #col').remove();
+		renderSoundBoard(0);
 	});
 
 	$('#list2').click(function() {
-			$('#template_container #col').remove();
-			renderSoundBoard(1);
+		$('#template_container #col').remove();
+		renderSoundBoard(1);
 	});
-
-	$('#btn').click(function() {
-			alert(1);
-		  var audio_element = $(this).parent().siblings("clip");
-			if (audio_element.canPlayType){
-				 audio_element.play();
-			}
-	});
-
 
   function renderSoundBoard(list){
 		var imgs = metaData[0];
@@ -93,7 +81,8 @@
 			myTemplateClone.clone().appendTo('main');
 		}
 	}
-	
+
+
 			// myTemplateClone.find('#btn').hover(function(){
       //     $(this).attr("src", "./media/pBtn2.jpg");
       // });
@@ -101,22 +90,22 @@
       //     $(this).attr("src", "./media/playBtn.png");
       // });
 
-	// function playSound(e) {
-	// 	sound = e.target.parentNode.querySelector('audio');
-	// 	if (sound.paused) {
-	// 		sound.play();
-	// 		e.target.src = "./media/pauseBtn.png";
-	// 		e.target.style.opacity = "0.5";
-	// 	} else {
-	// 		sound.pause();
-	// 		e.target.src = "./media/playBtn.png";
-	// 		e.target.style.opacity = "1";
-	// 	}
-	// 	sound.onended = function () {
-	// 		e.target.src = "./media/playBtn.png";
-	// 		e.target.style.opacity = "1";
-	// 	}
-	// }
+	function playSound(e) {
+		sound = e.target.parentNode.querySelector('audio');
+		if (sound.paused) {
+			sound.play();
+			e.target.src = "./media/pauseBtn.png";
+			e.target.style.opacity = "0.5";
+		} else {
+			sound.pause();
+			e.target.src = "./media/playBtn.png";
+			e.target.style.opacity = "1";
+		}
+		sound.onended = function () {
+			e.target.src = "./media/playBtn.png";
+			e.target.style.opacity = "1";
+		}
+	}
 
  	</script>
 	<script>
@@ -210,13 +199,11 @@
 	</script>
 
 	<footer>
-	  <!-- <div id="bottom_nav" class="navbar">
+	   <div id="bottom_nav" class="navbar">
 			<a href="#home">Home</a>
 			<a href="#news">News</a>
 			<a href="#contact">Contact</a>
-			<a href="#about">About</a> -->
-		Copyright info
-		Soundtracks taken from "https://ccrma.stanford.edu/~jos/pasp/Sound_Examples.html"
+			<a href="#about">About</a> 
 		</div>
 	</footer>
 </body>
