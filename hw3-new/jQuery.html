@@ -79,16 +79,17 @@
 			myTemplateClone.find('audio').attr('src', sound[i]);
 			myTemplateClone.find('#btn').attr('src',"./media/playBtn.png");
 			myTemplateClone.clone().appendTo('main');
+			myTemplateClone.find('#btn').hover(function(){
+				$(this).attr("src", "./media/pBtn2.jpg");
+			});
+			myTemplateClone.find('#btn').mouseleave(function(){
+				$(this).attr("src", "./media/playBtn.png");
+			});
 		}
 	}
 
 
-			// myTemplateClone.find('#btn').hover(function(){
-      //     $(this).attr("src", "./media/pBtn2.jpg");
-      // });
-      // myTemplateClone.find('#btn').mouseleave(function(){
-      //     $(this).attr("src", "./media/playBtn.png");
-      // });
+	
 
 	function playSound(e) {
 		sound = e.target.parentNode.querySelector('audio');
