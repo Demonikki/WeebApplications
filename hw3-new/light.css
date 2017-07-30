@@ -126,10 +126,14 @@ img{
   /*justify-content: center;*/
 }
 #songname{
+    display: block;
     font-weight: bold;
     color:#e1e1e1;
     font-family: sans-serif;
     padding-left: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 
