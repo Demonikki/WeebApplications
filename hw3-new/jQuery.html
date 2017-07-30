@@ -28,8 +28,8 @@
 
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#" id = "compact" onClick = "compactView();">Compact View</a></li>
-					<li><a href="#" id = "list1" onClick = "renderSoundBoard(0);">List1</a></li>
-					<li><a href="#" id = "list2" onClick = "renderSoundBoard(1);">List2</a></li>
+					<li><a href="#" id = "list1">List1</a></li>
+					<li><a href="#" id = "list2">List2</a></li>
 				</ul>
 
 			</div>
@@ -47,55 +47,65 @@
 					</div>
 		</template>
     <!-- <img id = "test" ></img> -->
-
+  </main>
 	<script>
+  var metaData =[];
+
 	$(document).ready(function() {
-      // var soundtracks = [];
-      var soundtracks =[];
       $.getJSON('https://firebasestorage.googleapis.com/v0/b/weeb-applications.appspot.com/o/load_config.json?alt=media&token=0fc08737-b67b-4d67-ab05-54b8efb03313', function(responseText){
         $.each(responseText, function(key, val){
-          $.each(val, function(i, ele){
-              $.each(ele, function(j, result){
-                soundtracks.push(result);
-              });
+          $.each(val, function(i, result){
+              metaData.push(result);
           });
         });
-
-        var imgV1 = soundtracks[0];
-        var imgV2 = soundtracks[1];
-        var soundV1 = soundtracks[2];
-        var soundV2 = soundtracks[3];
-
-        for(var i = 0; i < 12; i++){
-          var myTemplate = $('#myTemplt').html().trim();
-          var myTemplateClone = $(myTemplate);
-          myTemplateClone.find('.soImg').attr('src',imgV1[i]);
-		      myTemplateClone.find('audio').attr('src', soundV1[i]);
-          myTemplateClone.find('#btn').attr('src',"./media/playBtn.png");
-          myTemplateClone.clone().appendTo('body');
-        }
+        renderSoundBoard(0);
       });
 	});
 
-		function playSound(e) {
-			sound = e.target.parentNode.querySelector('audio');
-			if (sound.paused) {
-				sound.play();
-				e.target.src = "./media/pauseBtn.png";
-				e.target.style.opacity = "0.5";
-			} else {
-				sound.pause();
-				e.target.src = "./media/playBtn.png";
-				e.target.style.opacity = "1";
-			}
-			sound.onended = function () {
-				e.target.src = "./media/playBtn.png";
-				e.target.style.opacity = "1";
-			}
+	$('list1').click(function() {
+			renderSoundBoard(0);
+	})
+	$('list2').click(function() {
+			renderSoundBoard(1);
+	})
+
+  function renderSoundBoard(list){
+    var imgs = metaData[0];
+    var sounds = metaData[1];
+
+		var img = imgs[list];
+		var sound = sounds[list];
+
+    for(var i = 0; i < 12; i++){
+      var myTemplate = $('#myTemplt').html().trim();
+      var myTemplateClone = $(myTemplate);
+			myTemplateClone.find('.soImg').attr('src',img[i]);
+      myTemplateClone.find('audio').attr('src', sound[i]);
+      myTemplateClone.find('#btn').attr('src',"./media/playBtn.png");
+      myTemplateClone.clone().appendTo('body');
+    }
+	}
+	
+	function playSound(e) {
+		sound = e.target.parentNode.querySelector('audio');
+		if (sound.paused) {
+			sound.play();
+			e.target.src = "./media/pauseBtn.png";
+			e.target.style.opacity = "0.5";
+		} else {
+			sound.pause();
+			e.target.src = "./media/playBtn.png";
+			e.target.style.opacity = "1";
 		}
+		sound.onended = function () {
+			e.target.src = "./media/playBtn.png";
+			e.target.style.opacity = "1";
+		}
+	}
+
  	</script>
 	<script>
-	  	document.getElementById("navB").style.backgroundColor = "#191414";
+	  document.getElementById("navB").style.backgroundColor = "#191414";
 		document.body.style.backgroundImage = "url('http://designwoop.com/uploads/2012/03/01_free_subtle_textures_apple_ios_linen_texture.jpg')";
 		function changeTheme(){
 			var ele = document.getElementById("myTheme");
@@ -126,7 +136,6 @@
 		function changeTheme(theme){
 			// var ele = document.getElementById("myTheme");
 			// var theme = ele.options[ele.selectedIndex].value;
-			console.log(theme);
 			if (theme === "light") {
 				document.getElementById("navB").style.backgroundImage = "";
 				document.body.style.backgroundImage = "url('./media/b14.jpg')";
@@ -184,7 +193,6 @@
 			}
 		}
 	</script>
-</main>
 
 	<footer>
 	  <!-- <div id="bottom_nav" class="navbar">
