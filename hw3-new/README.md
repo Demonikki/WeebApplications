@@ -1,8 +1,8 @@
-#HW3 - README
-##Team: Weeb Applications
-##Team Members: Ziyao Zhou, Ting Gu, Nikhilesh Sankaranarayanan
+# HW3 - README
+## Team: Weeb Applications
+### Team Members: Ziyao Zhou, Ting Gu, Nikhilesh Sankaranarayanan
 
-###Experiences:
+### Experiences:
 Overall, it felt a little more tedious to write our scripts in Vanilla JS,
 since we had to write a lot more lines of code compared to the library version.
 Using JQuery helped shorten the code and make it easier to read and write too.
@@ -12,17 +12,17 @@ of JQuery from scratch.
 Therefore for this project the VanillaJS version was faster to write, but in future
 we will be able to speed up our development by using JQuery.
 
-###Error checking
+### Error checking
 Another learning experience, and we simulate errors by using
 invalid links to our JSON files, or using incorrect formatting between the actual
 JSON and the format the Javascript expected. Appropriate error messages and
 "loader images" have been added in case there's any error at runtime.
 
-###File Size
+### File Size
 The jquery version of the HTML is smaller than the vanilla JS file (8KB vs 8.7KB).
 This is likely due to having fewer lines of code.
 
-###Network Performance
+### Network Performance
 No significant difference was observed even throttled to 3G. The JQuery library
 package that gets downloaded is only around 84KB in size, which does not have
 significant impact on loading times.
