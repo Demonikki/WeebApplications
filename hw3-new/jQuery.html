@@ -29,9 +29,9 @@
 					<div class = "dropdown">
 						<li><a href="#" id = "theme">Theme</a></li>
 						<div class="dropdown-content">
-							<a href='#' onclick="changeTheme('dark');">Dark</a>
-							<a href='#' onclick="changeTheme('light');">Light</a>
-							<a href='#' onclick="changeTheme('anime');">Hello Kitty!</a>
+							<a id = "dark" href='#' onclick="changeTheme('dark');">Dark</a>
+							<a id = "light" href='#' onclick="changeTheme('light');">Light</a>
+							<a id = "anime" href='#' onclick="changeTheme('anime');">Hello Kitty!</a>
 						</div>
 					</div>
 				</ul>
@@ -84,7 +84,7 @@
 		});
 	});
 
-	
+
 
 	$('main').on('click','#btn',function() {
 		var sound = $(this).siblings('audio')[0];
@@ -138,73 +138,76 @@
 	}
 
 	function setErrorTemplate(template){
-		template.content.querySelectorAll('source')[0].src = "";
-		template.content.querySelectorAll('img')[0].src = "./media/error-img.jpg";
-		template.content.querySelectorAll('img')[1].style.visibility = "hidden";
-		var clone = document.importNode(template.content, true);
-		template.parentNode.appendChild(clone);
+    $('#template_container #col').remove();
+    for(var i = 0; i < 12; i++){
+			var myTemplate = $('#myTemplt').html().trim();
+			var myTemplateClone = $(myTemplate);
+			myTemplateClone.find('.soImg').attr('src',"./media/error-img.jpg");
+			myTemplateClone.find('audio').attr('src', "");
+			myTemplateClone.find('#btn').css({"visibility" : "hidden"});
+			myTemplateClone.find('#songName').html(name[i]);
+			myTemplateClone.clone().appendTo('main');
+		}
 	}
-	</script>
+</script>
 
-  	<script>
-	  	document.getElementById("navB").style.backgroundColor = "#191414";
-		document.body.style.backgroundImage = "url('http://designwoop.com/uploads/2012/03/01_free_subtle_textures_apple_ios_linen_texture.jpg')";
+<script>
+    var checkedValue;
+    $("#navB").css({"background-color": "#191414"});
+    $("body").css({"background-image": "url('http://designwoop.com/uploads/2012/03/01_free_subtle_textures_apple_ios_linen_texture.jpg')"});
 		var preColor;
-		function changeTheme(theme){
-			console.log(theme);
-			if (theme === "light") {
-				document.getElementById("navB").style.backgroundImage = "";
-				document.body.style.backgroundImage = "url('./media/b14.jpg')";
-				document.getElementsByTagName("link")[0].href = "light.css";
-				document.getElementById("compact").innerHTML = "Compact View";
-				compactView.checkedValue = true;
+      $(".dropdown-content #light").click(function(){
+        $("#navB").css({"background-image":""});
+        $("body").css({"background-image":"url('./media/b14.jpg')"});
+        $("link").attr("href", "light.css");
+        $("#compact").html("Compact View");
+				checkedValue = true;
 				preColor = "rgb(120,120,120)";
-			} else if (theme === "anime"){
-				document.body.style.backgroundImage = "url('./media/b16.jpg')";
-				document.body.style.backgroundSize = "100%";
-				document.body.style.backgroundAttachment = "fixed";
-				document.getElementById("navB").style.backgroundImage = "url('./media/navbar.jpg')";
-				document.getElementById("navB").style.backgroundSize = "contain";
-				document.getElementsByTagName("link")[0].href = "anime.css";
-				document.getElementById("compact").innerHTML = "Compact View";
-				compactView.checkedValue = true;
+      });
+      $(".dropdown-content #anime").click(function(){
+        $("#navB").css({"background-image":"url('./media/navbar.jpg')"});
+        $("#navB").css({"background-size": "contain"});
+        $("body").css({"background-image":"url('./media/b16.jpg')"});
+        $("body").css({"background-size": "100%"});
+        $("body").css({"background-attchment": "fixed"});
+        $("link").attr("href", "anime.css");
+        $("#compact").html("Compact View");
+				checkedValue = true;
 				preColor = "url('./media/navbar.jpg')";
 				animeMode = true;
-			} else {
-				document.getElementById("navB").style.backgroundImage = "";
-				document.getElementById("navB").style.backgroundColor = "#191414";
-				document.body.style.backgroundImage = "url('http://designwoop.com/uploads/2012/03/01_free_subtle_textures_apple_ios_linen_texture.jpg')";
-				document.getElementsByTagName("link")[0].href = "vanilla.css";
-				preColor = document.getElementById("navB").style.backgroundColor;
-				compactView.checkedValue = true;
-				document.getElementById("compact").innerHTML = "Compact View";
-			}
-		}
+      });
+      $(".dropdown-content #dark").click(function(){
+        $("#navB").css({"background-image":""});
+        $("#navB").css({"background-color":"#191414"});
+        $("body").css({"background-image":"url('http://designwoop.com/uploads/2012/03/01_free_subtle_textures_apple_ios_linen_texture.jpg')"});
+        $("link").attr("href", "vanilla.css");
+				preColor = $("#navB").atrr('background-color');
+				checkedValue = true;
+				$("#compact").html("Compact View");
+      });
 
-		function compactView() {
-			if(compactView.checkedValue == undefined) {
-				compactView.checkedValue = true; //first call
-			}
-
-			if(compactView.checkedValue == true) {
-				compactView.oldColor = preColor;
-				compactView.oldBG = document.body.style.backgroundImage;
-				compactView.oldCSS = document.getElementsByTagName("link")[0].href;
-				document.getElementById("navB").style.backgroundColor = compactView.oldColor;
-				document.getElementsByTagName("link")[0].href = "compact.css";
-				document.body.style.backgroundSize = "cover";
-				document.getElementById("compact").innerHTML = "Regular View";
-				compactView.checkedValue = false;
-			}
-			else if(compactView.checkedValue == false) {
-				document.body.style.backgroundSize = "auto";
-				document.getElementsByTagName("link")[0].href = compactView.oldCSS;
-				compactView.checkedValue = true;
-				document.getElementById("navB").style.backgroundColor = compactView.oldColor;
-				document.body.style.backgroundImage = compactView.oldBG;
-				document.getElementById("compact").innerHTML = "Compact View";
-			}
-		}
+      $("#compact").click(function(){
+        if(checkedValue === undefined){
+          checkedValue = true; //first call
+        }
+        if(checkedValue === true){
+          oldColor = preColor;
+          oldBG = $("body").css('background-image');
+          oldCSS = $("link").attr("href");
+          $("#navB").css({"background-color": oldColor});
+          $("link").attr("href", "compact.css");
+          $("body").css({"background-size": "cover"});
+          $("#compact").html("Regular View");
+      		checkedValue = false;
+        } else if (checkedValue == false) {
+      		$("body").css({"background-size": "auto"});
+      		$("link").attr("href", oldCSS);
+      		checkedValue = true;
+      		$("#navB").css({"background-color":  oldColor});
+      		$("body").css({"background-image": oldBG});
+      		$("#compact").html("Compact View");
+      	}
+      });
 	</script>
 	<noscript>Your browser does not support JavaScript!</noscript>
 	<footer>
@@ -212,8 +215,8 @@
 			<a href="#home">Home</a>
 			<a href="#news">News</a>
 			<a href="#contact">Contact</a>
-			<a href="#about">About</a> 
-		</div> 
+			<a href="#about">About</a>
+		</div>
 	</footer>
 </body>
 </html>
