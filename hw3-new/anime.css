@@ -113,7 +113,8 @@ img{
   height: 25%;
   /*justify-content: center;*/
 }
-#songname{
+#songName{
+    display: block;
     font-weight: bold;
     color:rgb(255,0,102);
     font-family: sans-serif;
@@ -122,6 +123,8 @@ img{
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
+
 #compact { color: #4e4e4e; background-image: -webkit-linear-gradient(top,  #ffc0cb , #f068ba); }
 #compact:hover { color: #cc1961; background-repeat: no-repeat; background-image: url('./media/heart.jpg'); }
 #theme{ color: white; background-color: rgb(255,0,102); font-size: 18px; border: 8px solid transparent;}
@@ -186,11 +189,12 @@ select {
 #bottom_nav {
   overflow: hidden;
   background-color: #ff008d;
-  position: fixed;
+  position: fixed; 
   bottom: 0;
   width: 100%;
   margin-bottom: 0px;
   margin-top: 20px;
+  z-index: 1;
 }
 
 #bottom_nav > a {

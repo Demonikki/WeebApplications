@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Soundboard Part 1a</title>
+	<title>Soundboard3 JavaScript Version</title>
 	<meta charset="UTF-8">
 
 	<!-- BEGIN TRACKJS -->
@@ -38,7 +38,7 @@
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#" id = "compact" onClick = "compactView();">Compact View</a></li
+					<li><a href="#" id = "compact" onClick = "compactView();">Compact View</a></li>
 				</ul>
 			</div>
 		</nav>
@@ -47,11 +47,10 @@
 					<div id = "col" class="col-lg-3 col-sm-6 pic" >
 							<img class = "soImg">
 								<img id = "btn" class = "pBtn" onclick="playSound(event)"></img>
-								<span id = "songname">Song</span>
+								<span id = "songName">Song</span>
 							</img>
 							<audio id="clip">
 								<source type="audio/mp3">
-								<source type="audio/wav">
 							</audio>
 					</div>
 		</template>
@@ -160,8 +159,6 @@
 		document.body.style.backgroundImage = "url('http://designwoop.com/uploads/2012/03/01_free_subtle_textures_apple_ios_linen_texture.jpg')";
 		var preColor;
 		function changeTheme(theme){
-			// var ele = document.getElementById("myTheme");
-			// var theme = ele.options[ele.selectedIndex].value;
 			console.log(theme);
 			if (theme === "light") {
 				document.getElementById("navB").style.backgroundImage = "";
@@ -196,7 +193,6 @@
 		function compactView() {
 			if(compactView.checkedValue == undefined) {
 				compactView.checkedValue = true; //first call
-				console.log("first call");
 			}
 
 			if(compactView.checkedValue == true) {
@@ -224,12 +220,12 @@
 </main>
 
 	<footer>
-		<div id="bottom_nav" class="navbar">
+		 <div id="bottom_nav" class="navbar">
 			<a href="#home">Home</a>
 			<a href="#news">News</a>
 			<a href="#contact">Contact</a>
 			<a href="#about">About</a>
-		</div>
+		</div> 
 	</footer>
 </body>
 </html>

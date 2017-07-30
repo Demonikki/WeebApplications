@@ -31,7 +31,7 @@ a {color:#337ab7;text-decoration:none}
 .nav > li > a {position: relative; display: block; padding: 15px 15px;}
 @media all and (min-width:768px){
 .navbar-right { float: right !important; margin-right: -15px; color: #9d9d9d;}}
-.navbar-right~.navbar-right{margin-right:0}}
+.navbar-right~.navbar-right{margin-right:0}
 .nav-tabs{border-bottom:1px solid #ddd}
 .navbar-brand{float:left;height:50px;padding:15px 15px;font-size:18px;line-height:20px;text-decoration:none}
 .navbar-brand:focus,.navbar-brand:hover{text-decoration:none}
@@ -102,13 +102,13 @@ img{
   width: 50%;
   height: 50%;
 }
-#songname{
-    font-weight: bold;
-    color:#c1c1c1;
-    font-family: sans-serif;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+#songName{
+  font-weight: bold;
+  color:#c1c1c1;
+  font-family: sans-serif;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 
@@ -121,11 +121,12 @@ select {
 #bottom_nav {
   overflow: hidden;
   background-color: #333;
-  position: fixed;
+   position: relative; 
   bottom: 0;
   width: 100%;
   margin-bottom: 0px;
   margin-top: 20px;
+  z-index: 1;
 }
 
 #bottom_nav > a {
