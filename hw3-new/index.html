@@ -85,12 +85,13 @@
 							var soundCells = jobj.WeebApplications_SoundBoard;
 							var imgs = soundCells.img[list];
 							var sounds = soundCells.sound[list];
-							
+							var names = soundCells.names[list];
 
 							for(var i = 0; i < 12; i++){
 								template.content.querySelectorAll('img')[0].src = imgs[i];
 								template.content.querySelectorAll('source')[0].src = sounds[i];
 								template.content.querySelectorAll('img')[1].src = "./media/playBtn.png";
+								// template.content.querySelectorAll('songname')[0].content = "X";
 								var clone = document.importNode(template.content, true);
 								template.parentNode.appendChild(clone);
 							}
@@ -118,7 +119,7 @@
 				}
 			}
 
-			xmlhttp.open("GET", "https://firebasestorage.googleapis.com/v0/b/weeb-applications.appspot.com/o/load_config.json?alt=media&token=0fc08737-b67b-4d67-ab05-54b8efb03313", true);
+			xmlhttp.open("GET", "https://firebasestorage.googleapis.com/v0/b/weeb-applications.appspot.com/o/load_config.json?alt=media&token=b5d9a580-6d94-4b1f-b381-cacace167751", true);
 			xmlhttp.send();
 		}
 
