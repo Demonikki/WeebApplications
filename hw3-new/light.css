@@ -98,7 +98,7 @@ img{
   border-color: #969696;
   margin-left: 10px;
   margin-right: 10px;
-
+  background-color: #505050;
 }
 
 @media (max-width:768px) {
@@ -125,6 +125,13 @@ img{
   height: 25%;
   /*justify-content: center;*/
 }
+#songname{
+    font-weight: bold;
+    color:#e1e1e1;
+    font-family: sans-serif;
+    padding-left: 5px;
+}
+
 
 #compact { color: #4e4e4e; }
 #compact:hover { color: #f4f4f4; }

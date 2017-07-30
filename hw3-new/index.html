@@ -48,7 +48,7 @@
 							<img class = "soImg">
 								<img id = "btn" class = "pBtn" onclick="playSound(event)"></img>
 							</img>
-
+							<span id = "songname">Song</span>
 							<audio id="clip">
 								<source type="audio/mp3">
 								<source type="audio/wav">
@@ -85,6 +85,7 @@
 							var soundCells = jobj.WeebApplications_SoundBoard;
 							var imgs = soundCells.img[list];
 							var sounds = soundCells.sound[list];
+							
 
 							for(var i = 0; i < 12; i++){
 								template.content.querySelectorAll('img')[0].src = imgs[i];

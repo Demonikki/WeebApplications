@@ -102,6 +102,11 @@ img{
   width: 50%;
   height: 50%;
 }
+#songname{
+    font-weight: bold;
+    color:#c1c1c1;
+    font-family: sans-serif;
+}
 
 
 select {
