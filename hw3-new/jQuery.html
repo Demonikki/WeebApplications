@@ -8,8 +8,20 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-	<main>
-    <nav class="navbar navbar-default" id = "navB">
+	<template id= "myTemplt">
+					<div id = "col" class="col-lg-3 col-sm-6 pic" >
+							<img class = "soImg" id = 'image'>
+								<img id = "btn" class = "pBtn"></img>
+							</img>
+
+							<audio id="clip">
+								<source type="audio/mp3">
+							</audio>
+					</div>
+	</template>
+
+	<main id="template_container">
+		<nav class="navbar navbar-default" id = "navB">
 			<div class="container">
 				<div class="navbar-header">
 					<a href="#" class="navbar-brand">Soundboard</a>
@@ -24,29 +36,14 @@
 						</div>
 					</div>
 				</ul>
-
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#" id = "compact" onClick = "compactView();">Compact View</a></li>
 					<li><a href="#" id = "list1">List1</a></li>
 					<li><a href="#" id = "list2">List2</a></li>
 				</ul>
-
 			</div>
 		</nav>
-
-		<template id= "myTemplt" >
-					<div id = "col" class="col-lg-3 col-sm-6 pic" >
-							<img class = "soImg" id = 'image'>
-								<img id = "btn" class = "pBtn"></img>
-							</img>
-
-							<audio id="clip">
-								<source type="audio/mp3">
-							</audio>
-					</div>
-		</template>
-    <!-- <img id = "test" ></img> -->
-  </main>
+  	</main>
 	<script>
   var metaData =[];
 
@@ -62,14 +59,16 @@
 	});
 
 	$('#list1').click(function() {
+			$('#template_container #col').remove();
 			renderSoundBoard(0);
 	});
 
 	$('#list2').click(function() {
+			$('#template_container #col').remove();
 			renderSoundBoard(1);
 	});
 
-	$('.soImg').click(function() {
+	$('#btn').click(function() {
 			alert(1);
 		  var audio_element = $(this).parent().siblings("clip");
 			if (audio_element.canPlayType){
@@ -77,30 +76,31 @@
 			}
 	});
 
+
   function renderSoundBoard(list){
-    var imgs = metaData[0];
-    var sounds = metaData[1];
+		var imgs = metaData[0];
+		var sounds = metaData[1];
 
 		var img = imgs[list];
 		var sound = sounds[list];
 
-    for(var i = 0; i < 12; i++){
-      var myTemplate = $('#myTemplt').html().trim();
-      var myTemplateClone = $(myTemplate);
+		for(var i = 0; i < 12; i++){
+			var myTemplate = $('#myTemplt').html().trim();
+			var myTemplateClone = $(myTemplate);
 			myTemplateClone.find('.soImg').attr('src',img[i]);
-      myTemplateClone.find('audio').attr('src', sound[i]);
-      myTemplateClone.find('#btn').attr('src',"./media/playBtn.png");
-      myTemplateClone.clone().appendTo('body');
-
-			myTemplateClone.find('#btn').hover(function(){
-          $(this).attr("src", "./media/pBtn2.jpg");
-      });
-      myTemplateClone.find('#btn').mouseleave(function(){
-          $(this).attr("src", "./media/playBtn.png");
-      });
-    }
+			myTemplateClone.find('audio').attr('src', sound[i]);
+			myTemplateClone.find('#btn').attr('src',"./media/playBtn.png");
+			myTemplateClone.clone().appendTo('main');
+		}
 	}
 	
+			// myTemplateClone.find('#btn').hover(function(){
+      //     $(this).attr("src", "./media/pBtn2.jpg");
+      // });
+      // myTemplateClone.find('#btn').mouseleave(function(){
+      //     $(this).attr("src", "./media/playBtn.png");
+      // });
+
 	// function playSound(e) {
 	// 	sound = e.target.parentNode.querySelector('audio');
 	// 	if (sound.paused) {
