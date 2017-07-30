@@ -42,10 +42,22 @@ a {color:#337ab7;text-decoration:none}
 }
 
 .navbar-text{color:#777}
-.navbar-default .navbar-nav>li>a{color: #4e4e4e; background-image: -webkit-linear-gradient(top, #e4e4e4, #726a6a); border-radius: 4px 4px 4px 4px;}
-.navbar-brand:hover{color:#e4e4e4;background-color:transparent}
-.navbar-brand{color:#4e4e4e;  background-image: -webkit-linear-gradient(top, #e4e4e4, #726a6a); border-radius: 4px 4px 4px 4px; }
-.navbar-default .navbar-nav>li>a:focus,.navbar-default .navbar-nav>li>a:hover{color:#e4e4e4;background-color:transparent; background-image: -webkit-linear-gradient(top, #e4e4e4, #555555);}
+@media(min-width: 768px) {
+    .navbar-default .navbar-nav>li>a{color: #4e4e4e; background-image: -webkit-linear-gradient(top, #e4e4e4, #726a6a); border-radius: 4px 4px 4px 4px;}
+    .navbar-brand{color:#4e4e4e;  background-image: -webkit-linear-gradient(top, #e4e4e4, #726a6a); border-radius: 4px 4px 4px 4px; }
+    .navbar-brand:hover{color:#e4e4e4;background-color:transparent}
+    .navbar-default .navbar-nav>li>a:focus,.navbar-default .navbar-nav>li>a:hover {
+        color:#e4e4e4;background-color:transparent; background-image: -webkit-linear-gradient(top, #e4e4e4, #555555);
+    }
+}
+@media(max-width: 768px) {
+    .navbar-brand { color:#4e4e4e;}
+    .navbar-brand:hover { color:white; }
+    .navbar-default .navbar-nav>li>a:focus,.navbar-default .navbar-nav>li>a:hover {
+        color: white;
+    }
+}
+
 img{vertical-align: middle; border: 0}
 .nav{list-style: none; padding-left: 0px;}
 
@@ -86,10 +98,10 @@ img{
   border-color: #969696;
   margin-left: 10px;
   margin-right: 10px;
-
+  background-color: #505050;
 }
 
-@media (max-width:750px) {
+@media (max-width:768px) {
     .pic{
       width: 85%;
       margin-top: 20px;
@@ -113,6 +125,13 @@ img{
   height: 25%;
   /*justify-content: center;*/
 }
+#songname{
+    font-weight: bold;
+    color:#e1e1e1;
+    font-family: sans-serif;
+    padding-left: 5px;
+}
+
 
 #compact { color: #4e4e4e; }
 #compact:hover { color: #f4f4f4; }
@@ -133,7 +152,17 @@ select {
     .dropdown-content {  }
 
 }
-
+@media(min-width:768px){
+    .navbar-brand:hover {
+        background-image: -webkit-linear-gradient(top, #e4e4e4, #555555);
+    }
+}
+.navbar-header > .dropdown { position: relative; top: 0px; }
+.navbar-header>.dropdown>.dropdown-content { top: 37px;}
+@media(max-width:768px) {
+    .navbar-header > .dropdown { position: fixed; left: 40%; }
+    .navbar-header>.dropdown>.dropdown-content { top: 37px;}
+}
 .dropdown {
     position: relative;
     top:16px;

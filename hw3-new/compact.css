@@ -27,9 +27,9 @@ body{
   height: auto;
   margin-left: auto;
   position: relative;
-}
+  visibility: hidden;
+  }
 .pBtn{
   position: relative; width: 7%; height: auto;
 }
-
 a { color: white;}

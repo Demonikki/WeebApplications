@@ -82,11 +82,11 @@ img{
   border-style:solid;
   border-image: url('./media/border.png') 50 0 50 0 repeat;
   -moz-border-image: url('./media/border.png') 50 0 50 0 repeat;
-  border-image-slice: 30 30 30 30 fill;
+  border-image-slice: 30 30 30 30;
   border-width: 10px 10px 10px 10px;
   margin-left: 10px;
   margin-right: 10px;
-
+  background-color: #fdacd8;
 }
 
 @media (max-width:600px) {
@@ -113,7 +113,12 @@ img{
   height: 25%;
   /*justify-content: center;*/
 }
-
+#songname{
+    font-weight: bold;
+    color:rgb(255,0,102);
+    font-family: sans-serif;
+    padding-left: 5px;
+}
 #compact { color: #4e4e4e; background-image: -webkit-linear-gradient(top,  #ffc0cb , #f068ba); }
 #compact:hover { color: #cc1961; background-repeat: no-repeat; background-image: url('./media/heart.jpg'); }
 #theme{ color: white; background-color: rgb(255,0,102); font-size: 18px; border: 8px solid transparent;}
@@ -140,6 +145,14 @@ select {
     .dropdown { max-width: 100px; left: 7px; padding-bottom: 10px;}
 
 }
+
+.navbar-header > .dropdown { position: relative; top: 0px; }
+.navbar-header>.dropdown>.dropdown-content { top: 37px;}
+@media(max-width:768px) {
+    .navbar-header > .dropdown { position: fixed; left: 40%; z-index: 1; }
+    .navbar-header>.dropdown>.dropdown-content { top: 37px; z-index: 1; }
+}
+
 .dropdown {
     position: relative;
     top:5px;

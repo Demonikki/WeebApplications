@@ -18,7 +18,13 @@
 		<nav class="navbar navbar-default" id = "navB">
 			<div class="container">
 				<div class="navbar-header">
-					<a href="#" class="navbar-brand">Soundboard</a>
+					<div class = "dropdown">
+						<a href="#" class="navbar-brand">Soundboards</a>
+						<div class="dropdown-content">
+							<a href="#" id = "list1" onClick = "renderSoundBoard(0);">Soundboard 1</a></li>
+							<a href="#" id = "list2" onClick = "renderSoundBoard(1);">Soundboard 2</a></li>
+						</div>
+					</div>
 				</div>
 				<ul class="nav navbar-nav">
 					<div class = "dropdown">
@@ -30,11 +36,9 @@
 						</div>
 					</div>
 				</ul>
-				
+
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#" id = "compact" onClick = "compactView();">Compact View</a></li>
-					<li><a href="#" id = "list1" onClick = "renderSoundBoard(0);">List1</a></li>
-					<li><a href="#" id = "list2" onClick = "renderSoundBoard(1);">List2</a></li>
+					<li><a href="#" id = "compact" onClick = "compactView();">Compact View</a></li
 				</ul>
 			</div>
 		</nav>
@@ -44,7 +48,7 @@
 							<img class = "soImg">
 								<img id = "btn" class = "pBtn" onclick="playSound(event)"></img>
 							</img>
-
+							<span id = "songname">Song</span>
 							<audio id="clip">
 								<source type="audio/mp3">
 								<source type="audio/wav">
@@ -53,7 +57,7 @@
 		</template>
 	</main>
 	<script>
-		
+
 		function supportsTemplate() {
 			return 'content' in document.createElement('template');
 		}
@@ -81,11 +85,13 @@
 							var soundCells = jobj.WeebApplications_SoundBoard;
 							var imgs = soundCells.img[list];
 							var sounds = soundCells.sound[list];
+							var names = soundCells.names[list];
 
 							for(var i = 0; i < 12; i++){
 								template.content.querySelectorAll('img')[0].src = imgs[i];
 								template.content.querySelectorAll('source')[0].src = sounds[i];
 								template.content.querySelectorAll('img')[1].src = "./media/playBtn.png";
+								// template.content.querySelectorAll('songname')[0].content = "X";
 								var clone = document.importNode(template.content, true);
 								template.parentNode.appendChild(clone);
 							}
