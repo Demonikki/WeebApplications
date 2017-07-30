@@ -67,6 +67,7 @@
         renderSoundBoard(0);
       }).done(function() {
 			console.log( "Success" );
+			
 		})
 		.fail(function() {
 			alert( "Network Error" );
@@ -138,11 +139,11 @@
 	}
 
 	function setErrorTemplate(template){
-		template.content.querySelectorAll('source')[0].src = "";
-		template.content.querySelectorAll('img')[0].src = "./media/error-img.jpg";
-		template.content.querySelectorAll('img')[1].style.visibility = "hidden";
-		var clone = document.importNode(template.content, true);
-		template.parentNode.appendChild(clone);
+		var myTemplate = $('#myTemplt').html().trim();
+		var myTemplateClone = $(myTemplate);
+		myTemplateClone.find('.soImg').attr('src',"./media/error-img.jpg");
+		$('#btn').css("visibility","hidden");
+		myTemplateClone.clone().appendTo('main');
 	}
 	</script>
 
@@ -160,7 +161,7 @@
 				compactView.checkedValue = true;
 				preColor = "rgb(120,120,120)";
 			} else if (theme === "anime"){
-				document.body.style.backgroundImage = "url('./media/b16.jpg')";
+				$("body").css("backgroundImage") = "url('./media/b16.jpg')";
 				document.body.style.backgroundSize = "100%";
 				document.body.style.backgroundAttachment = "fixed";
 				document.getElementById("navB").style.backgroundImage = "url('./media/navbar.jpg')";
