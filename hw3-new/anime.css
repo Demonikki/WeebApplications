@@ -140,6 +140,14 @@ select {
     .dropdown { max-width: 100px; left: 7px; padding-bottom: 10px;}
 
 }
+
+.navbar-header > .dropdown { position: relative; top: 0px; }
+.navbar-header>.dropdown>.dropdown-content { top: 37px;}
+@media(max-width:768px) {
+    .navbar-header > .dropdown { position: fixed; left: 40%; }
+    .navbar-header>.dropdown>.dropdown-content { top: 37px;}
+}
+
 .dropdown {
     position: relative;
     top:5px;
