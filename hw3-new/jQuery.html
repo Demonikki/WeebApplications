@@ -3,14 +3,13 @@
 <head>
 	<title>Soundboard Part 1a</title>
 	<meta charset="UTF-8">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="vanilla.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-	<main>
-    <nav class="navbar navbar-default" id = "navB">
+	<main id="template_container">
+		<nav class="navbar navbar-default" id = "navB">
 			<div class="container">
 				<div class="navbar-header">
 					<a href="#" class="navbar-brand">Soundboard</a>
@@ -25,77 +24,92 @@
 						</div>
 					</div>
 				</ul>
-
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#" id = "compact" onClick = "compactView();">Compact View</a></li>
-					<li><a href="#" id = "list1" onClick = "renderSoundBoard(0);">List1</a></li>
-					<li><a href="#" id = "list2" onClick = "renderSoundBoard(1);">List2</a></li>
+					<li><a href="#" id = "list1">List1</a></li>
+					<li><a href="#" id = "list2">List2</a></li>
 				</ul>
-
 			</div>
 		</nav>
+		<template id= "myTemplt">
+		<div id = "col" class="col-lg-3 col-sm-6 pic" >
+				<img class = "soImg" id = "image"></img>
+				<img class = "pBtn" id = "btn" onclick="playSound(event)"></img>
 
-		<template id= "myTemplt" >
-					<div id = "col" class="col-lg-3 col-sm-6 pic" >
-							<img class = "soImg" id = 'image'>
-								<img id = "btn" class = "pBtn" onclick="playSound(event)"></img>
-							</img>
-
-							<audio id="clip">
-								<source type="audio/mp3">
-							</audio>
-					</div>
-		</template>
-    <!-- <img id = "test" ></img> -->
-
+				<audio id="clip">
+					<source type="audio/mp3">
+				</audio>
+		</div>
+	</template>
+  	</main>
 	<script>
+  	var metaData =[];
 	$(document).ready(function() {
-      // var soundtracks = [];
-      var soundtracks =[];
-      $.getJSON('https://firebasestorage.googleapis.com/v0/b/weeb-applications.appspot.com/o/load_config.json?alt=media&token=0fc08737-b67b-4d67-ab05-54b8efb03313', function(responseText){
+      $.getJSON('https://firebasestorage.googleapis.com/v0/b/weeb-applications.appspot.com/o/load_config.json?alt=media&token=b5d9a580-6d94-4b1f-b381-cacace167751', function(responseText){
         $.each(responseText, function(key, val){
-          $.each(val, function(i, ele){
-              $.each(ele, function(j, result){
-                soundtracks.push(result);
-              });
+          $.each(val, function(i, result){
+              metaData.push(result);
           });
         });
-
-        var imgV1 = soundtracks[0];
-        var imgV2 = soundtracks[1];
-        var soundV1 = soundtracks[2];
-        var soundV2 = soundtracks[3];
-
-        for(var i = 0; i < 12; i++){
-          var myTemplate = $('#myTemplt').html().trim();
-          var myTemplateClone = $(myTemplate);
-          myTemplateClone.find('.soImg').attr('src',imgV1[i]);
-		      myTemplateClone.find('audio').attr('src', soundV1[i]);
-          myTemplateClone.find('#btn').attr('src',"./media/playBtn.png");
-          myTemplateClone.clone().appendTo('body');
-        }
+        renderSoundBoard(0);
       });
 	});
 
-		function playSound(e) {
-			sound = e.target.parentNode.querySelector('audio');
-			if (sound.paused) {
-				sound.play();
-				e.target.src = "./media/pauseBtn.png";
-				e.target.style.opacity = "0.5";
-			} else {
-				sound.pause();
-				e.target.src = "./media/playBtn.png";
-				e.target.style.opacity = "1";
-			}
-			sound.onended = function () {
-				e.target.src = "./media/playBtn.png";
-				e.target.style.opacity = "1";
-			}
+	$('#list1').click(function() {
+		$('#template_container #col').remove();
+		renderSoundBoard(0);
+	});
+
+	$('#list2').click(function() {
+		$('#template_container #col').remove();
+		renderSoundBoard(1);
+	});
+
+  function renderSoundBoard(list){
+		var imgs = metaData[0];
+		var sounds = metaData[1];
+
+		var img = imgs[list];
+		var sound = sounds[list];
+
+		for(var i = 0; i < 12; i++){
+			var myTemplate = $('#myTemplt').html().trim();
+			var myTemplateClone = $(myTemplate);
+			myTemplateClone.find('.soImg').attr('src',img[i]);
+			myTemplateClone.find('audio').attr('src', sound[i]);
+			myTemplateClone.find('#btn').attr('src',"./media/playBtn.png");
+			myTemplateClone.clone().appendTo('main');
 		}
+	}
+
+
+			// myTemplateClone.find('#btn').hover(function(){
+      //     $(this).attr("src", "./media/pBtn2.jpg");
+      // });
+      // myTemplateClone.find('#btn').mouseleave(function(){
+      //     $(this).attr("src", "./media/playBtn.png");
+      // });
+
+	function playSound(e) {
+		sound = e.target.parentNode.querySelector('audio');
+		if (sound.paused) {
+			sound.play();
+			e.target.src = "./media/pauseBtn.png";
+			e.target.style.opacity = "0.5";
+		} else {
+			sound.pause();
+			e.target.src = "./media/playBtn.png";
+			e.target.style.opacity = "1";
+		}
+		sound.onended = function () {
+			e.target.src = "./media/playBtn.png";
+			e.target.style.opacity = "1";
+		}
+	}
+
  	</script>
 	<script>
-	  	document.getElementById("navB").style.backgroundColor = "#191414";
+	  document.getElementById("navB").style.backgroundColor = "#191414";
 		document.body.style.backgroundImage = "url('http://designwoop.com/uploads/2012/03/01_free_subtle_textures_apple_ios_linen_texture.jpg')";
 		function changeTheme(){
 			var ele = document.getElementById("myTheme");
@@ -126,7 +140,6 @@
 		function changeTheme(theme){
 			// var ele = document.getElementById("myTheme");
 			// var theme = ele.options[ele.selectedIndex].value;
-			console.log(theme);
 			if (theme === "light") {
 				document.getElementById("navB").style.backgroundImage = "";
 				document.body.style.backgroundImage = "url('./media/b14.jpg')";
@@ -184,16 +197,13 @@
 			}
 		}
 	</script>
-</main>
 
 	<footer>
-	  <!-- <div id="bottom_nav" class="navbar">
+	   <div id="bottom_nav" class="navbar">
 			<a href="#home">Home</a>
 			<a href="#news">News</a>
 			<a href="#contact">Contact</a>
-			<a href="#about">About</a> -->
-		Copyright info
-		Soundtracks taken from "https://ccrma.stanford.edu/~jos/pasp/Sound_Examples.html"
+			<a href="#about">About</a> 
 		</div>
 	</footer>
 </body>

@@ -103,6 +103,12 @@
 							}
 						}
 					}
+					else if (xmlhttp.status == 403){
+						alert('Network Error: 403\nFailed to load resource: the server responded with a status of 403');
+						for(var i = 0; i < 12; i++){
+							setErrorTemplate(template);
+						}
+					}
 					else if (xmlhttp.status == 404){
 						alert('Network Error: 404\nSoundBoard Can\'t be Loaded.\nWould you like to retry with a button to do that.');
 						for(var i = 0; i < 12; i++){
