@@ -29,15 +29,15 @@
 					<div class = "dropdown">
 						<li><a href="#" id = "theme">Theme</a></li>
 						<div class="dropdown-content">
-							<a id = "dark" href='#' onclick="changeTheme('dark');">Dark</a>
-							<a id = "light" href='#' onclick="changeTheme('light');">Light</a>
-							<a id = "anime" href='#' onclick="changeTheme('anime');">Hello Kitty!</a>
+							<a id = "dark" href='#' >Dark</a>
+							<a id = "light" href='#' >Light</a>
+							<a id = "anime" href='#' >Hello Kitty!</a>
 						</div>
 					</div>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#" id = "compact" onClick = "compactView();">Compact View</a></li>
+					<li><a href="#" id = "compact">Compact View</a></li>
 				</ul>
 			</div>
 		</nav>
@@ -54,9 +54,9 @@
 		</template>
 
   	</main>
-	<script>
-
-  	var metaData =[];
+<script>
+  var metaData =[];
+  var success = false;
 	$(document).ready(function() {
       $.getJSON('https://firebasestorage.googleapis.com/v0/b/weeb-applications.appspot.com/o/load_config.json?alt=media&token=e1566b7a-cd9b-49ab-8147-aae7f6cd8173', function(responseText){
         $.each(responseText, function(key, val){
@@ -66,29 +66,27 @@
         });
         renderSoundBoard(0);
       }).done(function() {
+        success = true;
 			console.log( "Success" );
-			
 		})
-		.fail(function() {
-			alert( "Network Error" );
-			var template = document.querySelector('#myTemplt');
-			for(var i = 0; i < 12; i++){
-				setErrorTemplate(template);
-			}
-		})
-		.error(function() {
-			alert( "System error" );
-			var template = document.querySelector('#myTemplt');
-			for(var i = 0; i < 12; i++){
-				setErrorTemplate(template);
-			}
-		});
-	});
+
+    setTimeout(function() {
+    if (!success)
+    {
+        alert("exceeding loading time!");
+        var template = document.querySelector('#myTemplt');
+  			for(var i = 0; i < 12; i++){
+  				setErrorTemplate(template);
+  			}
+    }
+  }, 2500);
+});
 
 
 
 	$('main').on('click','#btn',function() {
 		var sound = $(this).siblings('audio')[0];
+
 		if (sound.paused) {
 			sound.play();
 			$(this).attr('src',"./media/pauseBtn.png");
@@ -99,17 +97,26 @@
 			$(this).fadeTo( 0 , 1, function() {});
 		}
 		sound.onended = function () {
-			$(this).attr('src',"./media/playBtn.png");
+			$(this).siblings('.pBtn').attr('src',"./media/playBtn.png");
 			$(this).fadeTo( 0 , 1, function(){});
 		}
 	});
 
+
 	$('main').on('mouseenter','#btn',function() {
-		$(this).attr("src", "./media/pBtn2.png");
+    if($(this).attr("src") === "./media/playBtn.png"){
+      $(this).attr("src", "./media/pBtn2.png");
+    } else if($(this).attr("src") === "./media/pauseBtn.png")
+      $(this).css({"opacity": "0.8"});
     });
 
     $('main').on('mouseleave','#btn',function(){
-        $(this).attr("src", "./media/playBtn.png");
+      console.log($(this).attr('src'));
+      if($(this).attr("src") === "./media/pBtn2.png"){
+        $(this).attr('src',"./media/playBtn.png");
+      } else if($(this).attr("src") === "./media/pauseBtn.png"){
+        $(this).css({"opacity": "0.5"});
+      }
     });
 
 	$('#list1').click(function() {
@@ -139,16 +146,15 @@
 	}
 
 	function setErrorTemplate(template){
-
-    $('#template_container #col').remove();
-    for(var i = 0; i < 12; i++){
-			var myTemplate = $('#myTemplt').html().trim();
-			var myTemplateClone = $(myTemplate);
-			myTemplateClone.find('.soImg').attr('src',"./media/error-img.jpg");
-			myTemplateClone.find('audio').attr('src', "");
-			myTemplateClone.find('#btn').css({"visibility" : "hidden"});
-			myTemplateClone.find('#songName').html(name[i]);
-			myTemplateClone.clone().appendTo('main');
+		$('#template_container #col').remove();
+		for(var i = 0; i < 12; i++){
+				var myTemplate = $('#myTemplt').html().trim();
+				var myTemplateClone = $(myTemplate);
+				myTemplateClone.find('.soImg').attr('src',"./media/error-img.jpg");
+				myTemplateClone.find('audio').attr('src', "");
+				myTemplateClone.find('#btn').css({"visibility" : "hidden"});
+				myTemplateClone.find('#songName').html(name[i]);
+				myTemplateClone.clone().appendTo('main');
 		}
 	}
 </script>
@@ -174,9 +180,9 @@
         $("body").css({"background-attchment": "fixed"});
         $("link").attr("href", "anime.css");
         $("#compact").html("Compact View");
-				checkedValue = true;
-				preColor = "url('./media/navbar.jpg')";
-				animeMode = true;
+		checkedValue = true;
+		preColor = "url('./media/navbar.jpg')";
+		animeMode = true;
       });
       $(".dropdown-content #dark").click(function(){
         $("#navB").css({"background-image":""});
