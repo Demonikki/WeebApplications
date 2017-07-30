@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Soundboard Part 1a</title>
+	<meta charset="UTF-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+	<link rel="stylesheet" href="vanilla.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<main>
+		<nav class="navbar navbar-default" id = "navB">
+			<div class="container">
+				<div class="navbar-header">
+					<a href="#" class="navbar-brand">Soundboard</a>
+				</div>
+				<ul class="nav navbar-nav">
+					<li><a href="#" id = "theme">Theme</a></li>
+					<select id = "myTheme" onChange="changeTheme()">
+						<option value= "dark">Dark</option>
+						<option value="light">Light</option>
+						<option value="anime">Hello Kitty!</option>
+					</select>
+
+
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#" id = "compact" onClick = "compactView();">Compact View</a></li>
+				</ul>
+			</div>
+		</nav>
+
+		<template id= "myTemplt" >
+					<div id = "col" class="col-lg-3 col-sm-6 pic" >
+							<img class = "soImg">
+								<img id = "btn" class = "pBtn" onclick="playSound(event)"></img>
+							</img>
+
+							<audio id="clip">
+								<source type="audio/mp3">
+							</audio>
+					</div>
+		</template>
+    <!-- <img id = "test" ></img> -->
+	</main>
+
+	<script>
+		$(document).ready(function(){
+      // var soundtracks = [];
+      var soundtracks =[];
+      $.getJSON('load_config.json', function(responseText){
+        $.each(responseText, function(key, val){
+          $.each(val, function(i, ele){
+            // alert(val.length);
+              $.each(ele, function(j, result){
+                soundtracks.push(result);
+            });
+          });
+        });
+        var imgV1 = soundtracks[0];
+        var imgV2 = soundtracks[1];
+        var soundV1 = soundtracks[2];
+        var soundV2 = soundtracks[3];
+
+        for(var i = 0; i < 12; i++){
+          var myTemplate = $('#myTemplt').html().trim();
+          var myTemplateClone = $(myTemplate);
+          $('.soImg').attr('src', imgV1[i])
+          $('source').attr('src', soundV1[i]);
+          alert($('.soImg').attr('src'));
+          $('#btn').attr('src',"./media/playBtn.png");
+          myTemplateClone.appendTo('body');
+        }
+      });
+		});
+
+		function playSound(e) {
+			sound = e.target.parentNode.querySelector('audio');
+			if (sound.paused) {
+				sound.play();
+				e.target.src = "./media/pauseBtn.png";
+				e.target.style.opacity = "0.5";
+			} else {
+				sound.pause();
+				e.target.src = "./media/playBtn.png";
+				e.target.style.opacity = "1";
+			}
+			sound.onended = function () {
+				e.target.src = "./media/playBtn.png";
+				e.target.style.opacity = "1";
+			}
+		}
+ 	</script>
+	<script>
+	  	document.getElementById("navB").style.backgroundColor = "#191414";
+		document.body.style.backgroundImage = "url('http://designwoop.com/uploads/2012/03/01_free_subtle_textures_apple_ios_linen_texture.jpg')";
+		function changeTheme(){
+			var ele = document.getElementById("myTheme");
+			var theme = ele.options[ele.selectedIndex].value;
+			if (theme === "light") {
+				document.getElementById("navB").style.backgroundImage = "";
+				document.body.style.backgroundImage = "url('./media/b14.jpg')";
+				document.getElementsByTagName("link")[0].href = "light.css";
+			} else if (theme === "anime"){
+				document.body.style.backgroundImage = "url('./media/b16.jpg')";
+				document.getElementById("navB").style.backgroundImage = "url('./media/navbar.jpg')";
+				document.getElementById("navB").style.backgroundSize = "contain";
+				document.getElementsByTagName("link")[0].href = "anime.css";
+			} else {
+				document.getElementById("navB").style.backgroundImage = "";
+				document.getElementById("navB").style.backgroundColor = "#191414";
+				document.body.style.backgroundImage = "url('http://designwoop.com/uploads/2012/03/01_free_subtle_textures_apple_ios_linen_texture.jpg')";
+				document.getElementsByTagName("link")[0].href = "vanilla.css";
+			}
+
+		}
+	</script>
+
+	<script>
+		function compactView() {
+			if(compactView.checkedValue == undefined) {
+				compactView.checkedValue = true; //first call
+				console.log("first call");
+			}
+
+			if(compactView.checkedValue == true) {
+				compactView.oldColor = document.getElementById("navB").style.backgroundColor;
+				compactView.oldBG = document.body.style.backgroundImage;
+
+				document.getElementById("navB").style.backgroundColor = "rgb(120,120,120)";
+				document.getElementsByTagName("link")[0].href = "compact.css";
+				document.body.style.backgroundSize = "cover";
+				document.getElementById("compact").innerHTML = "Regular View";
+				compactView.checkedValue = false;
+			}
+			else if(compactView.checkedValue == false) {
+				document.body.style.backgroundSize = "auto";
+				document.getElementsByTagName("link")[0].href = "vanilla.css";
+				compactView.checkedValue = true;
+				document.getElementById("navB").style.backgroundColor = compactView.oldColor;
+				document.body.style.backgroundImage = compactView.oldBG;
+				document.getElementById("compact").innerHTML = "Compact View";
+			}
+		}
+	</script>
+
+
+	<footer>
+	  <!-- <div id="bottom_nav" class="navbar">
+			<a href="#home">Home</a>
+			<a href="#news">News</a>
+			<a href="#contact">Contact</a>
+			<a href="#about">About</a> -->
+		Copyright info
+		Soundtracks taken from "https://ccrma.stanford.edu/~jos/pasp/Sound_Examples.html"
+		</div>
+	</footer>
+</body>
+</html>
