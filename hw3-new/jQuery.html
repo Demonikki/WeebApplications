@@ -12,7 +12,13 @@
 		<nav class="navbar navbar-default" id = "navB">
 			<div class="container">
 				<div class="navbar-header">
-					<a href="#" class="navbar-brand">Soundboard</a>
+					<div class = "dropdown">
+						<a href="#" class="navbar-brand">Soundboards</a>
+						<div class="dropdown-content">
+							<a href="#" id = "list1" onClick = "renderSoundBoard(0);">Soundboard 1</a></li>
+							<a href="#" id = "list2" onClick = "renderSoundBoard(1);">Soundboard 2</a></li>
+						</div>
+					</div>
 				</div>
 				<ul class="nav navbar-nav">
 					<div class = "dropdown">
@@ -24,23 +30,24 @@
 						</div>
 					</div>
 				</ul>
+
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#" id = "compact" onClick = "compactView();">Compact View</a></li>
-					<li><a href="#" id = "list1">List1</a></li>
-					<li><a href="#" id = "list2">List2</a></li>
 				</ul>
 			</div>
 		</nav>
-		<template id= "myTemplt">
-		<div id = "col" class="col-lg-3 col-sm-6 pic" >
-				<img class = "soImg" id = "image"></img>
-				<img class = "pBtn" id = "btn" onclick="playSound(event)"></img>
 
-				<audio id="clip">
-					<source type="audio/mp3">
-				</audio>
-		</div>
-	</template>
+		<template id= "myTemplt">
+			<div id = "col" class="col-lg-3 col-sm-6 pic" >
+					<img class = "soImg" id = "image"></img>
+					<img class = "pBtn" id = "btn" onclick="playSound(event)"></img>
+
+					<audio id="clip">
+						<source type="audio/mp3">
+					</audio>
+			</div>
+		</template>
+		
   	</main>
 	<script>
   	var metaData =[];
@@ -88,7 +95,6 @@
 		}
 	}
 
-
 	function playSound(e) {
 		sound = e.target.parentNode.querySelector('audio');
 		if (sound.paused) {
@@ -105,8 +111,8 @@
 			e.target.style.opacity = "1";
 		}
 	}
+</script>
 
- 	</script>
 	<script>
 	  document.getElementById("navB").style.backgroundColor = "#191414";
 		document.body.style.backgroundImage = "url('http://designwoop.com/uploads/2012/03/01_free_subtle_textures_apple_ios_linen_texture.jpg')";
