@@ -21,7 +21,6 @@ body{
   margin-top: 2px;
   left:7%;
 }
-
 .soImg{
   width: 7%;
   height: auto;
@@ -32,4 +31,5 @@ body{
 .pBtn{
   position: relative; width: 7%; height: auto;
 }
+#songname { line-height: 20px;}
 a { color: white;}

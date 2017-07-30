@@ -86,12 +86,12 @@
 							var imgs = soundCells.img[list];
 							var sounds = soundCells.sound[list];
 							var names = soundCells.names[list];
-
+							console.log(names);
 							for(var i = 0; i < 12; i++){
 								template.content.querySelectorAll('img')[0].src = imgs[i];
 								template.content.querySelectorAll('source')[0].src = sounds[i];
 								template.content.querySelectorAll('img')[1].src = "./media/playBtn.png";
-								// template.content.querySelectorAll('songname')[0].content = "X";
+								template.content.querySelectorAll('span')[0].innerHTML = names[i];
 								var clone = document.importNode(template.content, true);
 								template.parentNode.appendChild(clone);
 							}
@@ -125,7 +125,7 @@
 				}
 			}
 
-			xmlhttp.open("GET", "https://firebasestorage.googleapis.com/v0/b/weeb-applications.appspot.com/o/load_config.json?alt=media&token=b5d9a580-6d94-4b1f-b381-cacace167751", true);
+			xmlhttp.open("GET", "https://firebasestorage.googleapis.com/v0/b/weeb-applications.appspot.com/o/load_config.json?alt=media&token=518da389-6923-491f-a66d-33a6a4359b6a", true);
 			xmlhttp.send();
 		}
 
