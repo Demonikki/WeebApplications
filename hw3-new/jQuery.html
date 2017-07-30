@@ -3,14 +3,7 @@
 <head>
 	<title>Soundboard Part 1a</title>
 	<meta charset="UTF-8">
-
-	<!-- BEGIN TRACKJS -->
-	<script type="text/javascript">window._trackJs = { token: '9771c887775d4dffbb3e0be5aef4b917' };</script>
-	<script type="text/javascript" src="https://cdn.trackjs.com/releases/current/tracker.js"></script>
-	<!-- END TRACKJS -->
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
 	<link rel="stylesheet" href="vanilla.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,87 +16,107 @@
 					<a href="#" class="navbar-brand">Soundboard</a>
 				</div>
 				<ul class="nav navbar-nav">
-					<div class = "dropdown">
-						<li><a href="#" id = "theme">Theme</a></li>
-						<div class="dropdown-content">
-							<a href='#' onclick="changeTheme('dark');">Dark</a>
-							<a href='#' onclick="changeTheme('light');">Light</a>
-							<a href='#' onclick="changeTheme('anime');">Hello Kitty!</a>
-						</div>
-					</div>
+					<li><a href="#" id = "theme">Theme</a></li>
+					<select id = "myTheme" onChange="changeTheme()">
+						<option value= "dark">Dark</option>
+						<option value="light">Light</option>
+						<option value="anime">Hello Kitty!</option>
+					</select>
+
+
 				</ul>
-				
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#" id = "compact" onClick = "compactView();">Compact View</a></li>
-					<li><a href="#" id = "list1" onClick = "renderSoundBoard(0);">List1</a></li>
-					<li><a href="#" id = "list2" onClick = "renderSoundBoard(1);">List2</a></li>
 				</ul>
 			</div>
 		</nav>
 
 		<template id= "myTemplt" >
 					<div id = "col" class="col-lg-3 col-sm-6 pic" >
-							<img class = "soImg">
+							<img class = "soImg" id = 'image'>
 								<img id = "btn" class = "pBtn" onclick="playSound(event)"></img>
 							</img>
 
 							<audio id="clip">
 								<source type="audio/mp3">
-								<source type="audio/wav">
 							</audio>
 					</div>
 		</template>
+    <!-- <img id = "test" ></img> -->
 	</main>
+
 	<script>
-		$(document).ready(function(){
-				$("#myTemplt").load("load_config.json", function(responseTxt, statusTxt, xhr){
-					$("#myTemplt").parent().append($("#myTemplt").attr(img) = );
-					if(statusTxt == "error")
-						alert("Error: " + xhr.status + ": " + xhr.statusText);
-				});
-		});
+	$(document).ready(function() {
+      // var soundtracks = [];
+      var soundtracks =[];
+      $.getJSON('https://firebasestorage.googleapis.com/v0/b/weeb-applications.appspot.com/o/load_config.json?alt=media&token=0fc08737-b67b-4d67-ab05-54b8efb03313', function(responseText){
+        $.each(responseText, function(key, val){
+          $.each(val, function(i, ele){
+              $.each(ele, function(j, result){
+                soundtracks.push(result);
+              });
+          });
+        });
+
+        var imgV1 = soundtracks[0];
+        var imgV2 = soundtracks[1];
+        var soundV1 = soundtracks[2];
+        var soundV2 = soundtracks[3];
 		
+        for(var i = 0; i < 12; i++){
+          var myTemplate = $('#myTemplt').html().trim();
+          var myTemplateClone = $(myTemplate);
+          myTemplateClone.find('.soImg').attr('src',imgV1[i]);
+		  myTemplateClone.find('audio').attr('src', soundV1[i]);
+          myTemplateClone.find('#btn').attr('src',"./media/playBtn.png");
+          myTemplateClone.clone().appendTo('body');
+        }
+      });
+	});
 
-
+		function playSound(e) {
+			sound = e.target.parentNode.querySelector('audio');
+			if (sound.paused) {
+				sound.play();
+				e.target.src = "./media/pauseBtn.png";
+				e.target.style.opacity = "0.5";
+			} else {
+				sound.pause();
+				e.target.src = "./media/playBtn.png";
+				e.target.style.opacity = "1";
+			}
+			sound.onended = function () {
+				e.target.src = "./media/playBtn.png";
+				e.target.style.opacity = "1";
+			}
+		}
  	</script>
 	<script>
 	  	document.getElementById("navB").style.backgroundColor = "#191414";
 		document.body.style.backgroundImage = "url('http://designwoop.com/uploads/2012/03/01_free_subtle_textures_apple_ios_linen_texture.jpg')";
-		var preColor;
-		function changeTheme(theme){
-			// var ele = document.getElementById("myTheme");
-			// var theme = ele.options[ele.selectedIndex].value;
-			console.log(theme);
+		function changeTheme(){
+			var ele = document.getElementById("myTheme");
+			var theme = ele.options[ele.selectedIndex].value;
 			if (theme === "light") {
 				document.getElementById("navB").style.backgroundImage = "";
 				document.body.style.backgroundImage = "url('./media/b14.jpg')";
 				document.getElementsByTagName("link")[0].href = "light.css";
-				document.getElementById("compact").innerHTML = "Compact View";
-				compactView.checkedValue = true;
-				preColor = "rgb(120,120,120)";
 			} else if (theme === "anime"){
 				document.body.style.backgroundImage = "url('./media/b16.jpg')";
-				document.body.style.backgroundSize = "100%";
-				document.body.style.backgroundAttachment = "fixed";
 				document.getElementById("navB").style.backgroundImage = "url('./media/navbar.jpg')";
 				document.getElementById("navB").style.backgroundSize = "contain";
 				document.getElementsByTagName("link")[0].href = "anime.css";
-				document.getElementById("compact").innerHTML = "Compact View";
-				compactView.checkedValue = true;
-				preColor = "url('./media/navbar.jpg')";
-				animeMode = true;
 			} else {
 				document.getElementById("navB").style.backgroundImage = "";
 				document.getElementById("navB").style.backgroundColor = "#191414";
 				document.body.style.backgroundImage = "url('http://designwoop.com/uploads/2012/03/01_free_subtle_textures_apple_ios_linen_texture.jpg')";
 				document.getElementsByTagName("link")[0].href = "vanilla.css";
-				preColor = document.getElementById("navB").style.backgroundColor;
-				compactView.checkedValue = true;
-				document.getElementById("compact").innerHTML = "Compact View";
 			}
 
 		}
+	</script>
 
+	<script>
 		function compactView() {
 			if(compactView.checkedValue == undefined) {
 				compactView.checkedValue = true; //first call
@@ -111,11 +124,10 @@
 			}
 
 			if(compactView.checkedValue == true) {
-				compactView.oldColor = preColor;
+				compactView.oldColor = document.getElementById("navB").style.backgroundColor;
 				compactView.oldBG = document.body.style.backgroundImage;
-				compactView.oldCSS = document.getElementsByTagName("link")[0].href;
-				console.log(compactView.oldCSS);
-				document.getElementById("navB").style.backgroundColor = compactView.oldColor;
+
+				document.getElementById("navB").style.backgroundColor = "rgb(120,120,120)";
 				document.getElementsByTagName("link")[0].href = "compact.css";
 				document.body.style.backgroundSize = "cover";
 				document.getElementById("compact").innerHTML = "Regular View";
@@ -123,7 +135,7 @@
 			}
 			else if(compactView.checkedValue == false) {
 				document.body.style.backgroundSize = "auto";
-				document.getElementsByTagName("link")[0].href = compactView.oldCSS;
+				document.getElementsByTagName("link")[0].href = "vanilla.css";
 				compactView.checkedValue = true;
 				document.getElementById("navB").style.backgroundColor = compactView.oldColor;
 				document.body.style.backgroundImage = compactView.oldBG;
@@ -131,15 +143,16 @@
 			}
 		}
 	</script>
-	<noscript>Your browser does not support JavaScript!</noscript>
-</main>
+
 
 	<footer>
-		<div id="bottom_nav" class="navbar">
+	  <!-- <div id="bottom_nav" class="navbar">
 			<a href="#home">Home</a>
 			<a href="#news">News</a>
 			<a href="#contact">Contact</a>
-			<a href="#about">About</a>
+			<a href="#about">About</a> -->
+		Copyright info
+		Soundtracks taken from "https://ccrma.stanford.edu/~jos/pasp/Sound_Examples.html"
 		</div>
 	</footer>
 </body>
