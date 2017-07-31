@@ -33,4 +33,4 @@ package that gets downloaded is only around 84KB in size, which does not have
 significant impact on loading times.
 
 ### TrackJs
-Add in the CDN of trackJS, then the trackJS server will monitor our project afterward.
+We added the TrackJs’s CDN into our source code. Then, whenever we run our code, our website will connect to TrackJS server. Then, TrackJS will monitor our website and keep tracking our errors.
