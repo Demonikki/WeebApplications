@@ -1,7 +1,21 @@
+const database = "https://firebasestorage.googleapis.com/v0/b/weeb-applications.appspot.com/o/load_config.json?alt=media&token=e1566b7a-cd9b-49ab-8147-aae7f6cd8173";
+const initBackground = 'http://designwoop.com/uploads/2012/03/01_free_subtle_textures_apple_ios_linen_texture.jpg';
+const initNavBColor = "#191414";
+const initGrey = "rgb(120,120,120)";
+const playButton = "./media/playBtn.png";
+const pauseButton = "./media/pauseBtn.png";
+const pauseBtnAnime = "./media/pBtn2.png";
+const errorImg = "./media/error-img.jpg";
+const lightBG = './media/b14.jpg';
+const navBImg = './media/navbar.jpg';
+const animeBG = './media/b16.jpg';
+function hideSplashScreen() {
+   $("#splash").fadeOut(4000);
+}
 $(document).ready(function() {
   var metaData =[];
   var success = false;
-    $.getJSON('https://firebasestorage.googleapis.com/v0/b/weeb-applications.appspot.com/o/load_config.json?alt=media&token=e1566b7a-cd9b-49ab-8147-aae7f6cd8173', function(responseText){
+    $.getJSON(database, function(responseText){
       $.each(responseText, function(key, val){
         $.each(val, function(i, result){
             metaData.push(result);
@@ -41,30 +55,30 @@ $(document).ready(function() {
 		var sound = $(this).siblings('audio')[0];
 		if (sound.paused) {
 			sound.play();
-			$(this).attr('src',"./media/pauseBtn.png");
+			$(this).attr('src',pauseButton);
 			$(this).fadeTo( 0 , 0.5, function() {});
 		} else {
 			sound.pause();
-			$(this).attr('src',"./media/playBtn.png");
+			$(this).attr('src',playButton);
 			$(this).fadeTo( 0 , 1, function() {});
 		}
 		sound.onended = function () {
-			$(this).siblings('.pBtn').attr('src',"./media/playBtn.png");
+			$(this).siblings('.pBtn').attr('src',playButton);
 			$(this).fadeTo( 0 , 1, function(){});
 		}
 	});
 	$('main').on('mouseenter','#btn',function() {
-    if($(this).attr("src") === "./media/playBtn.png"){
-      $(this).attr("src", "./media/pBtn2.png");
-    } else if($(this).attr("src") === "./media/pauseBtn.png")
+    if($(this).attr("src") === playButton){
+      $(this).attr("src", pauseBtnAnime);
+    } else if($(this).attr("src") === pauseButton)
       $(this).css({"opacity": "0.8"});
     });
 
     $('main').on('mouseleave','#btn',function(){
       console.log($(this).attr('src'));
-      if($(this).attr("src") === "./media/pBtn2.png"){
-        $(this).attr('src',"./media/playBtn.png");
-      } else if($(this).attr("src") === "./media/pauseBtn.png"){
+      if($(this).attr("src") === pauseBtnAnime){
+        $(this).attr('src',playButton);
+      } else if($(this).attr("src") === pauseButton){
         $(this).css({"opacity": "0.5"});
       }
     });
@@ -78,7 +92,7 @@ $(document).ready(function() {
 			     var myTemplateClone = $(myTemplate);
 			     myTemplateClone.find('.soImg').attr('src',img[i]);
 			     myTemplateClone.find('audio').attr('src', sound[i]);
-			     myTemplateClone.find('#btn').attr('src',"./media/playBtn.png");
+			     myTemplateClone.find('#btn').attr('src',playButton);
 			     myTemplateClone.find('#songName').html(name[i]);
 			     myTemplateClone.clone().appendTo('main');
 		   }
@@ -89,7 +103,7 @@ $(document).ready(function() {
 		for(var i = 0; i < 12; i++){
 				var myTemplate = $('#myTemplt').html().trim();
 				var myTemplateClone = $(myTemplate);
-				myTemplateClone.find('.soImg').attr('src',"./media/error-img.jpg");
+				myTemplateClone.find('.soImg').attr('src',errorImg);
 				myTemplateClone.find('audio').attr('src', "");
 				myTemplateClone.find('#btn').css({"visibility" : "hidden"});
 				myTemplateClone.find('#songName').html(name[i]);
@@ -98,37 +112,36 @@ $(document).ready(function() {
     setBackground();
 	}
   function setBackground(){
-    $("#navB").css({"background-color": "#191414"});
-    $("body").css({"background-image": "url('http://designwoop.com/uploads/2012/03/01_free_subtle_textures_apple_ios_linen_texture.jpg')"});
+    $("#navB").css({"background-color": initNavBColor});
+    $("body").css({"background-image": "url(" + initBackground + ")"});
   }
   $(function() {
     var checkedValue;
     var preColor;
     $(".dropdown-content #light").click(function(){
       $("#navB").css({"background-image":""});
-      $("body").css({"background-image":"url('./media/b14.jpg')"});
+      $("body").css({"background-image":"url("+ lightBG + ")"});
       $("link").attr("href", "light.css");
       $("#compact").html("Compact View");
       checkedValue = true;
-      preColor = "rgb(120,120,120)";
+      preColor = initGrey;
     });
     $(".dropdown-content #anime").click(function(){
-      $("#navB").css({"background-image":"url('./media/navbar.jpg')"});
+      $("#navB").css({"background-image":"url(" + navBImg + ")"});
       $("#navB").css({"background-size": "contain"});
-      $("body").css({"background-image":"url('./media/b16.jpg')"});
+      $("body").css({"background-image":"url(" + animeBG + ")"});
       $("body").css({"background-size": "100%"});
       $("body").css({"background-attchment": "fixed"});
       $("link").attr("href", "anime.css");
       $("#compact").html("Compact View");
         checkedValue = true;
-        preColor = "url('./media/navbar.jpg')";
+        preColor = "url(" + navBImg + ")";
         animeMode = true;
     });
     $(".dropdown-content #dark").click(function(){
-      alert("here");
       $("#navB").css({"background-image":""});
-      $("#navB").css({"background-color":"#191414"});
-      $("body").css({"background-image":"url('http://designwoop.com/uploads/2012/03/01_free_subtle_textures_apple_ios_linen_texture.jpg')"});
+      $("#navB").css({"background-color":initNavBColor});
+      $("body").css({"background-image":"url(" + initBackground + ")"});
       $("link").attr("href", "vanilla.css");
       preColor = $("#navB").attr('background-color');
       $("#compact").html("Compact View");
