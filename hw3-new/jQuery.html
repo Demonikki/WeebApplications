@@ -13,6 +13,16 @@
 	<!-- END TRACKJS -->
 </head>
 <body>
+	<!-- Splash screen  -->
+	<div class = "splash" id = "splash">
+	   <h1 id="splashtitle">SOUNDBOARD - A PROGRESSIVE 'WEEB' APPLICATION</h1>
+	</div>
+	<script>
+	   function hideSplashScreen() {
+		   $("#splash").fadeOut(4000);
+	   }
+	</script>
+
 	<main id="template_container">
 		<nav class="navbar navbar-default" id = "navB">
 			<div class="container">
@@ -64,6 +74,7 @@
               metaData.push(result);
           });
         });
+		hideSplashScreen();
         renderSoundBoard(0);
       }).done(function() {
         success = true;
