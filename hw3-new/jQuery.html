@@ -65,30 +65,33 @@
 
   	</main>
 <script>
+$(document).ready(function() {
   var metaData =[];
   var success = false;
-	$(document).ready(function() {
-      $.getJSON('https://firebasestorage.googleapis.com/v0/b/weeb-applications.appspot.com/o/load_config.json?alt=media&token=e1566b7a-cd9b-49ab-8147-aae7f6cd8173', function(responseText){
-        $.each(responseText, function(key, val){
-          $.each(val, function(i, result){
-              metaData.push(result);
-          });
+    $.getJSON('https://firebasestorage.googleapis.com/v0/b/weeb-applications.appspot.com/o/load_config.json?alt=media&token=e1566b7a-cd9b-49ab-8147-aae7f6cd8173', function(responseText){
+      $.each(responseText, function(key, val){
+        $.each(val, function(i, result){
+            metaData.push(result);
         });
-		hideSplashScreen();
-        renderSoundBoard(0);
-      }).done(function() {
-        success = true;
-			console.log( "Success" );
-		})
-
-    setTimeout(function() {
-    if (!success)
-    {
-        alert("exceeding loading time!");
-        var template = document.querySelector('#myTemplt');
-  			for(var i = 0; i < 12; i++){
-  				setErrorTemplate(template);
-  			}
+      });
+      success = true;
+      hideSplashScreen();
+      renderSoundBoard(0, metaData);
+      // checkFailure (success);
+    }).done(function() {
+      success = true;
+    console.log( "Success" );
+  })
+  // function checkFailure (success){
+  setTimeout(function() {
+  if (!success)
+  {
+      alert("exceeding loading time!");
+      hideSplashScreen();
+      var template = document.querySelector('#myTemplt');
+      for(var i = 0; i < 12; i++){
+        setErrorTemplate(template);
+      }
     }
   }, 2500);
 });
@@ -132,15 +135,15 @@
 
 	$('#list1').click(function() {
 		$('#template_container #col').remove();
-		renderSoundBoard(0);
+		renderSoundBoard(0, metaData);
 	});
 
 	$('#list2').click(function() {
 		$('#template_container #col').remove();
-		renderSoundBoard(1);
+		renderSoundBoard(1, metaData);
 	});
 
-  	function renderSoundBoard(list){
+  	function renderSoundBoard(list, metaData){
 		var img = metaData[0][list];
 		var sound = metaData[1][list];
 		var name = metaData[2][list];
@@ -154,6 +157,7 @@
 			myTemplateClone.find('#songName').html(name[i]);
 			myTemplateClone.clone().appendTo('main');
 		}
+    setBackground();
 	}
 
 	function setErrorTemplate(template){
@@ -167,15 +171,17 @@
 				myTemplateClone.find('#songName').html(name[i]);
 				myTemplateClone.clone().appendTo('main');
 		}
+    setBackground();
 	}
-</script>
-
-<script>
-    var checkedValue;
+  function setBackground(){
     $("#navB").css({"background-color": "#191414"});
     $("body").css({"background-image": "url('http://designwoop.com/uploads/2012/03/01_free_subtle_textures_apple_ios_linen_texture.jpg')"});
-		var preColor;
-      $(".dropdown-content #light").click(function(){
+  }
+    // var checkedValue;
+		// var preColor;
+      $(".dropdown-content #light").on('click', function(checkedValue, preColor){
+        var checkedValue;
+    		var preColor;
         $("#navB").css({"background-image":""});
         $("body").css({"background-image":"url('./media/b14.jpg')"});
         $("link").attr("href", "light.css");
@@ -183,7 +189,7 @@
 				checkedValue = true;
 				preColor = "rgb(120,120,120)";
       });
-      $(".dropdown-content #anime").click(function(){
+      $(".dropdown-content #anime").on('click',function(checkedValue, preColor){
         $("#navB").css({"background-image":"url('./media/navbar.jpg')"});
         $("#navB").css({"background-size": "contain"});
         $("body").css({"background-image":"url('./media/b16.jpg')"});
@@ -193,9 +199,9 @@
         $("#compact").html("Compact View");
 		checkedValue = true;
 		preColor = "url('./media/navbar.jpg')";
-		animeMode = true;
+		// animeMode = true;
       });
-      $(".dropdown-content #dark").click(function(){
+      $(".dropdown-content #dark").on('click',function(checkedValue, preColor){
         $("#navB").css({"background-image":""});
         $("#navB").css({"background-color":"#191414"});
         $("body").css({"background-image":"url('http://designwoop.com/uploads/2012/03/01_free_subtle_textures_apple_ios_linen_texture.jpg')"});
@@ -205,7 +211,7 @@
 				$("#compact").html("Compact View");
       });
 
-      $("#compact").click(function(){
+      $("#compact").on('click',function(checkedValue, preColor){
         if(checkedValue === undefined){
           checkedValue = true; //first call
         }
