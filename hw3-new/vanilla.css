@@ -11,8 +11,9 @@ font-size:14px;line-height:1.42857143;
 
 
 /* Splash Screen */
+
+
 #splash {
-    display: block;
     height: 100%;
     width: 100%;
     background: rgb(50,50,50);
@@ -21,12 +22,18 @@ font-size:14px;line-height:1.42857143;
     z-index: 2;
 }
 #splashtitle {
+    display: flex;
     font-family: monospace;
     color: #e4e4e4;
-    text-align: center;
-    margin-top: 18%;
+    align-items: center;
+    justify-content: center;
 }
-
+#splashlogo {
+    display: block;
+    color: #e4e4e4;
+    margin-left: auto;
+    margin-right: auto
+}
 
 button,input,select,optgroup,textarea,#theme{
   font-family:inherit;
