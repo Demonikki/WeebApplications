@@ -14,6 +14,19 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+	<!-- Splash screen  -->
+   <div class = "splash" id = "splash">
+	   <h1 id="splashtitle">SOUNDBOARD - A PROGRESSIVE 'WEEB' APPLICATION</h1>
+   </div>
+   <script>
+	   function hideSplashScreen() {
+		   var splash = document.getElementById("splash");
+		   splash.style.display = 'none';
+	   }
+	   function loadSplashScreen() {
+		   window.setTimeout(hideSplashScreen, 2500);
+	   }
+   </script>
 	<main>
 		<nav class="navbar navbar-default" id = "navB">
 			<div class="container">
@@ -21,8 +34,8 @@
 					<div class = "dropdown">
 						<a href="#" class="navbar-brand">Soundboards</a>
 						<div class="dropdown-content">
-							<a href="#" id = "list1" onClick = "renderSoundBoard(0);">Soundboard 1</a></li>
-							<a href="#" id = "list2" onClick = "renderSoundBoard(1);">Soundboard 2</a></li>
+							<a href="#" id = "list1" onClick = "renderSoundBoard(0);">Soundboard 1</a>
+							<a href="#" id = "list2" onClick = "renderSoundBoard(1);">Soundboard 2</a>
 						</div>
 					</div>
 				</div>
@@ -46,15 +59,14 @@
 		<template id= "myTemplt" >
 					<div id = "col" class="col-lg-3 col-sm-6 pic" >
 							<img class = "soImg">
-								<img id = "btn" class = "pBtn" onclick="playSound(event)"></img>
+								<img id = "btn" class = "pBtn" onclick="playSound(event)">
 								<span id = "songName">Song</span>
-							</img>
+
 							<audio id="clip">
 								<source type="audio/mp3">
 							</audio>
 					</div>
 		</template>
-	</main>
 	<script>
 
 		function supportsTemplate() {
@@ -62,6 +74,7 @@
 		}
 
 		window.onload = function () {
+			loadSplashScreen();
 			if (supportsTemplate())
 				renderSoundBoard(0);
 		}
@@ -96,7 +109,7 @@
 							}
 
 						} catch (e) {
-							alert("System Error");
+							alert("Error: "+e);
 							for(var i = 0; i < 12; i++){
 								setErrorTemplate(template);
 							}
@@ -129,11 +142,13 @@
 		}
 
 		function setErrorTemplate(template){
-			template.content.querySelectorAll('source')[0].src = "";
-			template.content.querySelectorAll('img')[0].src = "./media/error-img.jpg";
-			template.content.querySelectorAll('img')[1].style.visibility = "hidden";
-			var clone = document.importNode(template.content, true);
-			template.parentNode.appendChild(clone);
+			if(template) {
+				template.content.querySelectorAll('source')[0].src = "";
+				template.content.querySelectorAll('img')[0].src = "./media/error-img.jpg";
+				template.content.querySelectorAll('img')[1].style.visibility = "hidden";
+				var clone = document.importNode(template.content, true);
+				template.parentNode.appendChild(clone);
+			}
 		}
 
 		function playSound(e) {
@@ -225,7 +240,7 @@
 			<a href="#news">News</a>
 			<a href="#contact">Contact</a>
 			<a href="#about">About</a>
-		</div> 
+		</div>
 	</footer>
 </body>
 </html>
