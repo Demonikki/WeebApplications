@@ -64,49 +64,22 @@
               metaData.push(result);
           });
         });
-<<<<<<< HEAD
-		}).done(function() {
-=======
-        renderSoundBoard(0);
       }).done(function() {
         success = true;
->>>>>>> a41c4037469b5df8d608c8f060122588a58b3645
-			console.log( "Success" );
-			renderSoundBoard(0);
+				console.log( "Success" );
+				renderSoundBoard(0);
 		})
-<<<<<<< HEAD
-		.fail(function(jqXHR, textStatus, errorThrown) {
-			alert('getJSON request failed! ' + textStatus);
-			var template = document.querySelector('#myTemplt');
-			for(var i = 0; i < 12; i++){
-				setErrorTemplate(template);
-			}
-		})
-		.error(function() {
-			alert( "System error" );
-			var template = document.querySelector('#myTemplt');
-			for(var i = 0; i < 12; i++){
-				setErrorTemplate(template);
-			}
-		});
 	});
-				
- 
-=======
-
-    setTimeout(function() {
-    if (!success)
-    {
-        alert("exceeding loading time!");
-        var template = document.querySelector('#myTemplt');
-  			for(var i = 0; i < 12; i++){
-  				setErrorTemplate(template);
-  			}
-    }
-  }, 2500);
-});
->>>>>>> a41c4037469b5df8d608c8f060122588a58b3645
-
+	
+	setTimeout(function() {
+		if (!success) {
+				alert("exceeding loading time!");
+				var template = document.querySelector('#myTemplt');
+				for(var i = 0; i < 12; i++){
+					setErrorTemplate(template);
+				}
+		}
+	}, 2500);
 
 
 	$('main').on('click','#btn',function() {
@@ -155,18 +128,19 @@
 	});
 
   	function renderSoundBoard(list){
-		var img = metaData[0][list];
-		var sound = metaData[1][list];
-		var name = metaData[2][list];
+			$('#template_container #col').remove();
+			var img = metaData[0][list];
+			var sound = metaData[1][list];
+			var name = metaData[2][list];
 
-		for(var i = 0; i < 12; i++){
-			var myTemplate = $('#myTemplt').html().trim();
-			var myTemplateClone = $(myTemplate);
-			myTemplateClone.find('.soImg').attr('src',img[i]);
-			myTemplateClone.find('audio').attr('src', sound[i]);
-			myTemplateClone.find('#btn').attr('src',"./media/playBtn.png");
-			myTemplateClone.find('#songName').html(name[i]);
-			myTemplateClone.clone().appendTo('main');
+			for(var i = 0; i < 12; i++){
+				var myTemplate = $('#myTemplt').html().trim();
+				var myTemplateClone = $(myTemplate);
+				myTemplateClone.find('.soImg').attr('src',img[i]);
+				myTemplateClone.find('audio').attr('src', sound[i]);
+				myTemplateClone.find('#btn').attr('src',"./media/playBtn.png");
+				myTemplateClone.find('#songName').html(name[i]);
+				myTemplateClone.clone().appendTo('main');
 		}
 	}
 
