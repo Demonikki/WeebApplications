@@ -9,7 +9,8 @@ const errorImg = "./media/error-img.jpg";
 const lightBG = './media/b14.jpg';
 const navBImg = './media/navbar.jpg';
 const animeBG = './media/b16.jpg';
-const kImgLoading = './media/Rolling.gif';
+const kImgLoading = './media/Spinner.gif';
+const kErrorSongName = 'Loading Error';
 const numOfCells = 12;
 function hideSplashScreen() {
    $("#splash").fadeOut(5000);
@@ -20,6 +21,7 @@ $(document).ready(function() {
 
   var template = document.querySelector('#myTemplt');
   setLoadingTemplate(template, kImgLoading);
+
   //fectch the json file from firebase server
   $.getJSON(database, function(responseText){
     $.each(responseText, function(key, val){
@@ -29,11 +31,24 @@ $(document).ready(function() {
     });
     success = true;
     hideSplashScreen();
-  }).done(function() {
+  })
+  .done(function() { 
     console.log( "Success" );
     renderSoundBoard(0, metaData);//render the soundbaord when page loads
-    setBackground();
+    setBackground(); 
+    success = true;
   })
+  .fail(function(jqXHR, textStatus, errorThrown) { 
+    if(jqXHR.status == 404){
+        alert("404 Not Found:\n\nThe requested page could not be found on the server.");
+        success = true;
+    }
+    if(jqXHR.status == 500){
+        alert("Error 500: \n\nServer is down. Please try again later.");
+        success = true;
+    }
+  });
+
   /*
   * This function promotes the error message and displays
   * error images when the fetch of json file from server is not successful
@@ -123,7 +138,7 @@ function setLoadingTemplate(template, imgLoadingGif){
 function setErrorTemplate(template){
   $('#template_container #col').remove();
   for(var i = 0; i < numOfCells; i++){
-      setTemplate(errorImg, "", "", name[i], true);
+      setTemplate(errorImg, "", "", kErrorSongName, true);
   }
   setBackground();
 }
