@@ -17,7 +17,7 @@ function hideSplashScreen() {
 $(document).ready(function() {
   var metaData =[];
   var success = false;
-  
+
   var template = document.querySelector('#myTemplt');
   setLoadingTemplate(template, kImgLoading);
   //fectch the json file from firebase server
