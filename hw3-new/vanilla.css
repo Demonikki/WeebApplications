@@ -25,8 +25,11 @@ font-size:14px;line-height:1.42857143;
     display: flex;
     font-family: monospace;
     color: #e4e4e4;
+    text-decoration: underline overline;
     align-items: center;
     justify-content: center;
+    animation: pulse_logo 1 1.5s;
+
 }
 #splashlogo {
     display: block;
@@ -37,23 +40,30 @@ font-size:14px;line-height:1.42857143;
 #signal {
     position: relative;
     /*margin-left: auto; margin-right: auto;*/
-    left: 50%; margin-left: -35px;
+    left: 50%; margin-left: -28px;
     top: 0; margin-top: -110px;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 26px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
     border: 3px solid rgb(0,130,250);
-    border-radius: 50%;
-    animation: pulse infinite 1.5s;
+    border-bottom: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-radius: 100%;
+    animation: pulse_ring infinite 1s;
     z-index: 2;
 }
 
-@-webkit-keyframes pulse {
-    0% {-webkit-transform: scale(1); opacity: 0.8;}
-    70% {opacity: 0.3;}
-    100% {-webkit-transform: scale(3.5); opacity: 0.0;}
+@-webkit-keyframes pulse_ring {
+    0% {-webkit-transform: scale(1); opacity: 0.8; }
+    80% {-webkit-transform: scale(3.9); opacity: 0.6; border-width:2px;}
+    100% {-webkit-transform: scale(4.5); opacity: 0.0; }
 }
+@-webkit-keyframes pulse_logo {
+    0% {-webkit-transform: scale(.9); opacity: 0.0}
+    100% {-webkit-transform: scale(1); opacity: 1.0}
 }
-
 
 button,input,select,optgroup,textarea,#theme{
   font-family:inherit;
