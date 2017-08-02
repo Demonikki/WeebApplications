@@ -11,8 +11,13 @@ const errorImg = "./media/error-img.jpg";
 const lightBG = './media/b14.jpg';
 const navBImg = './media/navbar.jpg';
 const animeBG = './media/b16.jpg';
-const kImgLoading = './media/Spinner.gif';
-const kErrorSongName = 'Loading Error';
+const strImgLoadingAddress = './media/Spinner.gif';
+const strErrorSongName = 'Loading Error';
+const strJsonParseErrorMessage = "JSON Parse Error\n\nContact web admin for instruction.";
+const strTimeOutErrorMessage = "Timeout:\n\nCheck your network.";
+const strPageNotFoundErrorMessage = "404 Not Found:\n\nThe requested page could not be found on the server."
+const strServerDownErrorMessage = "Error 500: \n\nServer is down. Please try again later.";
+const strNetworkTimeOutErrorMessage = "Error 408: \n\nTimeout.";
 const numOfCells = 12;
 
 function hideSplashScreen() {
@@ -24,7 +29,7 @@ $(document).ready(function() {
   
   //Set Loading Imagesj
   var template = document.querySelector('#myTemplt');
-  setLoadingTemplate(template, kImgLoading);
+  setLoadingTemplate(template, strImgLoadingAddress);
   
   //fectch the json file from firebase server
   $.getJSON(database, function(responseText){
@@ -43,19 +48,19 @@ $(document).ready(function() {
   .fail(function(jqXHR, textStatus, errorThrown) { 
     hideSplashScreen();
     if(textStatus === "parsererror"){
-        alert("JSON Parse Error\n\nContact web admin for instruction.");
+        alert(strJsonParseErrorMessage);
     }
-    if(textStatus === "timeout"){
-        alert("Timeout:\n\nCheck your network.");
+    else if(textStatus === "timeout"){
+        alert(strTimeOutErrorMessage);
     }
-    if(jqXHR.status == 404){
-        alert("404 Not Found:\n\nThe requested page could not be found on the server.");
+    else if(jqXHR.status == 404){
+        alert(strPageNotFoundErrorMessage);
     }
-    if(jqXHR.status == 500){
-        alert("Error 500: \n\nServer is down. Please try again later.");
+    else if(jqXHR.status == 500){
+        alert(strServerDownErrorMessage);
     }
-    if(jqXHR.status == 408){
-        alert("Error 408: \n\nTimeout.");
+    else if(jqXHR.status == 408){
+        alert(strNetworkTimeOutErrorMessage);
     }
     handleError();
   });
@@ -137,7 +142,7 @@ function setLoadingTemplate(template, imgLoadingGif){
 function setErrorTemplate(template){
   $('#template_container #col').remove();
   for(var i = 0; i < numOfCells; i++){
-      setTemplate(errorImg, "", "", kErrorSongName, true);
+      setTemplate(errorImg, "", "", strErrorSongName, true);
   }
   setBackground();
 }
