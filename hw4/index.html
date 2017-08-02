@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Soundboard3 jQuery Version</title>
+	<meta charset="UTF-8">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="vanilla.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- BEGIN TRACKJS -->
+	<script type="text/javascript">window._trackJs = { token: '9771c887775d4dffbb3e0be5aef4b917' };</script>
+	<script type="text/javascript" src="https://cdn.trackjs.com/releases/current/tracker.js"></script>
+	<!-- END TRACKJS -->
+</head>
+<body>
+	<!-- Splash screen  -->
+	<div id = "splash">
+		<img id = "splashlogo" src = "./media/logo.png">
+		<div id = "signal"></div>
+		<h1 id="splashtitle">A PROGRESSIVE 'WEEB' APPLICATION</h1>
+	</div>
+
+	<main id="template_container">
+		<nav class="navbar navbar-default" id = "navB">
+			<div class="container">
+				<div class="navbar-header">
+					<div class = "dropdown">
+						<a href="#" class="navbar-brand">Soundboards</a>
+						<div class="dropdown-content">
+							<a href="#" id = "list1">Soundboard 1</a></li>
+							<a href="#" id = "list2">Soundboard 2</a></li>
+						</div>
+					</div>
+				</div>
+				<ul class="nav navbar-nav">
+					<div class = "dropdown">
+						<li><a href="#" id = "theme">Theme</a></li>
+						<div class="dropdown-content">
+							<a id = "dark" href='#' >Dark</a>
+							<a id = "light" href='#' >Light</a>
+							<a id = "anime" href='#' >Hello Kitty!</a>
+						</div>
+					</div>
+				</ul>
+
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#" id = "compact">Compact View</a></li>
+				</ul>
+			</div>
+		</nav>
+
+		<template id= "myTemplt">
+			<div id = "col" class="col-lg-3 col-sm-6 pic" >
+					<img class = "soImg" id = "image" alt="Song Image">
+					<img class = "pBtn" id = "btn" alt="Control Button">
+					<span id = "songName">Song</span>
+					<audio id="clip">
+						<source type="audio/mp3">
+					</audio>
+			</div>
+		</template>
+
+  	</main>
+<script src = "soundBoard.js"></script>
+	<noscript>Your browser does not support JavaScript!</noscript>
+	<footer>
+	    <div id="bottom_nav" class="navbar">
+			<a href="#home">Home</a>
+			<a href="#news">News</a>
+			<a href="#contact">Contact</a>
+			<a href="#about">About</a>
+		</div>
+	</footer>
+</body>
+</html>

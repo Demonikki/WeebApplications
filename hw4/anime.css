@@ -1,0 +1,208 @@
+/* Style1 CSS for HW3*/
+
+html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}
+body{
+font-family: "Comic Sans MS", Helvetica,Arial, sans-serif;
+font-size:14px;line-height:2;
+/*color:#333;*/
+/*background-color:#fff;*/
+}
+button,input,select,optgroup,textarea{
+  font-family:inherit;
+  font-size:inherit;
+  line-height:inherit
+  }
+a {color:#337ab7;text-decoration:none}
+* { box-sizing: border-box;}
+
+/* All navbar stuff reduced from bootstrap*/
+.navbar{position:relative;min-height:50px;margin-bottom:20px;border:1px solid transparent}
+@media (min-width:768px){.navbar{border-radius:4px}}
+.navbar-default{    background-image: url('./media/heart.jpg'); }
+.navbar-header{float:left}
+@media all and (min-width:768px) {.navbar-nav {float: left; margin: 0; }}
+.navbar-nav>li>a{padding-top:10px;padding-bottom:10px;line-height:20px;}
+.container>.navbar-header{margin-right:-15px;margin-left:-15px}
+@media (min-width:768px){.container>.navbar-header{margin-right:0;margin-left:0}}
+.navbar-header:after,.navbar-header:before,.navbar:after,.navbar:before,.panel-body:after,.panel-body:before,.row:after,.row:before{display:table;content:" "}
+.navbar-header:after,.navbar:after,.row:after{clear:both}
+.navbar-nav > li {float: left;  }
+.nav>li>a>img {max-width: none; border: 0}
+.nav > li > a {position: relative; display: block; padding: 15px 15px;}
+@media all and (min-width:768px){
+.navbar-right { float: right !important; margin-right: -15px; color: white;}}
+.navbar-right~.navbar-right{margin-right:0}}
+.nav-tabs{border-bottom:1px solid #ddd}
+.navbar-brand{float:left;height:50px;padding:15px 15px;font-size:18px;line-height:20px;text-decoration:none}
+.navbar-brand:focus,.navbar-brand:hover{text-decoration:none}
+.navbar-brand>img{
+  display:block
+}
+
+.navbar-text{color:#777}
+.navbar-default .navbar-nav>li>a{color: #4e4e4e; background-image: -webkit-linear-gradient(top, #ffc0cb , #f068ba); border-radius: 4px 4px 4px 4px;}
+.navbar-brand:hover{color:#cc1961;background-color:transparent; background-image: url('./media/heart.jpg'); background-position: center;}
+.navbar-brand{color:#4e4e4e;  background-image: -webkit-linear-gradient(top,  #ffc0cb , #f068ba); border-radius: 4px 4px 4px 4px; }
+.navbar-default .navbar-nav>li>a:focus,.navbar-default .navbar-nav>li>a:hover{color:#cc1961;background-color:transparent; background-image: url('./media/heart.jpg'); background-position: center; }
+img{vertical-align: middle; border: 0}
+.nav{list-style: none; padding-left: 0px;}
+
+/* Row and column stuff */
+
+.col-sm-2 { width: 16.66%;}
+.col-sm-3 {
+  -webkit-box-flex:0;
+  -webkit-flex:0 0 25%;
+  max-width:25%;
+  /*padding-right:15px;
+  padding-left:15px*/
+}
+.col-sm-10, .col-sm-3, .col-sm-2, .col-lg-10, .col-lg-2, .col-lg-3, .col-md-10, .col-md-2, .col-md-3{
+    position: relative;
+    min-height: 1px;
+    /*padding-right: 15px;
+    padding-left: 15px;*/
+    float: left;
+}
+
+
+
+.container{padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}
+
+@media (min-width:1200px){.container{width:1170px; }}
+
+
+img{
+  position: relative;
+}
+
+.pic{
+  width: 13%;
+  margin-top: 20px;
+  border-style:solid;
+  border-image: url('./media/border.png') 50 0 50 0 repeat;
+  -moz-border-image: url('./media/border.png') 50 0 50 0 repeat;
+  border-image-slice: 30 30 30 30;
+  border-width: 10px 10px 10px 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: #fdacd8;
+}
+
+@media (max-width:600px) {
+    .pic{
+      width: 55%;
+      margin-top: 20px;
+      left:5%;
+    }
+}
+
+.soImg{
+  width: 100%;
+  height: auto;
+  margin-left: auto;
+  position: relative;
+}
+.pBtn{
+  /*position: relative;*/
+  /* z-index: 999; */
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  width: 25%;
+  height: 25%;
+  /*justify-content: center;*/
+}
+#songName{
+    display: block;
+    font-weight: bold;
+    color:rgb(255,0,102);
+    font-family: sans-serif;
+    padding-left: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+#compact { color: #4e4e4e; background-image: -webkit-linear-gradient(top,  #ffc0cb , #f068ba); }
+#compact:hover { color: #cc1961; background-repeat: no-repeat; background-image: url('./media/heart.jpg'); }
+#theme{ color: white; background-color: rgb(255,0,102); font-size: 18px; border: 8px solid transparent;}
+#theme:hover{
+    background-image: url('./media/heart.jpg');
+    color: #cc1961;
+    background-color: transparent;
+    background-position: center;
+    font-size: 18px;
+    border: 15px solid transparent;
+}
+
+select {
+  position: absolute;
+  /*width: 50%;*/
+  /*display: inline;*/
+  /*float: right;*/
+  top:15px;
+}
+
+@media(max-width:768px) {
+    #theme { padding-left: 7px; }
+    #compact { float:right; }
+    .dropdown { max-width: 100px; left: 7px; padding-bottom: 10px;}
+
+}
+
+.navbar-header > .dropdown { position: relative; top: 0px; }
+.navbar-header>.dropdown>.dropdown-content { top: 37px;}
+@media(max-width:768px) {
+    .navbar-header > .dropdown { position: fixed; left: 40%; z-index: 1; }
+    .navbar-header>.dropdown>.dropdown-content { top: 37px; z-index: 1; }
+}
+
+.dropdown {
+    position: relative;
+    top:5px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ff008d;
+    min-width: 120px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    color: pink;
+    padding: 6px 6px;
+    text-decoration: none;
+    display: block;
+}
+.dropdown-content a:hover {background-color: #ffdce2; color: magenta;}
+
+#bottom_nav {
+  overflow: hidden;
+  background-color: #ff008d;
+  position: fixed; 
+  bottom: 0;
+  width: 100%;
+  margin-bottom: 0px;
+  margin-top: 20px;
+  z-index: 1;
+}
+
+#bottom_nav > a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
