@@ -1,3 +1,4 @@
+"use strict";
 const database = "https://firebasestorage.googleapis.com/v0/b/weeb-applications.appspot.com/o/load_config.json?alt=media&token=e1566b7a-cd9b-49ab-8147-aae7f6cd8173";
 const initBackground = 'http://designwoop.com/uploads/2012/03/01_free_subtle_textures_apple_ios_linen_texture.jpg';
 const initNavBColor = "#191414";
