@@ -22,7 +22,7 @@ const strSuccessMessage = "Success";
 const iNumOfCells = 12;
 
 function hideSplashScreen() {
-   $("#splash").fadeOut(500);
+   $("#splash").fadeOut(5000);
 }
 $(document).ready(function() {
   var metaData =[];
