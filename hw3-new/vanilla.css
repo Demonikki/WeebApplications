@@ -34,6 +34,26 @@ font-size:14px;line-height:1.42857143;
     margin-left: auto;
     margin-right: auto
 }
+#signal {
+    position: relative;
+    /*margin-left: auto; margin-right: auto;*/
+    left: 50%; margin-left: -35px;
+    top: 0; margin-top: -110px;
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgb(0,130,250);
+    border-radius: 50%;
+    animation: pulse infinite 1.5s;
+    z-index: 2;
+}
+
+@-webkit-keyframes pulse {
+    0% {-webkit-transform: scale(1); opacity: 0.8;}
+    70% {opacity: 0.3;}
+    100% {-webkit-transform: scale(3.5); opacity: 0.0;}
+}
+}
+
 
 button,input,select,optgroup,textarea,#theme{
   font-family:inherit;
