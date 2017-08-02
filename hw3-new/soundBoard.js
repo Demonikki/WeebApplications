@@ -10,7 +10,7 @@ const lightBG = './media/b14.jpg';
 const navBImg = './media/navbar.jpg';
 const animeBG = './media/b16.jpg';
 function hideSplashScreen() {
-   $("#splash").fadeOut(4000);
+   $("#splash").fadeOut(5000);
 }
 $(document).ready(function() {
   var metaData =[];
