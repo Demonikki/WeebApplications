@@ -7,6 +7,34 @@ font-size:14px;line-height:1.42857143;
 /*color:#333;*/
 /*background-color:#fff;*/
 }
+
+
+
+/* Splash Screen */
+
+
+#splash {
+    height: 100%;
+    width: 100%;
+    background: rgb(50,50,50);
+    position: fixed;
+    left:0; top:0;
+    z-index: 2;
+}
+#splashtitle {
+    display: flex;
+    font-family: monospace;
+    color: #e4e4e4;
+    align-items: center;
+    justify-content: center;
+}
+#splashlogo {
+    display: block;
+    color: #e4e4e4;
+    margin-left: auto;
+    margin-right: auto
+}
+
 button,input,select,optgroup,textarea,#theme{
   font-family:inherit;
   font-size:inherit;
@@ -64,13 +92,8 @@ img{vertical-align: middle; border: 0}
     padding-left: 15px;
     float: left;
 }
-
-
-
 .container{padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}
-
 @media (min-width:1200px){.container{width:1170px; }}
-
 
 img{
   position: relative;
@@ -121,7 +144,7 @@ select {
 #bottom_nav {
   overflow: hidden;
   background-color: #333;
-   position: relative; 
+   position: relative;
   bottom: 0;
   width: 100%;
   margin-bottom: 0px;

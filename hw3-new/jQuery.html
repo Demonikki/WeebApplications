@@ -13,6 +13,12 @@
 	<!-- END TRACKJS -->
 </head>
 <body>
+	<!-- Splash screen  -->
+	<div id = "splash">
+		<img id = "splashlogo" src = "./media/logo.png">
+		<h1 id="splashtitle">A PROGRESSIVE 'WEEB' APPLICATION</h1>
+	</div>
+
 	<main id="template_container">
 		<nav class="navbar navbar-default" id = "navB">
 			<div class="container">
@@ -29,15 +35,15 @@
 					<div class = "dropdown">
 						<li><a href="#" id = "theme">Theme</a></li>
 						<div class="dropdown-content">
-							<a id = "dark" href='#' onclick="changeTheme('dark');">Dark</a>
-							<a id = "light" href='#' onclick="changeTheme('light');">Light</a>
-							<a id = "anime" href='#' onclick="changeTheme('anime');">Hello Kitty!</a>
+							<a id = "dark" href='#' >Dark</a>
+							<a id = "light" href='#' >Light</a>
+							<a id = "anime" href='#' >Hello Kitty!</a>
 						</div>
 					</div>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#" id = "compact" onClick = "compactView();">Compact View</a></li>
+					<li><a href="#" id = "compact">Compact View</a></li>
 				</ul>
 			</div>
 		</nav>
@@ -54,163 +60,7 @@
 		</template>
 
   	</main>
-	<script>
-
-  	var metaData =[];
-	$(document).ready(function() {
-      $.getJSON('https://firebasestorage.googleapis.com/v0/b/weeb-applications.appspot.com/o/load_config.json?alt=media&token=e1566b7a-cd9b-49ab-8147-aae7f6cd8173', function(responseText){
-        $.each(responseText, function(key, val){
-          $.each(val, function(i, result){
-              metaData.push(result);
-          });
-        });
-        renderSoundBoard(0);
-      }).done(function() {
-			console.log( "Success" );
-			
-		})
-		.fail(function() {
-			alert( "Network Error" );
-			var template = document.querySelector('#myTemplt');
-			for(var i = 0; i < 12; i++){
-				setErrorTemplate(template);
-			}
-		})
-		.error(function() {
-			alert( "System error" );
-			var template = document.querySelector('#myTemplt');
-			for(var i = 0; i < 12; i++){
-				setErrorTemplate(template);
-			}
-		});
-	});
-
-
-
-	$('main').on('click','#btn',function() {
-		var sound = $(this).siblings('audio')[0];
-		if (sound.paused) {
-			sound.play();
-			$(this).attr('src',"./media/pauseBtn.png");
-			$(this).fadeTo( 0 , 0.5, function() {});
-		} else {
-			sound.pause();
-			$(this).attr('src',"./media/playBtn.png");
-			$(this).fadeTo( 0 , 1, function() {});
-		}
-		sound.onended = function () {
-			$(this).attr('src',"./media/playBtn.png");
-			$(this).fadeTo( 0 , 1, function(){});
-		}
-	});
-
-	$('main').on('mouseenter','#btn',function() {
-		$(this).attr("src", "./media/pBtn2.png");
-    });
-
-    $('main').on('mouseleave','#btn',function(){
-        $(this).attr("src", "./media/playBtn.png");
-    });
-
-	$('#list1').click(function() {
-		$('#template_container #col').remove();
-		renderSoundBoard(0);
-	});
-
-	$('#list2').click(function() {
-		$('#template_container #col').remove();
-		renderSoundBoard(1);
-	});
-
-  	function renderSoundBoard(list){
-		var img = metaData[0][list];
-		var sound = metaData[1][list];
-		var name = metaData[2][list];
-
-		for(var i = 0; i < 12; i++){
-			var myTemplate = $('#myTemplt').html().trim();
-			var myTemplateClone = $(myTemplate);
-			myTemplateClone.find('.soImg').attr('src',img[i]);
-			myTemplateClone.find('audio').attr('src', sound[i]);
-			myTemplateClone.find('#btn').attr('src',"./media/playBtn.png");
-			myTemplateClone.find('#songName').html(name[i]);
-			myTemplateClone.clone().appendTo('main');
-		}
-	}
-
-	function setErrorTemplate(template){
-
-    $('#template_container #col').remove();
-    for(var i = 0; i < 12; i++){
-			var myTemplate = $('#myTemplt').html().trim();
-			var myTemplateClone = $(myTemplate);
-			myTemplateClone.find('.soImg').attr('src',"./media/error-img.jpg");
-			myTemplateClone.find('audio').attr('src', "");
-			myTemplateClone.find('#btn').css({"visibility" : "hidden"});
-			myTemplateClone.find('#songName').html(name[i]);
-			myTemplateClone.clone().appendTo('main');
-		}
-	}
-</script>
-
-<script>
-    var checkedValue;
-    $("#navB").css({"background-color": "#191414"});
-    $("body").css({"background-image": "url('http://designwoop.com/uploads/2012/03/01_free_subtle_textures_apple_ios_linen_texture.jpg')"});
-		var preColor;
-      $(".dropdown-content #light").click(function(){
-        $("#navB").css({"background-image":""});
-        $("body").css({"background-image":"url('./media/b14.jpg')"});
-        $("link").attr("href", "light.css");
-        $("#compact").html("Compact View");
-				checkedValue = true;
-				preColor = "rgb(120,120,120)";
-      });
-      $(".dropdown-content #anime").click(function(){
-        $("#navB").css({"background-image":"url('./media/navbar.jpg')"});
-        $("#navB").css({"background-size": "contain"});
-        $("body").css({"background-image":"url('./media/b16.jpg')"});
-        $("body").css({"background-size": "100%"});
-        $("body").css({"background-attchment": "fixed"});
-        $("link").attr("href", "anime.css");
-        $("#compact").html("Compact View");
-				checkedValue = true;
-				preColor = "url('./media/navbar.jpg')";
-				animeMode = true;
-      });
-      $(".dropdown-content #dark").click(function(){
-        $("#navB").css({"background-image":""});
-        $("#navB").css({"background-color":"#191414"});
-        $("body").css({"background-image":"url('http://designwoop.com/uploads/2012/03/01_free_subtle_textures_apple_ios_linen_texture.jpg')"});
-        $("link").attr("href", "vanilla.css");
-				preColor = $("#navB").atrr('background-color');
-				checkedValue = true;
-				$("#compact").html("Compact View");
-      });
-
-      $("#compact").click(function(){
-        if(checkedValue === undefined){
-          checkedValue = true; //first call
-        }
-        if(checkedValue === true){
-          oldColor = preColor;
-          oldBG = $("body").css('background-image');
-          oldCSS = $("link").attr("href");
-          $("#navB").css({"background-color": oldColor});
-          $("link").attr("href", "compact.css");
-          $("body").css({"background-size": "cover"});
-          $("#compact").html("Regular View");
-      		checkedValue = false;
-        } else if (checkedValue == false) {
-      		$("body").css({"background-size": "auto"});
-      		$("link").attr("href", oldCSS);
-      		checkedValue = true;
-      		$("#navB").css({"background-color":  oldColor});
-      		$("body").css({"background-image": oldBG});
-      		$("#compact").html("Compact View");
-      	}
-      });
-	</script>
+<script src = "soundBoard.js"></script>
 	<noscript>Your browser does not support JavaScript!</noscript>
 	<footer>
 	    <div id="bottom_nav" class="navbar">

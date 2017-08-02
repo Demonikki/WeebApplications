@@ -29,15 +29,15 @@
 					<div class = "dropdown">
 						<li><a href="#" id = "theme">Theme</a></li>
 						<div class="dropdown-content">
-							<a id = "dark" href='#' onclick="changeTheme('dark');">Dark</a>
-							<a id = "light" href='#' onclick="changeTheme('light');">Light</a>
-							<a id = "anime" href='#' onclick="changeTheme('anime');">Hello Kitty!</a>
+							<a id = "dark" href='#' >Dark</a>
+							<a id = "light" href='#' >Light</a>
+							<a id = "anime" href='#' >Hello Kitty!</a>
 						</div>
 					</div>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#" id = "compact" onClick = "compactView();">Compact View</a></li>
+					<li><a href="#" id = "compact">Compact View</a></li>
 				</ul>
 			</div>
 		</nav>
@@ -54,9 +54,9 @@
 		</template>
 
   	</main>
-	<script>
-
-  	var metaData =[];
+<script>
+  var metaData =[];
+  var success = false;
 	$(document).ready(function() {
       $.getJSON('https://firebasestorage.googleapis.com/v0/b/weeb-applications.appspot.com/o/load_config.json?alt=media&token=e1566b7a-cd9b-49ab-8147-aae7f6cd8173', function(responseText){
         $.each(responseText, function(key, val){
@@ -64,10 +64,17 @@
               metaData.push(result);
           });
         });
+<<<<<<< HEAD
 		}).done(function() {
+=======
+        renderSoundBoard(0);
+      }).done(function() {
+        success = true;
+>>>>>>> a41c4037469b5df8d608c8f060122588a58b3645
 			console.log( "Success" );
 			renderSoundBoard(0);
 		})
+<<<<<<< HEAD
 		.fail(function(jqXHR, textStatus, errorThrown) {
 			alert('getJSON request failed! ' + textStatus);
 			var template = document.querySelector('#myTemplt');
@@ -85,12 +92,26 @@
 	});
 				
  
+=======
+
+    setTimeout(function() {
+    if (!success)
+    {
+        alert("exceeding loading time!");
+        var template = document.querySelector('#myTemplt');
+  			for(var i = 0; i < 12; i++){
+  				setErrorTemplate(template);
+  			}
+    }
+  }, 2500);
+});
+>>>>>>> a41c4037469b5df8d608c8f060122588a58b3645
 
 
 
 	$('main').on('click','#btn',function() {
 		var sound = $(this).siblings('audio')[0];
-		
+
 		if (sound.paused) {
 			sound.play();
 			$(this).attr('src',"./media/pauseBtn.png");
