@@ -9,26 +9,33 @@ const errorImg = "./media/error-img.jpg";
 const lightBG = './media/b14.jpg';
 const navBImg = './media/navbar.jpg';
 const animeBG = './media/b16.jpg';
+const numOfCells = 12;
 function hideSplashScreen() {
    $("#splash").fadeOut(5000);
 }
 $(document).ready(function() {
   var metaData =[];
   var success = false;
+    //fectch the json file from firebase server
     $.getJSON(database, function(responseText){
       $.each(responseText, function(key, val){
         $.each(val, function(i, result){
-            metaData.push(result);
+            metaData.push(result); // array that has array of images and sounds at each index
         });
       });
       success = true;
       hideSplashScreen();
-      renderSoundBoard(0, metaData);
+      renderSoundBoard(0, metaData);//render the soundbaord when page loads
       setBackground();
     }).done(function() {
       success = true;
     console.log( "Success" );
   })
+  /*
+  * This function promotes the error message and displays
+  * error images when the fetch of json file from server is not successful
+  * within 2.5 seconds.
+  */
   setTimeout(function() {
   if (!success)
   {
@@ -40,17 +47,21 @@ $(document).ready(function() {
       }
     }
   }, 2500);
+
+  /* click event on SoundBoard list1*/
   $('#list1').click(function() {
 		$('#template_container #col').remove();
 		renderSoundBoard(0, metaData);
 	});
 
+  /* click event on SoundBoard list2*/
 	$('#list2').click(function() {
 		$('#template_container #col').remove();
 		renderSoundBoard(1, metaData);
 	});
 });
 
+  /* click event on audio play of each sound */
 	$('main').on('click','#btn',function() {
 		var sound = $(this).siblings('audio')[0];
 		if (sound.paused) {
@@ -67,6 +78,8 @@ $(document).ready(function() {
 			$(this).fadeTo( 0 , 1, function(){});
 		}
 	});
+
+  /* animations of button change on mouse enter */
 	$('main').on('mouseenter','#btn',function() {
     if($(this).attr("src") === playButton){
       $(this).attr("src", pauseBtnAnime);
@@ -74,6 +87,7 @@ $(document).ready(function() {
       $(this).css({"opacity": "0.8"});
     });
 
+    /* animations of button change on mouse leave */
     $('main').on('mouseleave','#btn',function(){
       console.log($(this).attr('src'));
       if($(this).attr("src") === pauseBtnAnime){
@@ -82,92 +96,103 @@ $(document).ready(function() {
         $(this).css({"opacity": "0.5"});
       }
     });
+
+    /* render function for 3*4 grids of sounds */
   	function renderSoundBoard(list, metaData){
 		    var img = metaData[0][list];
 		    var sound = metaData[1][list];
 		    var name = metaData[2][list];
-
-		    for(var i = 0; i < 12; i++){
-			     var myTemplate = $('#myTemplt').html().trim();
-			     var myTemplateClone = $(myTemplate);
-			     myTemplateClone.find('.soImg').attr('src',img[i]);
-			     myTemplateClone.find('audio').attr('src', sound[i]);
-			     myTemplateClone.find('#btn').attr('src',playButton);
-			     myTemplateClone.find('#songName').html(name[i]);
-			     myTemplateClone.clone().appendTo('main');
+		    for(var i = 0; i < numOfCells; i++){
+           setTemplate(img[i], sound[i], playButton, name[i], false);
 		   }
 	}
 
+  /* render function of error images for 3*4 grids of sounds */
 	function setErrorTemplate(template){
 		$('#template_container #col').remove();
-		for(var i = 0; i < 12; i++){
-				var myTemplate = $('#myTemplt').html().trim();
-				var myTemplateClone = $(myTemplate);
-				myTemplateClone.find('.soImg').attr('src',errorImg);
-				myTemplateClone.find('audio').attr('src', "");
-				myTemplateClone.find('#btn').css({"visibility" : "hidden"});
-				myTemplateClone.find('#songName').html(name[i]);
-				myTemplateClone.clone().appendTo('main');
+		for(var i = 0; i < numOfCells; i++){
+        setTemplate(errorImg, "", "", name[i], true);
 		}
     setBackground();
 	}
+  /* helper function for render the template of each cell */
+  function setTemplate(toImg, toSound, toBtn, toName, isError){
+    var myTemplate = $('#myTemplt').html().trim();
+    var myTemplateClone = $(myTemplate);
+    myTemplateClone.find('.soImg').attr('src',toImg);
+    myTemplateClone.find('audio').attr('src', toSound);
+    if(isError === true){
+      myTemplateClone.find('#btn').css({"visibility" : "hidden"});
+    } else {
+      myTemplateClone.find('#btn').attr('src',toBtn);
+    }
+    myTemplateClone.find('#songName').html(toName);
+    myTemplateClone.clone().appendTo('main');
+  }
+  /* set up the initial background of SoundBoard */
   function setBackground(){
     $("#navB").css({"background-color": initNavBColor});
     $("body").css({"background-image": "url(" + initBackground + ")"});
   }
+  /*
+  * This function handles theme change and view change between compact and regular
+  */
   $(function() {
-    var checkedValue;
-    var preColor;
-    $(".dropdown-content #light").click(function(){
-      $("#navB").css({"background-image":""});
-      $("body").css({"background-image":"url("+ lightBG + ")"});
-      $("link").attr("href", "light.css");
-      $("#compact").html("Compact View");
+    var checkedValue; //keep track of current mode of view
+    var preColor; //keep track of previews color of nav bar
+    $(".dropdown-content #light").click(function(){ //click event on theme change to light
+      changeTheme("", lightBG, "light.css");
       checkedValue = true;
       preColor = initGrey;
     });
-    $(".dropdown-content #anime").click(function(){
-      $("#navB").css({"background-image":"url(" + navBImg + ")"});
+    $(".dropdown-content #anime").click(function(){ //click event on theme change to hello kitty
+      preColor = "url(" + navBImg + ")";
+      changeTheme(navBImg, animeBG, "anime.css");
       $("#navB").css({"background-size": "contain"});
-      $("body").css({"background-image":"url(" + animeBG + ")"});
       $("body").css({"background-size": "100%"});
       $("body").css({"background-attchment": "fixed"});
-      $("link").attr("href", "anime.css");
-      $("#compact").html("Compact View");
         checkedValue = true;
-        preColor = "url(" + navBImg + ")";
-        animeMode = true;
     });
-    $(".dropdown-content #dark").click(function(){
-      $("#navB").css({"background-image":""});
+    $(".dropdown-content #dark").click(function(){ //click event on theme change to dark
+      changeTheme("", initBackground, "vanilla.css");
       $("#navB").css({"background-color":initNavBColor});
-      $("body").css({"background-image":"url(" + initBackground + ")"});
-      $("link").attr("href", "vanilla.css");
       preColor = $("#navB").attr('background-color');
-      $("#compact").html("Compact View");
       console.log($("#compact").html());
       checkedValue = true;
     });
-    $("#compact").click(function(){
+    $("#compact").click(function(){ ////click event on view change between compact and regular view
       if(checkedValue === undefined){
         checkedValue = true; //first call
       }
-      if(checkedValue === true){
+      if(checkedValue === true){ //if changes to compact view
         oldColor = preColor;
         oldBG = $("body").css('background-image');
         oldCSS = $("link").attr("href");
-        $("#navB").css({"background-color": oldColor});
-        $("link").attr("href", "compact.css");
+        changeView(oldColor, "compact.css", "Regular View");
         $("body").css({"background-size": "cover"});
-        $("#compact").html("Regular View");
         checkedValue = false;
-      } else if (checkedValue == false) {
+      } else if (checkedValue == false) { //if changes to regular view
+        changeView(oldColor, oldCSS, "Compact View");
         $("body").css({"background-size": "auto"});
-        $("link").attr("href", oldCSS);
         checkedValue = true;
-        $("#navB").css({"background-color":  oldColor});
         $("body").css({"background-image": oldBG});
-        $("#compact").html("Compact View");
       }
     });
   });
+  /* helper function for theme change */
+  function changeTheme(navImg, bdImg, cssLink){
+    if(navImg === ""){
+      $("#navB").css({"background-image":navImg});
+    } else {
+      $("#navB").css({"background-image": "url(" + navImg + ")"});
+    }
+    $("body").css({"background-image":"url("+ bdImg + ")"});
+    $("link").attr("href", cssLink);
+    $("#compact").html("Compact View");
+  }
+  /* helper function for view change */
+  function changeView(oldColor, cssLink, view){
+    $("#navB").css({"background-color": oldColor});
+    $("link").attr("href", cssLink);
+    $("#compact").html(view);
+  }
