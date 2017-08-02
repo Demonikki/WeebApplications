@@ -1,4 +1,5 @@
 //const database = "https://firebasestorage.googleapis.com/v0/b/weeb-applications.appspot.com/o/load_config.json?alt=media&token=e1566b7a-cd9b-49ab-8147-aae7f6cd8173";
+"use strict";
 const database = "./load_config.json";
 const initBackground = 'http://designwoop.com/uploads/2012/03/01_free_subtle_textures_apple_ios_linen_texture.jpg';
 const initNavBColor = "#191414";
@@ -13,16 +14,18 @@ const animeBG = './media/b16.jpg';
 const kImgLoading = './media/Spinner.gif';
 const kErrorSongName = 'Loading Error';
 const numOfCells = 12;
+
 function hideSplashScreen() {
    $("#splash").fadeOut(5000);
 }
 $(document).ready(function() {
   var metaData =[];
-  var success = false;
+  var success = true;
   
+  //Set Loading Imagesj
   var template = document.querySelector('#myTemplt');
   setLoadingTemplate(template, kImgLoading);
-
+  
   //fectch the json file from firebase server
   $.getJSON(database, function(responseText){
     $.each(responseText, function(key, val){
@@ -30,42 +33,37 @@ $(document).ready(function() {
           metaData.push(result); // array that has array of images and sounds at each index
       });
     });
-    success = true;
-    hideSplashScreen();
   })
-  .done(function() { 
+  .done(function() {
     console.log( "Success" );
+    hideSplashScreen();
     renderSoundBoard(0, metaData);//render the soundbaord when page loads
     setBackground(); 
-    success = true;
   })
   .fail(function(jqXHR, textStatus, errorThrown) { 
+    hideSplashScreen();
+    if(textStatus === "parsererror"){
+        alert("JSON Parse Error\n\nContact web admin for instruction.");
+    }
+    if(textStatus === "timeout"){
+        alert("Timeout:\n\nCheck your network.");
+    }
     if(jqXHR.status == 404){
         alert("404 Not Found:\n\nThe requested page could not be found on the server.");
-        success = true;
     }
     if(jqXHR.status == 500){
         alert("Error 500: \n\nServer is down. Please try again later.");
-        success = true;
     }
+    if(jqXHR.status == 408){
+        alert("Error 408: \n\nTimeout.");
+    }
+    handleError();
   });
 
-  /*
-  * This function promotes the error message and displays
-  * error images when the fetch of json file from server is not successful
-  * within 2.5 seconds.
-  */
-  setTimeout(function() {
-  if (!success)
-  {
-      alert("exceeding loading time!");
-      hideSplashScreen();
-      var template = document.querySelector('#myTemplt');
-      for(var i = 0; i < numOfCells; i++){
-        setErrorTemplate(template);
-      }
-    }
-  }, 2500);
+  function handleError(){
+    var template = document.querySelector('#myTemplt');
+    setErrorTemplate(template);
+  }
 
   /* click event on SoundBoard list1*/
   $('#list1').click(function() {
