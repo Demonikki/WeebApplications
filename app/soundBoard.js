@@ -1,5 +1,5 @@
 const strDatabase = "https://firebasestorage.googleapis.com/v0/b/weeb-applications.appspot.com/o/load_config.json?alt=media&token=e1566b7a-cd9b-49ab-8147-aae7f6cd8173";
-const strInitBackground = './media/darkbg';
+const strInitBackground = './media/darkbg.jpg';
 const strInitNavBColor = "#191414";
 const strInitGrey = "rgb(120,120,120)";
 const strPlayButton = "./media/playBtn.png";
