@@ -1,29 +1,22 @@
 {
   "name": "soundboard",
   "short_name": "oncore",
-  "icons": [{
-    "src": "images/icons/icon-128x128.png",
-      "sizes": "128x128",
-      "type": "image/png"
-    }, {
-      "src": "images/icons/icon-144x144.png",
-      "sizes": "144x144",
-      "type": "image/png"
-    }, {
-      "src": "images/icons/icon-152x152.png",
-      "sizes": "152x152",
-      "type": "image/png"
-    }, {
-      "src": "images/icons/icon-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    }, {
-      "src": "images/icons/icon-256x256.png",
-      "sizes": "256x256",
-      "type": "image/png"
-    }],
+  "version": "0.0.0.1",
   "start_url": "/index.html",
-  "display": "standalone",
-  "background_color": "#3E4EB8",
-  "theme_color": "#2F3BA2"
+  "app": {
+    "urls": [
+      "https://weeb-applications.firebaseapp.com/soundboard-part1a.html",
+      "https://weeb-applications.firebaseapp.com/soundboard-part1b.html",
+      "https://weeb-applications.firebaseapp.com/tagtest.html",
+      "https://weeb-applications.firebaseapp.com/soundboard3-part2-v1.html",
+      "https://weeb-applications.firebaseapp.com/soundboard3-part2-v2.html",
+      "https://weeb-applications.firebaseapp.com/javaScript.html",
+      "https://weeb-applications.firebaseapp.com/jQuery.html",
+      "https://weeb-applications.firebaseapp.com/README.md"
+    ],
+    "launch": {
+      "web_url": "https://weeb-applications.firebaseapp.com"
+    }
+  }
+
 }
