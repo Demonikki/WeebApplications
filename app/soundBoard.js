@@ -1,5 +1,5 @@
 const strDatabase = "https://firebasestorage.googleapis.com/v0/b/weeb-applications.appspot.com/o/load_config.json?alt=media&token=e1566b7a-cd9b-49ab-8147-aae7f6cd8173";
-const strInitBackground = './media/darkbg';
+const strInitBackground = './media/darkbg.jpg';
 const strInitNavBColor = "#191414";
 const strInitGrey = "rgb(120,120,120)";
 const strPlayButton = "./media/playBtn.png";
@@ -183,7 +183,7 @@ function setBackground(){
 * This function handles theme change and view change between compact and regular
 */
 $(function() {
-  var checkedValue; //keep track of current mode of view
+  var bcheckedValue; //keep track of current mode of view
   var preColor; //keep track of previews color of nav bar
   var oldColor;
   var oldBG;
@@ -192,7 +192,7 @@ $(function() {
   $(".dropdown-content #light").click(function(){ //click event on theme change to light
     changeTheme("", strLightBG, "light.css");
     preColor = strInitGrey;
-    checkedValue = true;
+    bcheckedValue = true;
   });
   $(".dropdown-content #anime").click(function(){ //click event on theme change to hello kitty
     preColor = "url(" + strNavBImg + ")";
@@ -200,31 +200,30 @@ $(function() {
     $("#navB").css({"background-size": "contain"});
     $("body").css({"background-size": "100%"});
     $("body").css({"background-attchment": "fixed"});
-    checkedValue = true;
+    bcheckedValue = true;
   });
   $(".dropdown-content #dark").click(function(){ //click event on theme change to dark
     changeTheme("", strInitBackground, "vanilla.css");
     $("#navB").css({"background-color":strInitNavBColor});
     preColor = $("#navB").attr('background-color');
-    checkedValue = true;
+    bcheckedValue = true;
   });
   $("#compact").click(function(){ //click event on view change between compact and regular view
-    if(checkedValue === undefined){
-      checkedValue = true; //first call
+    if(bcheckedValue === undefined){
+      bcheckedValue = true; //first call
     }
-    if(checkedValue === true){ //if changes to compact view
+    if(bcheckedValue === true){ //if changes to compact view
       oldBG = $("body").css('background-image');
       oldCSS = $("link").attr("href");
       console.log("start: "+oldCSS);
       changeView(oldColor, "compact.css", "Regular View");
       $("body").css({"background-size": "cover"});
-      checkedValue = false;
-    } else if (checkedValue == false) { //if changes to regular view
-     console.log("Changing to compact" + oldCSS);
+      bcheckedValue = false;
+    } else if (bcheckedValue == false) { //if changes to regular view
       changeView(oldColor, oldCSS, "Compact View");
       $("body").css({"background-size": "auto"});
       $("body").css({"background-image": oldBG});
-      checkedValue = true;
+      bcheckedValue = true;
     }
   });
 });
