@@ -2,7 +2,8 @@
   "name": "soundboard",
   "short_name": "oncore",
   "version": "0.0.0.1",
-  "start_url": "/index.html",
+  "start_url": "/jQuery.html",
+  "display": "standalone",
   "app": {
     "urls": [
       "https://weeb-applications.firebaseapp.com/soundboard-part1a.html",
@@ -18,5 +19,7 @@
       "web_url": "https://weeb-applications.firebaseapp.com"
     }
   }
+  "background_color": "#3E4EB8",
+  "theme_color": "#2F3BA2"
 
 }
