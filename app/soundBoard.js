@@ -53,6 +53,7 @@ $(document).ready(function() {
   })
   .fail(function(jqXHR, textStatus, errorThrown) {
     hideSplashScreen();
+    trackJs.track(jqXHR.status + " " + textStatus + ": " + errorThrown);
     if(textStatus === "parsererror"){
         alert(strJsonParseErrorMessage);
     }
