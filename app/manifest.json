@@ -4,6 +4,16 @@
   "version": "0.0.0.1",
   "start_url": "/jQuery.html",
   "display": "standalone",
+  "icons": [{
+      "src": "./media/b1.jpg",
+      "sizes": "192x192",
+      "type": "image/jpg"
+      }, {
+      "src": "./media/b2.jpg",
+      "sizes": "512x512",
+      "type": "image/jpg"
+      }
+  ],
   "app": {
     "urls": [
       "https://weeb-applications.firebaseapp.com/soundboard-part1a.html",
