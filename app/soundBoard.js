@@ -1,5 +1,5 @@
 const strDatabase = "https://firebasestorage.googleapis.com/v0/b/weeb-applications.appspot.com/o/load_config.json?alt=media&token=e1566b7a-cd9b-49ab-8147-aae7f6cd8173";
-const strInitBackground = 'http://designwoop.com/uploads/2012/03/01_free_subtle_textures_apple_ios_linen_texture.jpg';
+const strInitBackground = './media/darkbg';
 const strInitNavBColor = "#191414";
 const strInitGrey = "rgb(120,120,120)";
 const strPlayButton = "./media/playBtn.png";
@@ -187,7 +187,7 @@ $(function() {
   var oldColor;
   var oldBG;
   var oldCSS;
-  
+
   $(".dropdown-content #light").click(function(){ //click event on theme change to light
     changeTheme("", strLightBG, "light.css");
     preColor = strInitGrey;
