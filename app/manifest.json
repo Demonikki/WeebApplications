@@ -1,6 +1,6 @@
 {
   "name": "soundboard",
-  "short_name": "oncore",
+  "short_name": "encore",
   "version": "0.0.0.1",
   "start_url": "/jQuery.html",
   "display": "standalone",

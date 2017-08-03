@@ -22,8 +22,9 @@ const iNumOfCells = 12;
 
 function hideSplashScreen() {
     if(!navigator.onLine) {
-        alert("Offline");
+        console.log("Loading offline page");
         window.location = "offline.html";
+        console.log(load_config);
     }
     else {
         $("#splash").fadeOut(5000);
@@ -214,6 +215,7 @@ $(function() {
     if(bcheckedValue === true){ //if changes to compact view
       oldBG = $("body").css('background-image');
       oldCSS = $("link").attr("href");
+      console.log("start: "+oldCSS);
       changeView(oldColor, "compact.css", "Regular View");
       $("body").css({"background-size": "cover"});
       bcheckedValue = false;
@@ -246,6 +248,7 @@ function changeView(strOldColor, strCssLink, strView){
   if (typeof strCssLink === 'string' && typeof strView == 'string'){
     $("#navB").css({"background-color": strOldColor});
     $("link").attr("href", strCssLink);
+    console.log("str: "+strCSSLink);
     $("#compact").html(strView);
   }
 }
