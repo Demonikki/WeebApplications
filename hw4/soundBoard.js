@@ -1,4 +1,3 @@
-"use strict";
 const strDatabase = "https://firebasestorage.googleapis.com/v0/b/weeb-applications.appspot.com/o/load_config.json?alt=media&token=e1566b7a-cd9b-49ab-8147-aae7f6cd8173";
 const strInitBackground = 'http://designwoop.com/uploads/2012/03/01_free_subtle_textures_apple_ios_linen_texture.jpg';
 const strInitNavBColor = "#191414";
@@ -179,6 +178,9 @@ function setBackground(){
 $(function() {
   var checkedValue; //keep track of current mode of view
   var preColor; //keep track of previews color of nav bar
+  var oldColor;
+  var oldBG;
+  var oldCSS;
   $(".dropdown-content #light").click(function(){ //click event on theme change to light
     changeTheme("", strLightBG, "light.css");
     preColor = strInitGrey;
@@ -212,7 +214,7 @@ $(function() {
     } else if (checkedValue == false) { //if changes to regular view
       changeView(oldColor, oldCSS, "Compact View");
       $("body").css({"background-size": "auto"});
-      $("body").css({"background-image": OldBG});
+      $("body").css({"background-image": oldBG});
       checkedValue = true;
     }
   });
