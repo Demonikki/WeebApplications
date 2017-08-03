@@ -31,7 +31,7 @@ a {color:#337ab7;text-decoration:none}
 .nav > li > a {position: relative; display: block; padding: 15px 15px;}
 @media all and (min-width:768px){
 .navbar-right { float: right !important; margin-right: -15px; color: white;}}
-.navbar-right~.navbar-right{margin-right:0}}
+.navbar-right~.navbar-right{margin-right:0}
 .nav-tabs{border-bottom:1px solid #ddd}
 .navbar-brand{float:left;height:50px;padding:15px 15px;font-size:18px;line-height:20px;text-decoration:none}
 .navbar-brand:focus,.navbar-brand:hover{text-decoration:none}

@@ -1,0 +1,245 @@
+/* Vanilla CSS for HW3*/
+
+html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%; overflow-y: scroll;}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}
+body{
+font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+font-size:14px;line-height:1.42857143;
+/*color:#333;*/
+/*background-color:#fff;*/
+}
+
+
+
+/* Splash Screen */
+
+
+#splash {
+    height: 100%;
+    width: 100%;
+    background: rgb(50,50,50);
+    position: fixed;
+    left:0; top:0;
+    z-index: 2;
+}
+#splashtitle {
+    display: flex;
+    font-family: monospace;
+    color: #e4e4e4;
+    text-decoration: underline overline;
+    align-items: center;
+    justify-content: center;
+    animation: pulse_logo 1 1.5s;
+
+}
+#splashlogo {
+    display: block;
+    color: #e4e4e4;
+    margin-left: auto;
+    margin-right: auto
+}
+#signal {
+    position: relative;
+    /*margin-left: auto; margin-right: auto;*/
+    left: 50%; margin-left: -28px;
+    top: 0; margin-top: -110px;
+    width: 30px;
+    height: 26px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border: 3px solid rgb(0,130,250);
+    border-bottom: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-radius: 100%;
+    animation: pulse_ring infinite 1s;
+    z-index: 2;
+}
+
+@-webkit-keyframes pulse_ring {
+    0% {-webkit-transform: scale(1); opacity: 0.8; }
+    80% {-webkit-transform: scale(3.9); opacity: 0.6; border-width:2px;}
+    100% {-webkit-transform: scale(4.5); opacity: 0.0; }
+}
+@-webkit-keyframes pulse_logo {
+    0% {-webkit-transform: scale(.9); opacity: 0.0}
+    100% {-webkit-transform: scale(1); opacity: 1.0}
+}
+
+button,input,select,optgroup,textarea,#theme{
+  font-family:inherit;
+  font-size:inherit;
+  line-height:inherit
+  }
+a {color:#337ab7;text-decoration:none}
+* { box-sizing: border-box;}
+
+/* All navbar stuff reduced from bootstrap*/
+.navbar{position:relative;min-height:50px;margin-bottom:20px;border:1px solid transparent}
+@media (min-width:768px){.navbar{border-radius:4px}}
+.navbar-default{ border-color:#e7e7e7 }
+.navbar-header{float:left}
+@media all and (min-width:768px) {.navbar-nav {float: left; margin: 0;}}
+.navbar-nav>li>a{padding-top:10px;padding-bottom:10px;line-height:20px;}
+.container>.navbar-header{margin-right:-15px;margin-left:-15px}
+@media (min-width:768px){.container>.navbar-header{margin-right:0;margin-left:0}}
+.navbar-header:after,.navbar-header:before,.navbar:after,.navbar:before{display:table;content:" "}
+.navbar-header:after,.navbar:after,.row:after{clear:both}
+.navbar-nav > li {float: left;}
+.nav>li>a>img {max-width: none; border: 0}
+.nav > li > a {position: relative; display: block; padding: 15px 15px;}
+@media all and (min-width:768px){
+.navbar-right { float: right !important; margin-right: -15px; color: #9d9d9d;}}
+.navbar-right~.navbar-right{margin-right:0}
+.nav-tabs{border-bottom:1px solid #ddd}
+.navbar-brand{float:left;height:50px;padding:15px 15px;font-size:18px;line-height:20px;text-decoration:none}
+.navbar-brand:focus,.navbar-brand:hover{text-decoration:none}
+.navbar-brand>img{
+  display:block
+}
+
+.navbar-text{color:#777}
+.navbar-default .navbar-nav>li>a{color:#777}
+.navbar-brand:hover{color:#5e5e5e;background-color:transparent}
+.navbar-brand{color:#9d9d9d}
+.navbar-default .navbar-nav>li>a:focus,.navbar-default .navbar-nav>li>a:hover{color:white;background-color:transparent}
+img{vertical-align: middle; border: 0}
+.nav{list-style: none; padding-left: 0px;}
+
+/* Row and column stuff */
+
+.col-sm-2 { width: 16.66%;}
+.col-sm-3 {
+  -webkit-box-flex:0;
+  -webkit-flex:0 0 25%;
+  max-width:25%;
+  padding-right:15px;
+  padding-left:15px
+}
+.col-sm-10, .col-sm-3, .col-sm-2, .col-lg-10, .col-lg-2, .col-lg-3, .col-md-10, .col-md-2, .col-md-3{
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    float: left;
+}
+.container{padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}
+@media (min-width:1200px){.container{width:1170px; }}
+
+img{
+  position: relative;
+}
+
+.pic{
+  width: 25%;
+  margin-top: 20px;
+}
+
+@media (max-width:768px) {
+    .pic{
+      width: 85%;
+      margin-top: 20px;
+      left:7%;
+    }
+}
+
+.soImg{
+  width: 100%;
+  height: 100%;
+  margin-left: auto;
+  position: relative;
+}
+.pBtn{
+  position: absolute;
+  left: 25%;
+  top: 25%;
+  width: 50%;
+  height: 50%;
+}
+#songName{
+  font-weight: bold;
+  color:#c1c1c1;
+  font-family: sans-serif;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+select {
+  position: absolute;
+  left:15px;
+  top: 2px;
+}
+
+#bottom_nav {
+  overflow: hidden;
+  background-color: #333;
+   position: relative;
+  bottom: 0;
+  width: 100%;
+  margin-bottom: 0px;
+  margin-top: 20px;
+  z-index: 1;
+}
+
+#bottom_nav > a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.main {
+  padding: 16px;
+  margin-bottom: 30px;
+  height: 1500px;
+}
+
+
+#compact { color: #9d9d9d; }
+#compact:hover { color: white; }
+#theme { color: #cdcdcd; }
+@media(max-width:768px) {
+    #theme { padding-left: 7px; }
+    #compact { float:right; }
+    .dropdown { max-width: 100px; left: 7px; padding-bottom: 10px;}
+    .dropdown-content {  }
+
+}
+.dropdown {
+    position: relative;
+    top:16px;
+}
+.navbar-header > .dropdown { position: relative; top: 0px; }
+.navbar-header>.dropdown>.dropdown-content { top: 37px;}
+@media(max-width:768px) {
+    .navbar-header > .dropdown { position: fixed; left: 38%; }
+    .navbar-header>.dropdown>.dropdown-content { top: 37px;}
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #797979;
+    min-width: 120px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+}
+
+/*@media(min-width: 769px) {*/
+    .dropdown:hover .dropdown-content {
+        display: block
+    /*}*/
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 6px 6px;
+    text-decoration: none;
+    display: block;
+}
+.dropdown-content a:hover {background-color: #bababa}
