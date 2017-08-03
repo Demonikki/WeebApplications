@@ -185,11 +185,12 @@ select {
     display: block;
 }
 .dropdown-content a:hover {background-color: #ffdce2; color: magenta;}
+.dropdown>ul>li {list-style: none;}
 
 #bottom_nav {
   overflow: hidden;
   background-color: #ff008d;
-  position: fixed; 
+  position: fixed;
   bottom: 0;
   width: 100%;
   margin-bottom: 0px;
