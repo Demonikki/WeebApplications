@@ -26,11 +26,11 @@ function hideSplashScreen() {
 }
 $(document).ready(function() {
   var metaData =[];
-  
+
   //Set Loading Imagesj
   var objTemplate = document.querySelector('#myTemplt');
   setLoadingTemplate(objTemplate, strImgLoadingAddress);
-  
+
   //fectch the json file from firebase server
   $.getJSON(strDatabase, function(responseText){
     $.each(responseText, function(key, val){
@@ -43,9 +43,9 @@ $(document).ready(function() {
     console.log(strSuccessMessage);
     hideSplashScreen();
     renderSoundBoard(0, metaData);//render the soundbaord when page loads
-    setBackground(); 
+    setBackground();
   })
-  .fail(function(jqXHR, textStatus, errorThrown) { 
+  .fail(function(jqXHR, textStatus, errorThrown) {
     hideSplashScreen();
     if(textStatus === "parsererror"){
         alert(strJsonParseErrorMessage);
@@ -198,8 +198,10 @@ $(function() {
     preColor = $("#navB").attr('background-color');
     checkedValue = true;
   });
-  $("#compact").click(function(){ ////click event on view change between compact and regular view
-    oldColor = preColor;
+  $("#compact").click(function(){ //click event on view change between compact and regular view
+    var oldColor;
+    var oldBG;
+    var oldCSS;
     if(checkedValue === undefined){
       checkedValue = true; //first call
     }
@@ -233,7 +235,7 @@ function changeTheme(strNavImg, strBdImg, strCssLink){
 }
 /* helper function for view change */
 function changeView(strOldColor, strCssLink, strView){
-  if (typeof strOldColor === 'string' && typeof strCssLink === 'string' && typeof strView == 'string'){
+  if (typeof strCssLink === 'string' && typeof strView == 'string'){
     $("#navB").css({"background-color": strOldColor});
     $("link").attr("href", strCssLink);
     $("#compact").html(strView);
