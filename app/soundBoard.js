@@ -1,71 +1,83 @@
-const database = "https://firebasestorage.googleapis.com/v0/b/weeb-applications.appspot.com/o/load_config.json?alt=media&token=e1566b7a-cd9b-49ab-8147-aae7f6cd8173";
-const initBackground = './media/darkbg.jpg';
-const initNavBColor = "#191414";
-const initGrey = "rgb(120,120,120)";
-const playButton = "./media/playBtn.png";
-const pauseButton = "./media/pauseBtn.png";
-const pauseBtnAnime = "./media/pBtn2.png";
-const errorImg = "./media/error-img.jpg";
-const lightBG = './media/b14.jpg';
-const navBImg = './media/navbar.jpg';
-const animeBG = './media/b16.jpg';
-const kImgLoading = './media/Spinner.gif';
-const kErrorSongName = 'Loading Error';
-const numOfCells = 12;
+"use strict";
+const strDatabase = "https://firebasestorage.googleapis.com/v0/b/weeb-applications.appspot.com/o/load_config.json?alt=media&token=e1566b7a-cd9b-49ab-8147-aae7f6cd8173";
+const strInitBackground = './media/darkbg.jpg';
+const strInitNavBColor = "#191414";
+const strInitGrey = "rgb(120,120,120)";
+const strPlayButton = "./media/playBtn.png";
+const strPauseButton = "./media/pauseBtn.png";
+const strPauseBtnAnime = "./media/pBtn2.png";
+const strErrorImg = "./media/error-img.jpg";
+const strLightBG = './media/b14.jpg';
+const strNavBImg = './media/navbar.jpg';
+const strAnimeBG = './media/b16.jpg';
+const strImgLoadingAddress = './media/Spinner.gif';
+const strErrorSongName = 'Loading Error';
+const strJsonParseErrorMessage = "JSON Parse Error\n\nContact web admin for instruction.";
+const strTimeOutErrorMessage = "Timeout:\n\nCheck your network.";
+const strPageNotFoundErrorMessage = "404 Not Found:\n\nThe requested page could not be found on the server."
+const strServerDownErrorMessage = "Error 500: \n\nServer is down. Please try again later.";
+const strNetworkTimeOutErrorMessage = "Error 408: \n\nTimeout.";
+const strLoadingMessage = "Loading... ";
+const strSuccessMessage = "Success";
+const iNumOfCells = 12;
+
+
 
 function hideSplashScreen() {
-   $("#splash").fadeOut(4000);
+    if(!navigator.onLine) {
+        alert("Offline");
+        window.location = "offline.html";
+    }
+    else {
+        $("#splash").fadeOut(5000);
+    }
 }
 $(document).ready(function() {
-  var metaData =[];
-  var success = false;
 
-  var template = document.querySelector('#myTemplt');
-  setLoadingTemplate(template, kImgLoading);
+  var metaData =[];
+
+  //Set Loading Imagesj
+  var objTemplate = document.querySelector('#myTemplt');
+  setLoadingTemplate(objTemplate, strImgLoadingAddress);
 
   //fectch the json file from firebase server
-  $.getJSON(database, function(responseText){
+  $.getJSON(strDatabase, function(responseText){
     $.each(responseText, function(key, val){
       $.each(val, function(i, result){
           metaData.push(result); // array that has array of images and sounds at each index
       });
     });
-    success = true;
-    hideSplashScreen();
   })
   .done(function() {
-    console.log( "Success" );
+    console.log(strSuccessMessage);
+    hideSplashScreen();
     renderSoundBoard(0, metaData);//render the soundbaord when page loads
     setBackground();
-    success = true;
   })
   .fail(function(jqXHR, textStatus, errorThrown) {
-    if(jqXHR.status == 404){
-        alert("404 Not Found:\n\nThe requested page could not be found on the server.");
-        success = true;
+    hideSplashScreen();
+    if(textStatus === "parsererror"){
+        alert(strJsonParseErrorMessage);
     }
-    if(jqXHR.status == 500){
-        alert("Error 500: \n\nServer is down. Please try again later.");
-        success = true;
+    else if(textStatus === "timeout"){
+        alert(strTimeOutErrorMessage);
     }
+    else if(jqXHR.status == 404){
+        alert(strPageNotFoundErrorMessage);
+    }
+    else if(jqXHR.status == 500){
+        alert(strServerDownErrorMessage);
+    }
+    else if(jqXHR.status == 408){
+        alert(strNetworkTimeOutErrorMessage);
+    }
+    errorHandler();
   });
 
-  /*
-  * This function promotes the error message and displays
-  * error images when the fetch of json file from server is not successful
-  * within 2.5 seconds.
-  */
-  setTimeout(function() {
-  if (!success)
-  {
-      alert("exceeding loading time!");
-      hideSplashScreen();
-      var template = document.querySelector('#myTemplt');
-      for(var i = 0; i < numOfCells; i++){
-        setErrorTemplate(template);
-      }
-    }
-  }, 2500);
+  function errorHandler(){
+    var template = document.querySelector('#myTemplt');
+    setErrorTemplate(objTemplate);
+  }
 
   /* click event on SoundBoard list1*/
   $('#list1').click(function() {
@@ -85,84 +97,89 @@ $('main').on('click','#btn',function() {
   var sound = $(this).siblings('audio')[0];
   if (sound.paused) {
     sound.play();
-    $(this).attr('src',pauseButton);
+    $(this).attr('src',strPauseButton);
     $(this).fadeTo( 0 , 0.5, function() {});
   } else {
     sound.pause();
-    $(this).attr('src',playButton);
+    $(this).attr('src',strPlayButton);
     $(this).fadeTo( 0 , 1, function() {});
   }
   sound.onended = function () {
-    $(this).siblings('.pBtn').attr('src',playButton);
+    $(this).siblings('.pBtn').attr('src',strPlayButton);
     $(this).fadeTo( 0 , 1, function(){});
   }
 });
 
 /* animations of button change on mouse enter */
 $('main').on('mouseenter','#btn',function() {
-  if($(this).attr("src") === playButton){
-    $(this).attr("src", pauseBtnAnime);
-  } else if($(this).attr("src") === pauseButton)
+  if($(this).attr("src") === strPlayButton){
+    $(this).attr("src", strPauseBtnAnime);
+  } else if($(this).attr("src") === strPauseButton)
     $(this).css({"opacity": "0.8"});
   });
 
 /* animations of button change on mouse leave */
 $('main').on('mouseleave','#btn',function(){
-  console.log($(this).attr('src'));
-  if($(this).attr("src") === pauseBtnAnime){
-    $(this).attr('src',playButton);
-  } else if($(this).attr("src") === pauseButton){
+  if($(this).attr("src") === strPauseBtnAnime){
+    $(this).attr('src',strPlayButton);
+  } else if($(this).attr("src") === strPauseButton){
     $(this).css({"opacity": "0.5"});
   }
 });
 
 /* render function for 3*4 grids of sounds */
 function renderSoundBoard(list, metaData){
-    $('#template_container #col').remove();
-    var img = metaData[0][list];
-    var sound = metaData[1][list];
-    var name = metaData[2][list];
-    for(var i = 0; i < numOfCells; i++){
-        setTemplate(img[i], sound[i], playButton, name[i], false);
+    if(typeof list == 'number'){
+      $('#template_container #col').remove();
+      var img = metaData[0][list];
+      var sound = metaData[1][list];
+      var name = metaData[2][list];
+      for(var i = 0; i < iNumOfCells; i++){
+          setTemplate(img[i], sound[i], strPlayButton, name[i], false);
+      }
     }
 }
 
-function setLoadingTemplate(template, imgLoadingGif){
-  $('#template_container #col').remove();
-  for(var i = 0; i < numOfCells; i++){
-      setTemplate(imgLoadingGif, "", "", "Loading... ", true);
+function setLoadingTemplate(objTemplate, strImgLoadingGif){
+  if(typeof objTemplate === 'object' && typeof strImgLoadingGif === 'string'){
+    $('#template_container #col').remove();
+    for(var i = 0; i < iNumOfCells; i++){
+        setTemplate(strImgLoadingGif, "", "", strLoadingMessage, true);
+    }
+    setBackground();
   }
-  setBackground();
 }
 
 /* render function of error images for 3*4 grids of sounds */
-function setErrorTemplate(template){
-  $('#template_container #col').remove();
-  for(var i = 0; i < numOfCells; i++){
-      setTemplate(errorImg, "", "", kErrorSongName, true);
+function setErrorTemplate(objTemplate){
+  if(typeof objTemplate === 'object'){
+    $('#template_container #col').remove();
+    for(var i = 0; i < iNumOfCells; i++){
+        setTemplate(strErrorImg, "", "", strErrorSongName, true);
+    }
+    setBackground();
   }
-  setBackground();
 }
 
 /* helper function for render the template of each cell */
-function setTemplate(toImg, toSound, toBtn, toName, isError){
+function setTemplate(strToImg, strToSound, strToBtn, strToName, bIsError){
   var myTemplate = $('#myTemplt').html().trim();
   var myTemplateClone = $(myTemplate);
-  myTemplateClone.find('.soImg').attr('src',toImg);
-  myTemplateClone.find('audio').attr('src', toSound);
-  if(isError === true){
+  myTemplateClone.find('.soImg').attr('src',strToImg);
+  myTemplateClone.find('audio').attr('src', strToSound);
+  if(bIsError === true){
     myTemplateClone.find('#btn').css({"visibility" : "hidden"});
   } else {
-    myTemplateClone.find('#btn').attr('src',toBtn);
+    myTemplateClone.find('#btn').attr('src',strToBtn);
   }
-  myTemplateClone.find('#songName').html(toName);
+  myTemplateClone.find('#songName').html(strToName);
   myTemplateClone.clone().appendTo('main');
 }
 
 /* set up the initial background of SoundBoard */
 function setBackground(){
-  $("#navB").css({"background-color": initNavBColor});
-  $("body").css({"background-image": "url(" + initBackground + ")"});
+  $("#navB").css({"background-color": strInitNavBColor});
+  $("body").css({"background-image": "url(" + strInitBackground + ")"});
 }
 
 /*
@@ -172,30 +189,30 @@ $(function() {
   var checkedValue; //keep track of current mode of view
   var preColor; //keep track of previews color of nav bar
   $(".dropdown-content #light").click(function(){ //click event on theme change to light
-    changeTheme("", lightBG, "light.css");
-    preColor = initGrey;
+    changeTheme("", strLightBG, "light.css");
+    preColor = strInitGrey;
     checkedValue = true;
   });
   $(".dropdown-content #anime").click(function(){ //click event on theme change to hello kitty
-    preColor = "url(" + navBImg + ")";
-    changeTheme(navBImg, animeBG, "anime.css");
+    preColor = "url(" + strNavBImg + ")";
+    changeTheme(strNavBImg, strAnimeBG, "anime.css");
     $("#navB").css({"background-size": "contain"});
     $("body").css({"background-size": "100%"});
     $("body").css({"background-attchment": "fixed"});
     checkedValue = true;
   });
   $(".dropdown-content #dark").click(function(){ //click event on theme change to dark
-    changeTheme("", initBackground, "vanilla.css");
-    $("#navB").css({"background-color":initNavBColor});
+    changeTheme("", strInitBackground, "vanilla.css");
+    $("#navB").css({"background-color":strInitNavBColor});
     preColor = $("#navB").attr('background-color');
     checkedValue = true;
   });
   $("#compact").click(function(){ ////click event on view change between compact and regular view
+    oldColor = preColor;
     if(checkedValue === undefined){
       checkedValue = true; //first call
     }
     if(checkedValue === true){ //if changes to compact view
-      oldColor = preColor;
       oldBG = $("body").css('background-image');
       oldCSS = $("link").attr("href");
       changeView(oldColor, "compact.css", "Regular View");
@@ -204,25 +221,30 @@ $(function() {
     } else if (checkedValue == false) { //if changes to regular view
       changeView(oldColor, oldCSS, "Compact View");
       $("body").css({"background-size": "auto"});
-      $("body").css({"background-image": oldBG});
+      $("body").css({"background-image": OldBG});
       checkedValue = true;
     }
   });
 });
+
 /* helper function for theme change */
-function changeTheme(navImg, bdImg, cssLink){
-  if(navImg === ""){
-    $("#navB").css({"background-image":navImg});
-  } else {
-    $("#navB").css({"background-image": "url(" + navImg + ")"});
+function changeTheme(strNavImg, strBdImg, strCssLink){
+  if(typeof strNavImg === 'string' && typeof strBdImg === 'string' && typeof strCssLink == 'string'){
+    if(strNavImg === ""){
+      $("#navB").css({"background-image":strNavImg});
+    } else {
+      $("#navB").css({"background-image": "url(" + strNavImg + ")"});
+    }
+    $("body").css({"background-image":"url("+ strBdImg + ")"});
+    $("link").attr("href", strCssLink);
+    $("#compact").html("Compact View");
   }
-  $("body").css({"background-image":"url("+ bdImg + ")"});
-  $("link").attr("href", cssLink);
-  $("#compact").html("Compact View");
 }
 /* helper function for view change */
-function changeView(oldColor, cssLink, view){
-  $("#navB").css({"background-color": oldColor});
-  $("link").attr("href", cssLink);
-  $("#compact").html(view);
+function changeView(strOldColor, strCssLink, strView){
+  if (typeof strOldColor === 'string' && typeof strCssLink === 'string' && typeof strView == 'string'){
+    $("#navB").css({"background-color": strOldColor});
+    $("link").attr("href", strCssLink);
+    $("#compact").html(strView);
+  }
 }
