@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Soundboard3 JavaScript Version</title>
+	<meta charset="UTF-8">
+
+<!-- BEGIN TRACKJS -->
+<script type="text/javascript">window._trackJs = { token: '83a63b3bb20040ae9e78d9d2a179d6bb' };</script>
+<script type="text/javascript" src="https://cdn.trackjs.com/releases/current/tracker.js"></script>
+<!-- END TRACKJS -->
+
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+	<link rel="stylesheet" href="vanilla_2.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<main>
+		<nav class="navbar navbar-default" id = "navB">
+			<div class="container">
+				<div class="navbar-header">
+					<div class = "dropdown">
+						<a href="#" class="navbar-brand">Soundboards</a>
+						<div class="dropdown-content">
+							<a href="#" id = "list1" onClick = "renderSoundBoard(0);">Soundboard 1</a></li>
+							<a href="#" id = "list2" onClick = "renderSoundBoard(1);">Soundboard 2</a></li>
+						</div>
+					</div>
+				</div>
+				<ul class="nav navbar-nav">
+					<div class = "dropdown">
+						<li><a href="#" id = "theme">Theme</a></li>
+						<div class="dropdown-content">
+							<a href='#' onclick="changeTheme('dark');">Dark</a>
+							<a href='#' onclick="changeTheme('light');">Light</a>
+							<a href='#' onclick="changeTheme('anime');">Hello Kitty!</a>
+						</div>
+					</div>
+				</ul>
+
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#" id = "compact" onClick = "compactView();">Compact View</a></li>
+				</ul>
+			</div>
+		</nav>
+
+		<template id= "myTemplt" >
+					<div id = "col" class="col-lg-3 col-sm-6 pic" >
+							<img class = "soImg">
+								<img id = "btn" class = "pBtn" onclick="playSound(event)"></img>
+								<span id = "songName">Song</span>
+							</img>
+							<audio id="clip">
+								<source type="audio/mp3">
+							</audio>
+					</div>
+		</template>
+	</main>
+	<script>
+
+		function supportsTemplate() {
+			return 'content' in document.createElement('template');
+		}
+
+		window.onload = function () {
+			if (supportsTemplate())
+				renderSoundBoard(0);
+		}
+
+		function renderSoundBoard(list){
+			var main = document.querySelector('#myTemplt').parentNode;
+			for (var i = main.childNodes.length; i > 5; i--){
+				main.removeChild(main.lastChild);
+			}
+
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function() {
+				if (xmlhttp.readyState == XMLHttpRequest.DONE ) {
+					var template = document.querySelector('#myTemplt');
+
+					if (xmlhttp.status == 200) {
+						try {
+							var jobj = JSON.parse(xmlhttp.responseText);
+
+							var soundCells = jobj.WeebApplications_SoundBoard;
+							var imgs = soundCells.img[list];
+							var sounds = soundCells.sound[list];
+							var names = soundCells.names[list];
+							console.log(names);
+							for(var i = 0; i < 12; i++){
+								template.content.querySelectorAll('img')[0].src = imgs[i];
+								template.content.querySelectorAll('source')[0].src = sounds[i];
+								template.content.querySelectorAll('img')[1].src = "./media/playBtn.png";
+								template.content.querySelectorAll('span')[0].innerHTML = names[i];
+								var clone = document.importNode(template.content, true);
+								template.parentNode.appendChild(clone);
+							}
+
+						} catch (e) {
+							alert("System Error");
+							for(var i = 0; i < 12; i++){
+								setErrorTemplate(template);
+							}
+						}
+					}
+					else if (xmlhttp.status == 403){
+						alert('Network Error: 403\nFailed to load resource: the server responded with a status of 403');
+						for(var i = 0; i < 12; i++){
+							setErrorTemplate(template);
+						}
+					}
+					else if (xmlhttp.status == 404){
+						alert('Network Error: 404\nSoundBoard Can\'t be Loaded.\nWould you like to retry with a button to do that.');
+						for(var i = 0; i < 12; i++){
+							setErrorTemplate(template);
+						}
+					}
+
+					else {
+						alert('Network Error: '+xmlhttp.status);
+						for(var i = 0; i < 12; i++){
+							setErrorTemplate(template);
+						}
+					}
+				}
+			}
+
+			xmlhttp.open("GET", "https://firebasestorage.googleapis.com/v0/b/weeb-applications.appspot.com/o/load_config.json?alt=media&token=e1566b7a-cd9b-49ab-8147-aae7f6cd8173", true);
+			xmlhttp.send();
+		}
+
+		function setErrorTemplate(template){
+			template.content.querySelectorAll('source')[0].src = "";
+			template.content.querySelectorAll('img')[0].src = "./media/error-img.jpg";
+			template.content.querySelectorAll('img')[1].style.visibility = "hidden";
+			var clone = document.importNode(template.content, true);
+			template.parentNode.appendChild(clone);
+		}
+
+		function playSound(e) {
+			sound = e.target.parentNode.querySelector('audio');
+
+			if (sound.paused) {
+				sound.play();
+				e.target.src = "./media/pauseBtn.png";
+				e.target.style.opacity = "0.5";
+			} else {
+				sound.pause();
+				e.target.src = "./media/playBtn.png";
+				e.target.style.opacity = "1";
+			}
+			sound.onended = function () {
+				e.target.src = "./media/playBtn.png";
+				e.target.style.opacity = "1";
+			}
+		}
+ 	</script>
+	<script>
+	  	document.getElementById("navB").style.backgroundColor = "#191414";
+		document.body.style.backgroundImage = "url('http://designwoop.com/uploads/2012/03/01_free_subtle_textures_apple_ios_linen_texture.jpg')";
+		var preColor;
+		function changeTheme(theme){
+			console.log(theme);
+			if (theme === "light") {
+				document.getElementById("navB").style.backgroundImage = "";
+				document.body.style.backgroundImage = "url('./media/b14.jpg')";
+				document.getElementsByTagName("link")[0].href = "light.css";
+				document.getElementById("compact").innerHTML = "Compact View";
+				compactView.checkedValue = true;
+				preColor = "rgb(120,120,120)";
+			} else if (theme === "anime"){
+				document.body.style.backgroundImage = "url('./media/b16.jpg')";
+				document.body.style.backgroundSize = "100%";
+				document.body.style.backgroundAttachment = "fixed";
+				document.getElementById("navB").style.backgroundImage = "url('./media/navbar.jpg')";
+				document.getElementById("navB").style.backgroundSize = "contain";
+				document.getElementsByTagName("link")[0].href = "anime.css";
+				document.getElementById("compact").innerHTML = "Compact View";
+				compactView.checkedValue = true;
+				preColor = "url('./media/navbar.jpg')";
+				animeMode = true;
+			} else {
+				document.getElementById("navB").style.backgroundImage = "";
+				document.getElementById("navB").style.backgroundColor = "#191414";
+				document.body.style.backgroundImage = "url('http://designwoop.com/uploads/2012/03/01_free_subtle_textures_apple_ios_linen_texture.jpg')";
+				document.getElementsByTagName("link")[0].href = "vanilla_2.css";
+				preColor = document.getElementById("navB").style.backgroundColor;
+				compactView.checkedValue = true;
+				document.getElementById("compact").innerHTML = "Compact View";
+			}
+
+		}
+
+		function compactView() {
+			if(compactView.checkedValue == undefined) {
+				compactView.checkedValue = true; //first call
+			}
+
+			if(compactView.checkedValue == true) {
+				compactView.oldColor = preColor;
+				compactView.oldBG = document.body.style.backgroundImage;
+				compactView.oldCSS = document.getElementsByTagName("link")[0].href;
+				console.log(compactView.oldCSS);
+				document.getElementById("navB").style.backgroundColor = compactView.oldColor;
+				document.getElementsByTagName("link")[0].href = "compact.css";
+				document.body.style.backgroundSize = "cover";
+				document.getElementById("compact").innerHTML = "Regular View";
+				compactView.checkedValue = false;
+			}
+			else if(compactView.checkedValue == false) {
+				document.body.style.backgroundSize = "auto";
+				document.getElementsByTagName("link")[0].href = compactView.oldCSS;
+				compactView.checkedValue = true;
+				document.getElementById("navB").style.backgroundColor = compactView.oldColor;
+				document.body.style.backgroundImage = compactView.oldBG;
+				document.getElementById("compact").innerHTML = "Compact View";
+			}
+		}
+	</script>
+	<noscript>Your browser does not support JavaScript!</noscript>
+</main>
+
+	<footer>
+		 <div id="bottom_nav" class="navbar">
+			<a href="#home">Home</a>
+			<a href="#news">News</a>
+			<a href="#contact">Contact</a>
+			<a href="#about">About</a>
+		</div> 
+	</footer>
+</body>
+</html>

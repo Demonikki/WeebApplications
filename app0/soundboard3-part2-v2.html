@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Soundboard Part 1a</title>
+	<meta charset="UTF-8">
+
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+	<link rel="stylesheet" href="vanilla.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<nav class="navbar navbar-default" style="background-color:#191414">
+		<div class="container">
+			<div class="navbar-header">
+				<a href="#" class="navbar-brand">Soundboard</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li><a href="#">Soundtracks</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="./login.html">Login</a></li>
+				<li><a href="#">
+					<img id="settings" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/WMF-Agora-Settings_424242.svg/2000px-WMF-Agora-Settings_424242.svg.png" style="height: 18px; width: auto" alt="settings" />
+				</a></li>
+			</ul>
+		</div>
+	</nav>
+	<main style="margin-top: -20px; background-image: url('http://designwoop.com/uploads/2012/03/01_free_subtle_textures_apple_ios_linen_texture.jpg')">
+			<div id="grid" class="container">
+                <div class="row justify-content-md-center">
+					<div class="col-sm-3" style="margin-top: 10px;">
+						<div class="panel panel-default" style="background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGGcLEolyoYvBDEfc0pwsaFJrE7TJROiRSuCxYJbMD8_np9pSB');">
+							<div class="panel-body">
+								<div class="panel panel-default">
+										<img src="https://firebasestorage.googleapis.com/v0/b/weeb-applications.appspot.com/o/b.jpg?alt=media&token=22d23d19-90e0-45da-944c-8bbdc55c72a1"  style="width: 100%; height: auto; margin-left: auto;" alt="song1_album"/>
+								</div>
+								<div id="sound1" class="soundBtn" style="width: 80%; max-width: 30em;">
+									<div class="row">
+										<div class="col-sm-10">
+											<div class="progress" style="width: 100%; height: 5px; margin-top: auto; margin-bottom: auto;  display: inline-block;">
+												<div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 10%; height: 5px; background-color: #aab8c2;"></div>
+											</div>
+										</div>
+										<span class="col-sm-2" >
+											<button type = "button">
+												<img src="https://png.icons8.com/play-button/ios7/25" alt= "playBtn" title="Play Button" width="25" height="25" >
+											</button>
+										</span>
+									</div>
+									<audio id="clip1">
+										<source src="https://firebasestorage.googleapis.com/v0/b/weeb-applications.appspot.com/o/Bridge%20-%20%E8%80%81%E5%A4%A7.mp3?alt=media&token=6d9c2650-88cc-4690-9005-9bb7b9334aa2" type="audio/mp3">
+									</audio>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-3" style="margin-top: 10px;">
+						<div class="panel panel-default" style="background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGGcLEolyoYvBDEfc0pwsaFJrE7TJROiRSuCxYJbMD8_np9pSB');">
+							<div class="panel-body">
+								<div class="panel panel-default">
+										<img src="./media/img1.jpg" style="width: 100%; height: auto; margin-left: auto;" alt="song1_album"/>
+								</div>
+								<div id="sound2" class="soundBtn" style="width: 80%; max-width: 30em;">
+									<div class="row">
+										<div class="col-sm-10">
+											<div class="progress" style="width: 100%; height: 5px; margin-top: auto; margin-bottom: auto;  display: inline-block;">
+												<div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%; height: 5px; background-color: #aab8c2;"></div>
+											</div>
+										</div>
+										<span class="col-sm-2" >
+											<button type = "button" >
+												<img src="https://png.icons8.com/play-button/ios7/25" alt="playBtn2" title="Play Button" width="25" height="25" >
+											</button>
+										</span>
+									</div>
+									<audio id="clip2">
+										<source src="https://firebasestorage.googleapis.com/v0/b/weeb-applications.appspot.com/o/sound1.mp3?alt=media&token=d6f85917-fdf7-463a-9cca-6f84ca6da521" type="audio/mp3">
+									</audio>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-3" style="margin-top: 10px;">
+						<div class="panel panel-default" style="background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGGcLEolyoYvBDEfc0pwsaFJrE7TJROiRSuCxYJbMD8_np9pSB');">
+							<div class="panel-body">
+								<div class="panel panel-default">
+										<img src="./media/img2.jpg" style="width: 100%; height: auto; margin-left: auto;" alt="song1_album"/>
+								</div>
+								<div id="sound3" class="soundBtn" style="width: 80%; max-width: 30em;">
+									<div class="row">
+										<div class="col-sm-10">
+											<div class="progress" style="width: 100%; height: 5px; margin-top: auto; margin-bottom: auto;  display: inline-block;">
+												<div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%; height: 5px; background-color: #aab8c2;"></div>
+											</div>
+										</div>
+										<span class="col-sm-2" >
+											<button type = "button" >
+												<img src="https://png.icons8.com/play-button/ios7/25" alt = "playBtn3" title="Play Button" width="25" height="25" >
+											</button>
+										</span>
+									</div>
+									<audio id="clip3">
+										<source src="https://firebasestorage.googleapis.com/v0/b/weeb-applications.appspot.com/o/sound2.mp3?alt=media&token=c17d7b5f-f5f5-43e1-a8e2-012090d2b82f" type="audio/mp3">
+									</audio>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-3" style="margin-top: 10px;">
+						<div class="panel panel-default" style="background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGGcLEolyoYvBDEfc0pwsaFJrE7TJROiRSuCxYJbMD8_np9pSB');">
+							<div class="panel-body">
+								<div class="panel panel-default">
+										<img src="./media/img3.jpg" style="width: 100%; height: auto; margin-left: auto;" alt="song1_album"/>
+								</div>
+								<div id="sound4" class="soundBtn" style="width: 80%; max-width: 30em;">
+									<div class="row">
+										<div class="col-sm-10">
+											<div class="progress" style="width: 100%; height: 5px; margin-top: auto; margin-bottom: auto;  display: inline-block;">
+												<div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%; height: 5px; background-color: #aab8c2;"></div>
+											</div>
+										</div>
+										<span class="col-sm-2" >
+											<button type = "button" >
+												<img src="https://png.icons8.com/play-button/ios7/25" alt="playBtn4" title="Play Button" width="25" height="25" >
+											</button>
+										</span>
+									</div>
+									<audio id="clip4">
+										<source src="https://firebasestorage.googleapis.com/v0/b/weeb-applications.appspot.com/o/sound3.mp3?alt=media&token=b84dfbd9-2f3f-4d68-8307-be9069704024" type="audio/mp3">
+									</audio>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row justify-content-md-center">
+					<div class="col-sm-3" style="margin-top: 10px;">
+						<div class="panel panel-default" style="background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGGcLEolyoYvBDEfc0pwsaFJrE7TJROiRSuCxYJbMD8_np9pSB');">
+							<div class="panel-body">
+								<div class="panel panel-default">
+										<img src="./media/img4.jpg"  style="width: 100%; height: auto; margin-left: auto;" alt="song1_album"/>
+								</div>
+								<div id="sound5" class="soundBtn" style="width: 80%; max-width: 30em;">
+									<div class="row">
+										<div class="col-sm-10">
+											<div class="progress" style="width: 100%; height: 5px; margin-top: auto; margin-bottom: auto;  display: inline-block;">
+												<div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%; height: 5px; background-color: #aab8c2;"></div>
+											</div>
+										</div>
+										<span class="col-sm-2" >
+											<button type = "button">
+												<img src="https://png.icons8.com/play-button/ios7/25" alt="playBtn5" title="Play Button" width="25" height="25" >
+											</button>
+										</span>
+									</div>
+									<audio id="clip5">
+										<source src="https://firebasestorage.googleapis.com/v0/b/weeb-applications.appspot.com/o/sound4.mp3?alt=media&token=1ce440ae-80dc-48eb-abec-b9e4b0d22acc" type="audio/mp3">
+									</audio>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-3" style="margin-top: 10px;">
+						<div class="panel panel-default" style="background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGGcLEolyoYvBDEfc0pwsaFJrE7TJROiRSuCxYJbMD8_np9pSB');">
+							<div class="panel-body">
+								<div class="panel panel-default">
+										<img src="./media/img5.jpg" style="width: 100%; height: auto; margin-left: auto;" alt="song1_album"/>
+								</div>
+								<div id="sound6" class="soundBtn" style="width: 80%; max-width: 30em;">
+									<div class="row">
+										<div class="col-sm-10">
+											<div class="progress" style="width: 100%; height: 5px; margin-top: auto; margin-bottom: auto;  display: inline-block;">
+												<div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%; height: 5px; background-color: #aab8c2;"></div>
+											</div>
+										</div>
+										<span class="col-sm-2" >
+											<button type = "button" >
+												<img src="https://png.icons8.com/play-button/ios7/25" alt="playBtn6" title="Play Button" width="25" height="25" >
+											</button>
+										</span>
+									</div>
+									<audio id="clip6">
+										<source src="https://firebasestorage.googleapis.com/v0/b/weeb-applications.appspot.com/o/sound5.mp3?alt=media&token=536d53b9-5778-4ec1-91e8-ae136553e2f8" type="audio/mp3">
+									</audio>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-3" style="margin-top: 10px;">
+						<div class="panel panel-default" style="background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGGcLEolyoYvBDEfc0pwsaFJrE7TJROiRSuCxYJbMD8_np9pSB');">
+							<div class="panel-body">
+								<div class="panel panel-default">
+										<img src="./media/img6.jpg" style="width: 100%; height: auto; margin-left: auto;" alt="song1_album"/>
+								</div>
+								<div id="sound7" class="soundBtn" style="width: 80%; max-width: 30em;">
+									<div class="row">
+										<div class="col-sm-10">
+											<div class="progress" style="width: 100%; height: 5px; margin-top: auto; margin-bottom: auto;  display: inline-block;">
+												<div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%; height: 5px; background-color: #aab8c2;"></div>
+											</div>
+										</div>
+										<span class="col-sm-2" >
+											<button type = "button" >
+												<img src="https://png.icons8.com/play-button/ios7/25" alt="playBtn7" title="Play Button" width="25" height="25" >
+											</button>
+										</span>
+									</div>
+									<audio id="clip7">
+										<source src="https://firebasestorage.googleapis.com/v0/b/weeb-applications.appspot.com/o/sound6.mp3?alt=media&token=ac75cb6d-ff34-4148-8fda-35a0a8478314" type="audio/mp3">
+									</audio>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-3" style="margin-top: 10px;">
+						<div class="panel panel-default" style="background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGGcLEolyoYvBDEfc0pwsaFJrE7TJROiRSuCxYJbMD8_np9pSB');">
+							<div class="panel-body">
+								<div class="panel panel-default">
+										<img src="./media/img7.png" style="width: 100%; height: auto; margin-left: auto;" alt="song1_album"/>
+								</div>
+								<div id="sound8" class="soundBtn" style="width: 80%; max-width: 30em;">
+									<div class="row">
+										<div class="col-sm-10">
+											<div class="progress" style="width: 100%; height: 5px; margin-top: auto; margin-bottom: auto;  display: inline-block;">
+												<div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%; height: 5px; background-color: #aab8c2;"></div>
+											</div>
+										</div>
+										<span class="col-sm-2" >
+											<button type = "button" >
+												<img src="https://png.icons8.com/play-button/ios7/25" alt="playBtn8" title="Play Button" width="25" height="25" >
+											</button>
+										</span>
+									</div>
+									<audio id="clip8">
+										<source src="https://firebasestorage.googleapis.com/v0/b/weeb-applications.appspot.com/o/sound7.mp3?alt=media&token=843e67e3-9c0e-4b96-acb4-917c7f0d6633" type="audio/mp3">
+									</audio>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row justify-content-md-center">
+					<div class="col-sm-3" style="margin-top: 10px;">
+						<div class="panel panel-default" style="background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGGcLEolyoYvBDEfc0pwsaFJrE7TJROiRSuCxYJbMD8_np9pSB');">
+							<div class="panel-body">
+								<div class="panel panel-default">
+										<img src="./media/img8.png"  style="width: 100%; height: auto; margin-left: auto;" alt="song1_album"/>
+								</div>
+								<div id="sound9" class="soundBtn" style="width: 80%; max-width: 30em;">
+									<div class="row">
+										<div class="col-sm-10">
+											<div class="progress" style="width: 100%; height: 5px; margin-top: auto; margin-bottom: auto;  display: inline-block;">
+												<div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%; height: 5px; background-color: #aab8c2;"></div>
+											</div>
+										</div>
+										<span class="col-sm-2" >
+											<button type = "button">
+												<img src="https://png.icons8.com/play-button/ios7/25" alt="playBtn9" title="Play Button" width="25" height="25" >
+											</button>
+										</span>
+									</div>
+									<audio id="clip9">
+										<source src="https://firebasestorage.googleapis.com/v0/b/weeb-applications.appspot.com/o/sound8.mp3?alt=media&token=48d035fe-0bdd-4ea5-8117-9f1a6a2fa1ae" type="audio/mp3">
+									</audio>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-3" style="margin-top: 10px;">
+						<div class="panel panel-default" style="background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGGcLEolyoYvBDEfc0pwsaFJrE7TJROiRSuCxYJbMD8_np9pSB');">
+							<div class="panel-body">
+								<div class="panel panel-default">
+										<img src="./media/img9.png" style="width: 100%; height: auto; margin-left: auto;" alt="song1_album"/>
+								</div>
+								<div id="sound10" class="soundBtn" style="width: 80%; max-width: 30em;">
+									<div class="row">
+										<div class="col-sm-10">
+											<div class="progress" style="width: 100%; height: 5px; margin-top: auto; margin-bottom: auto;  display: inline-block;">
+												<div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%; height: 5px; background-color: #aab8c2;"></div>
+											</div>
+										</div>
+										<span class="col-sm-2" >
+											<button type = "button" >
+												<img src="https://png.icons8.com/play-button/ios7/25" alt="playBtn10" title="Play Button" width="25" height="25" >
+											</button>
+										</span>
+									</div>
+									<audio id="clip10">
+										<source src="https://firebasestorage.googleapis.com/v0/b/weeb-applications.appspot.com/o/sound9.mp3?alt=media&token=f9688daa-fc89-4374-82e0-1d94c715a350" type="audio/mp3">
+									</audio>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-3" style="margin-top: 10px;">
+						<div class="panel panel-default" style="background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGGcLEolyoYvBDEfc0pwsaFJrE7TJROiRSuCxYJbMD8_np9pSB');">
+							<div class="panel-body">
+								<div class="panel panel-default">
+										<img src="./media/img10.jpg" style="width: 100%; height: auto; margin-left: auto;" alt="song1_album"/>
+								</div>
+								<div id="sound11" class="soundBtn" style="width: 80%; max-width: 30em;">
+									<div class="row">
+										<div class="col-sm-10">
+											<div class="progress" style="width: 100%; height: 5px; margin-top: auto; margin-bottom: auto;  display: inline-block;">
+												<div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%; height: 5px; background-color: #aab8c2;"></div>
+											</div>
+										</div>
+										<span class="col-sm-2" >
+											<button type = "button" >
+												<img src="https://png.icons8.com/play-button/ios7/25" alt="playBtn11" title="Play Button" width="25" height="25" >
+											</button>
+										</span>
+									</div>
+									<audio id="clip11">
+										<source src="https://firebasestorage.googleapis.com/v0/b/weeb-applications.appspot.com/o/sound10.mp3?alt=media&token=18fc46fe-a329-4133-82e4-dcf61e4f5944" type="audio/mp3">
+									</audio>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-3" style="margin-top: 10px;">
+						<div class="panel panel-default" style="background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGGcLEolyoYvBDEfc0pwsaFJrE7TJROiRSuCxYJbMD8_np9pSB');">
+							<div class="panel-body">
+								<div class="panel panel-default">
+										<img src="./media/img11.jpg" style="width: 100%; height: auto; margin-left: auto;" alt="song1_album"/>
+								</div>
+								<div id="sound12" class="soundBtn" style="width: 80%; max-width: 30em;">
+									<div class="row">
+										<div class="col-sm-10">
+											<div class="progress" style="width: 100%; height: 5px; margin-top: auto; margin-bottom: auto;  display: inline-block;">
+												<div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%; height: 5px; background-color: #aab8c2;"></div>
+											</div>
+										</div>
+										<span class="col-sm-2" >
+											<button type = "button" >
+												<img src="https://png.icons8.com/play-button/ios7/25" alt="playBtn12" title="Play Button" width="25" height="25" >
+											</button>
+										</span>
+									</div>
+									<audio id="clip12">
+										<source src="https://firebasestorage.googleapis.com/v0/b/weeb-applications.appspot.com/o/sound11.wav?alt=media&token=2f6bba1d-95db-4307-b7e0-77614733ceba" type="audio/mp3">
+									</audio>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		<audio id="audio_play">
+		  <source src="https://ccrma.stanford.edu/~jos/wav/pno-cs.wav" type="audio/wav" />
+    	  <!-- <source src="http://www.w3schools.com/tags/horse.mp3" type="audio/mpeg" /> -->
+		  Your browser does not support the <code>audio</code> element.
+		</audio>
+	</main>
+	<script>
+    	var els = document.querySelectorAll('#grid .soundBtn');
+    	for (var i = 0, len = els.length; i < len; i++) {
+			els[i].addEventListener('click', function () {
+				var sound, icon;
+
+				sound = this.getElementsByTagName('audio')[0];
+				icon = this.getElementsByTagName('button')[0];
+				progressbar = this.getElementsByClassName('progress-bar')[0];
+
+				if (sound.paused) {
+					sound.play();
+					icon.innerHTML = "<img src='https://png.icons8.com/pause/Dusk_Wired/25' title='Pause Button' width='25px' height='25px'></img>";
+				} else {
+					sound.pause();
+					icon.innerHTML = "<img src='https://png.icons8.com/play-button/ios7/25' title='Play Button' width='25px' height='25px'></img>";
+				}
+
+				sound.onended = function () {
+					progressbar.style='background-color: #aab8c2; width: 0%';
+					icon.innerHTML = "<img src='https://png.icons8.com/play-button/ios7/25' title='Play Button' width='25px' height='25px'></img>";
+				}
+
+				sound.addEventListener("timeupdate", function(){
+				 	progressbar.style='background-color: #aab8c2;; width: '+100*sound.currentTime/sound.duration+'%';
+				}, false);
+
+			}, false)
+    }
+	</script>
+
+	<footer style="background-color:darkgrey">
+	  Copyright info
+	  Soundtracks taken from "https://ccrma.stanford.edu/~jos/pasp/Sound_Examples.html"
+	</footer>
+</body>
+</html>

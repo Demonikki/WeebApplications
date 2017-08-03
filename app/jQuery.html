@@ -4,15 +4,23 @@
 	<title>Soundboard3 jQuery Version</title>
 	<meta charset="UTF-8">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<link rel="stylesheet" href="vanilla_2.css">
+	<link rel="stylesheet" href="vanilla.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<!-- BEGIN TRACKJS -->
-	<script type="text/javascript">window._trackJs = { token: '83a63b3bb20040ae9e78d9d2a179d6bb' };</script>
-	<script type="text/javascript" src="https://cdn.trackjs.com/releases/current/tracker.js"></script>
+	<script type="text/javascript">window._trackJs = { token: '9771c887775d4dffbb3e0be5aef4b917' };</script>
+	<!-- <script type="text/javascript" src="https://cdn.trackjs.com/releases/current/tracker.js"></script> -->
 	<!-- END TRACKJS -->
+
 </head>
 <body>
+	<!-- Splash screen  -->
+	<div id = "splash">
+		<img id = "splashlogo" src = "./media/logo.png">
+		<div id = "signal"></div>
+		<h1 id="splashtitle">A PROGRESSIVE 'WEEB' APPLICATION</h1>
+	</div>
+
 	<main id="template_container">
 		<nav class="navbar navbar-default" id = "navB">
 			<div class="container">
@@ -20,14 +28,14 @@
 					<div class = "dropdown">
 						<a href="#" class="navbar-brand">Soundboards</a>
 						<div class="dropdown-content">
-							<a href="#" id = "list1">Soundboard 1</a></li>
-							<a href="#" id = "list2">Soundboard 2</a></li>
+							<a href="#" id = "list1">Soundboard 1</a>
+							<a href="#" id = "list2">Soundboard 2</a>
 						</div>
 					</div>
 				</div>
 				<ul class="nav navbar-nav">
 					<div class = "dropdown">
-						<li><a href="#" id = "theme">Theme</a></li>
+						<li><a href="#" id = "theme">Theme</a>
 						<div class="dropdown-content">
 							<a id = "dark" href='#' >Dark</a>
 							<a id = "light" href='#' >Light</a>
@@ -37,15 +45,15 @@
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#" id = "compact">Compact View</a></li>
+					<li><a href="#" id = "compact">Compact View</a>
 				</ul>
 			</div>
 		</nav>
 
 		<template id= "myTemplt">
 			<div id = "col" class="col-lg-3 col-sm-6 pic" >
-					<img class = "soImg" id = "image"></img>
-					<img class = "pBtn" id = "btn"></img>
+					<img class = "soImg" id = "image">
+					<img class = "pBtn" id = "btn">
 					<span id = "songName">Song</span>
 					<audio id="clip">
 						<source type="audio/mp3">
@@ -54,168 +62,25 @@
 		</template>
 
   	</main>
-<script>
-  var metaData =[];
-  var success = false;
-	$(document).ready(function() {
-      $.getJSON('https://firebasestorage.googleapis.com/v0/b/weeb-applications.appspot.com/o/load_config.json?alt=media&token=e1566b7a-cd9b-49ab-8147-aae7f6cd8173', function(responseText){
-        $.each(responseText, function(key, val){
-          $.each(val, function(i, result){
-              metaData.push(result);
-          });
-        });
-      }).done(function() {
-        success = true;
-				console.log( "Success" );
-				renderSoundBoard(0);
-		})
-	});
-	
-	setTimeout(function() {
-		if (!success) {
-				alert("exceeding loading time!");
-				var template = document.querySelector('#myTemplt');
-				for(var i = 0; i < 12; i++){
-					setErrorTemplate(template);
-				}
-		}
-	}, 2500);
+<script type = "text/javascript" src = "soundBoard.js"></script>
 
+<!-- Service Worker -->
+<script type = "application/javascript">
 
-	$('main').on('click','#btn',function() {
-		var sound = $(this).siblings('audio')[0];
+if ('serviceWorker' in navigator) {
+    console.log("Servicing");
+  	window.addEventListener('load', function() {
+    navigator.serviceWorker.register("/service-worker.js").then(function(registration) {
+      // Registration was successful
+      console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    }, function(err) {
+      // registration failed :(
+      console.log('ServiceWorker registration failed: ', err);
+    });
+  });
+}
 
-		if (sound.paused) {
-			sound.play();
-			$(this).attr('src',"./media/pauseBtn.png");
-			$(this).fadeTo( 0 , 0.5, function() {});
-		} else {
-			sound.pause();
-			$(this).attr('src',"./media/playBtn.png");
-			$(this).fadeTo( 0 , 1, function() {});
-		}
-		sound.onended = function () {
-			$(this).siblings('.pBtn').attr('src',"./media/playBtn.png");
-			$(this).fadeTo( 0 , 1, function(){});
-		}
-	});
-
-
-	$('main').on('mouseenter','#btn',function() {
-    if($(this).attr("src") === "./media/playBtn.png"){
-      $(this).attr("src", "./media/pBtn2.png");
-    } else if($(this).attr("src") === "./media/pauseBtn.png")
-      $(this).css({"opacity": "0.8"});
-    });
-
-    $('main').on('mouseleave','#btn',function(){
-      console.log($(this).attr('src'));
-      if($(this).attr("src") === "./media/pBtn2.png"){
-        $(this).attr('src',"./media/playBtn.png");
-      } else if($(this).attr("src") === "./media/pauseBtn.png"){
-        $(this).css({"opacity": "0.5"});
-      }
-    });
-
-	$('#list1').click(function() {
-		$('#template_container #col').remove();
-		renderSoundBoard(0);
-	});
-
-	$('#list2').click(function() {
-		$('#template_container #col').remove();
-		renderSoundBoard(1);
-	});
-
-  	function renderSoundBoard(list){
-			$('#template_container #col').remove();
-			var img = metaData[0][list];
-			var sound = metaData[1][list];
-			var name = metaData[2][list];
-
-			for(var i = 0; i < 12; i++){
-				var myTemplate = $('#myTemplt').html().trim();
-				var myTemplateClone = $(myTemplate);
-				myTemplateClone.find('.soImg').attr('src',img[i]);
-				myTemplateClone.find('audio').attr('src', sound[i]);
-				myTemplateClone.find('#btn').attr('src',"./media/playBtn.png");
-				myTemplateClone.find('#songName').html(name[i]);
-				myTemplateClone.clone().appendTo('main');
-		}
-	}
-
-	function setErrorTemplate(template){
-		$('#template_container #col').remove();
-		for(var i = 0; i < 12; i++){
-				var myTemplate = $('#myTemplt').html().trim();
-				var myTemplateClone = $(myTemplate);
-				myTemplateClone.find('.soImg').attr('src',"./media/error-img.jpg");
-				myTemplateClone.find('audio').attr('src', "");
-				myTemplateClone.find('#btn').css({"visibility" : "hidden"});
-				myTemplateClone.find('#songName').html(name[i]);
-				myTemplateClone.clone().appendTo('main');
-		}
-	}
 </script>
-
-<script>
-    var checkedValue;
-    $("#navB").css({"background-color": "#191414"});
-    $("body").css({"background-image": "url('http://designwoop.com/uploads/2012/03/01_free_subtle_textures_apple_ios_linen_texture.jpg')"});
-		var preColor;
-      $(".dropdown-content #light").click(function(){
-        $("#navB").css({"background-image":""});
-        $("body").css({"background-image":"url('./media/b14.jpg')"});
-        $("link").attr("href", "light.css");
-        $("#compact").html("Compact View");
-				checkedValue = true;
-				preColor = "rgb(120,120,120)";
-      });
-      $(".dropdown-content #anime").click(function(){
-        $("#navB").css({"background-image":"url('./media/navbar.jpg')"});
-        $("#navB").css({"background-size": "contain"});
-        $("body").css({"background-image":"url('./media/b16.jpg')"});
-        $("body").css({"background-size": "100%"});
-        $("body").css({"background-attchment": "fixed"});
-        $("link").attr("href", "anime.css");
-        $("#compact").html("Compact View");
-		checkedValue = true;
-		preColor = "url('./media/navbar.jpg')";
-		animeMode = true;
-      });
-      $(".dropdown-content #dark").click(function(){
-        $("#navB").css({"background-image":""});
-        $("#navB").css({"background-color":"#191414"});
-        $("body").css({"background-image":"url('http://designwoop.com/uploads/2012/03/01_free_subtle_textures_apple_ios_linen_texture.jpg')"});
-        $("link").attr("href", "vanilla_2.css");
-				preColor = $("#navB").atrr('background-color');
-				checkedValue = true;
-				$("#compact").html("Compact View");
-      });
-
-      $("#compact").click(function(){
-        if(checkedValue === undefined){
-          checkedValue = true; //first call
-        }
-        if(checkedValue === true){
-          oldColor = preColor;
-          oldBG = $("body").css('background-image');
-          oldCSS = $("link").attr("href");
-          $("#navB").css({"background-color": oldColor});
-          $("link").attr("href", "compact.css");
-          $("body").css({"background-size": "cover"});
-          $("#compact").html("Regular View");
-      		checkedValue = false;
-        } else if (checkedValue == false) {
-      		$("body").css({"background-size": "auto"});
-      		$("link").attr("href", oldCSS);
-      		checkedValue = true;
-      		$("#navB").css({"background-color":  oldColor});
-      		$("body").css({"background-image": oldBG});
-      		$("#compact").html("Compact View");
-      	}
-      });
-	</script>
 	<noscript>Your browser does not support JavaScript!</noscript>
 	<footer>
 	    <div id="bottom_nav" class="navbar">

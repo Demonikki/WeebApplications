@@ -11,6 +11,23 @@
 	<script type="text/javascript">window._trackJs = { token: '9771c887775d4dffbb3e0be5aef4b917' };</script>
 	<script type="text/javascript" src="https://cdn.trackjs.com/releases/current/tracker.js"></script>
 	<!-- END TRACKJS -->
+
+	<!-- Service Worker -->
+	<script>
+	console.log("PreServicing");
+	if ('serviceWorker' in navigator) {
+	    console.log("Servicing");
+	  window.addEventListener('load', function() {
+	    navigator.serviceWorker.register("/service-worker.js").then(function(registration) {
+	      // Registration was successful
+	      console.log('ServiceWorker registration successful with scope: ', registration.scope);
+	    }, function(err) {
+	      // registration failed :(
+	      console.log('ServiceWorker registration failed: ', err);
+	    });
+	  });
+	}
+	</script>
 </head>
 <body>
 	<!-- Splash screen  -->
@@ -51,8 +68,8 @@
 
 		<template id= "myTemplt">
 			<div id = "col" class="col-lg-3 col-sm-6 pic" >
-					<img class = "soImg" id = "image" alt="Song Image">
-					<img class = "pBtn" id = "btn" alt="Control Button">
+					<img class = "soImg" id = "image"></img>
+					<img class = "pBtn" id = "btn"></img>
 					<span id = "songName">Song</span>
 					<audio id="clip">
 						<source type="audio/mp3">

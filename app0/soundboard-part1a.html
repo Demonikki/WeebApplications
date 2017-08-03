@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Soundboard Part 1a</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+	<nav class="navbar navbar-default">
+		<div class="container">
+			<div class="navbar-header">
+				<a href="#" class="navbar-brand">Soundboard</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li><a href="#">Soundtracks</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#">Login</a></li>
+				<li><a href="#">
+					<img id="settings" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/WMF-Agora-Settings_424242.svg/2000px-WMF-Agora-Settings_424242.svg.png" style="height: 18px; width: auto" alt="settings" />
+				</a></li>
+			</ul>
+		</div>
+	</nav>
+	<div class="firstRow">
+		<!-- <audio id="audio_play">
+		  <source src="https://firebasestorage.googleapis.com/v0/b/weeb-applications.appspot.com/o/Bridge%20-%20%E8%80%81%E5%A4%A7.mp3?alt=media&token=6d9c2650-88cc-4690-9005-9bb7b9334aa2" type="audio/mp3" />
+		  Your browser does not support the <code>audio</code> element.
+		</audio> -->
+		<div class= "ele1">
+			<img src="https://fanart.tv/fanart/music/c8dbc2ee-66f2-4fe6-8d7c-8b958bc97d99/cdart/transformers-age-of-extinction-5449725ddc5a9.png" style="width: 15%; height: auto" onClick="document.getElementById('audio_play').play(); return false;" alt="transformers"/>
+			<!-- given some html like this off sound board buttons -->
+			<div id="grid">
+				<div id="sound1" class="soundBtn" style="background: url(http://cdn2.hubspot.net/hub/60523/file-370984012-jpg/images/music_playbutton.jpg)">
+                <button type = "button" class="glyphicon glyphicon-play"></button>
+                <audio id="clip1">
+                    <source src="https://firebasestorage.googleapis.com/v0/b/weeb-applications.appspot.com/o/Bridge%20-%20%E8%80%81%E5%A4%A7.mp3?alt=media&token=6d9c2650-88cc-4690-9005-9bb7b9334aa2" type="audio/mp3" type="audio/mp3">
+                </audio>
+								<button type = "button" class="glyphicon glyphicon-pause"></button>
+        </div>
+
+        <div id="sound2" class="soundBtn" style="background: url(cromulon.png)">
+                <i class="material-icons">play_circle_outline</i>
+                <audio id="clip2">
+                    <source src="goodjob.wav" type="audio/wav">
+                </audio>
+            </div>
+					</div>
+					<!-- snip -->
+
+		<script>
+    	var els = document.querySelectorAll('#grid .soundBtn');
+
+    	for (var i = 0, len = els.length; i < len; i++) {
+        els[i].addEventListener('click', function () {
+            var sound,
+                icon;
+
+            sound = this.getElementsByTagName('audio')[0];
+            icon = this.getElementsByTagName('i')[0];
+
+            if (sound.paused) {
+                sound.play();
+                icon.innerHTML = "glyphicon glyphicon-pause";
+            } else {
+                sound.pause();
+                icon.innerHTML = "glyphicon glyphicon-play";
+            }
+
+            sound.onended = function () {
+                icon.innerHTML = "play_circle_outline";
+            }
+
+        }, false)
+    }
+
+		</script>
+		<img src="https://fanart.tv/fanart/music/c8dbc2ee-66f2-4fe6-8d7c-8b958bc97d99/cdart/transformers-age-of-extinction-5449725ddc5a9.png" onClick="document.getElementById('audio_play').play(); return false;" style="width: 15%; height: auto" alt="transformers"/>
+		<img src="https://fanart.tv/fanart/music/c8dbc2ee-66f2-4fe6-8d7c-8b958bc97d99/cdart/transformers-age-of-extinction-5449725ddc5a9.png" onClick="document.getElementById('audio_play').play(); return false;" style="width: 15%; height: auto" alt="transformers"/>
+		<img src="https://fanart.tv/fanart/music/c8dbc2ee-66f2-4fe6-8d7c-8b958bc97d99/cdart/transformers-age-of-extinction-5449725ddc5a9.png" onClick="document.getElementById('audio_play').play(); return false;" style="width: 15%; height: auto" alt="transformers"/>
+	</div>
+	<div class="secondRow">
+		<audio id="audio_play">
+		  <source src="https://ccrma.stanford.edu/~jos/wav/pno-cs.wav" type="audio/wav" />
+    	  <!-- <source src="http://www.w3schools.com/tags/horse.mp3" type="audio/mpeg" /> -->
+		  Your browser does not support the <code>audio</code> element.
+		</audio>
+		<img src="https://fanart.tv/fanart/music/c8dbc2ee-66f2-4fe6-8d7c-8b958bc97d99/cdart/transformers-age-of-extinction-5449725ddc5a9.png" style="width: 15%; height: auto" onClick="document.getElementById('audio_play').play(); return false;" alt="transformers"/>
+		<img src="https://fanart.tv/fanart/music/c8dbc2ee-66f2-4fe6-8d7c-8b958bc97d99/cdart/transformers-age-of-extinction-5449725ddc5a9.png" onClick="document.getElementById('audio_play').play(); return false;" style="width: 15%; height: auto" alt="transformers"/>
+		<img src="https://fanart.tv/fanart/music/c8dbc2ee-66f2-4fe6-8d7c-8b958bc97d99/cdart/transformers-age-of-extinction-5449725ddc5a9.png" onClick="document.getElementById('audio_play').play(); return false;" style="width: 15%; height: auto" alt="transformers"/>
+		<img src="https://fanart.tv/fanart/music/c8dbc2ee-66f2-4fe6-8d7c-8b958bc97d99/cdart/transformers-age-of-extinction-5449725ddc5a9.png" onClick="document.getElementById('audio_play').play(); return false;" style="width: 15%; height: auto" alt="transformers"/>
+	</div>
+
+	<div class="thirdRow">
+		<audio id="audio_play">
+		  <source src="https://ccrma.stanford.edu/~jos/wav/pno-cs.wav" type="audio/wav" />
+    	  <!-- <source src="http://www.w3schools.com/tags/horse.mp3" type="audio/mpeg" /> -->
+		  Your browser does not support the <code>audio</code> element.
+		</audio>
+		<img src="https://fanart.tv/fanart/music/c8dbc2ee-66f2-4fe6-8d7c-8b958bc97d99/cdart/transformers-age-of-extinction-5449725ddc5a9.png" style="width: 15%; height: auto" onClick="document.getElementById('audio_play').play(); return false;" alt="transformers"/>
+		<img src="https://fanart.tv/fanart/music/c8dbc2ee-66f2-4fe6-8d7c-8b958bc97d99/cdart/transformers-age-of-extinction-5449725ddc5a9.png" onClick="document.getElementById('audio_play').play(); return false;" style="width: 15%; height: auto" alt="transformers"/>
+		<img src="https://fanart.tv/fanart/music/c8dbc2ee-66f2-4fe6-8d7c-8b958bc97d99/cdart/transformers-age-of-extinction-5449725ddc5a9.png" onClick="document.getElementById('audio_play').play(); return false;" style="width: 15%; height: auto" alt="transformers"/>
+		<img src="https://fanart.tv/fanart/music/c8dbc2ee-66f2-4fe6-8d7c-8b958bc97d99/cdart/transformers-age-of-extinction-5449725ddc5a9.png" onClick="document.getElementById('audio_play').play(); return false;" style="width: 15%; height: auto" alt="transformers"/>
+	</div>
+
+	<footer>
+	  Copyright info
+	  Soundtracks taken from "https://ccrma.stanford.edu/~jos/pasp/Sound_Examples.html"
+	</footer>
+</body>
+</html>
