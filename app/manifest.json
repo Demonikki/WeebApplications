@@ -1,8 +1,22 @@
 {
   "name": "soundboard",
   "short_name": "encore",
+  "version": "0.0.0.1",
   "start_url": "/index.html",
-  "display": "standalone",
-  "background_color": "#3E4EB8",
-  "theme_color": "#2F3BA2"
+  "app": {
+    "urls": [
+      "https://weeb-applications.firebaseapp.com/soundboard-part1a.html",
+      "https://weeb-applications.firebaseapp.com/soundboard-part1b.html",
+      "https://weeb-applications.firebaseapp.com/tagtest.html",
+      "https://weeb-applications.firebaseapp.com/soundboard3-part2-v1.html",
+      "https://weeb-applications.firebaseapp.com/soundboard3-part2-v2.html",
+      "https://weeb-applications.firebaseapp.com/javaScript.html",
+      "https://weeb-applications.firebaseapp.com/jQuery.html",
+      "https://weeb-applications.firebaseapp.com/README.md"
+    ],
+    "launch": {
+      "web_url": "https://weeb-applications.firebaseapp.com"
+    }
+  }
+
 }
