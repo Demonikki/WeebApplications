@@ -4,7 +4,8 @@ const offlineImg = '/media/offlineImg.jpg';
 const offlineAudio = '/media/offlineAudio.mp3';
 const loadConfig =  '/load_config.json';
 const errorImg = '/media/error-img.jpg';
-var filesToCache = [offlineUrl, offlineCSS, offlineImg, offlineAudio, loadConfig, errorImg];
+const manifestStartUrl = '/jQuery.html';
+var filesToCache = [offlineUrl, offlineCSS, offlineImg, offlineAudio, loadConfig, errorImg, manifestStartUrl];
 
 /*
 need to add:
