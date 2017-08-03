@@ -248,7 +248,6 @@ function changeView(strOldColor, strCssLink, strView){
   if (typeof strCssLink === 'string' && typeof strView == 'string'){
     $("#navB").css({"background-color": strOldColor});
     $("link").attr("href", strCssLink);
-    console.log("str: "+strCSSLink);
     $("#compact").html(strView);
   }
 }
