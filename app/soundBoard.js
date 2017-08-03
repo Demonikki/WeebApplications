@@ -187,6 +187,7 @@ $(function() {
   var oldColor;
   var oldBG;
   var oldCSS;
+  
   $(".dropdown-content #light").click(function(){ //click event on theme change to light
     changeTheme("", strLightBG, "light.css");
     preColor = strInitGrey;
@@ -207,9 +208,6 @@ $(function() {
     checkedValue = true;
   });
   $("#compact").click(function(){ //click event on view change between compact and regular view
-    var oldColor;
-    var oldBG;
-    var oldCSS;
     if(checkedValue === undefined){
       checkedValue = true; //first call
     }
@@ -241,8 +239,10 @@ function changeTheme(strNavImg, strBdImg, strCssLink){
     $("#compact").html("Compact View");
   }
 }
+
 /* helper function for view change */
 function changeView(strOldColor, strCssLink, strView){
+    console.log(typeof(strCssLink));
   if (typeof strCssLink === 'string' && typeof strView == 'string'){
     $("#navB").css({"background-color": strOldColor});
     $("link").attr("href", strCssLink);
