@@ -34,3 +34,14 @@ significant impact on loading times.
 
 ### TrackJs
 We added the TrackJs’s CDN into our source code. Then, whenever we run our code, our website will connect to TrackJS server. Then, TrackJS will monitor our website and keep tracking our errors.
+
+### CSS errors
+All Errors and Warnings are vendor specific function.
+57	Sorry, the at-rule @-webkit-keyframes is not implemented.
+62	Sorry, the at-rule @-webkit-keyframes is not implemented.
+3		Property -webkit-text-size-adjust is an unknown vendor extension
+3		Property -ms-text-size-adjust is an unknown vendor extension
+111	Property -webkit-box-flex is an unknown vendor extension
+112	Property -webkit-flex is an unknown vendor extension
+
+### HTML errors
