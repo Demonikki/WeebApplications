@@ -208,19 +208,18 @@ $(function() {
     checkedValue = true;
   });
   $("#compact").click(function(){ //click event on view change between compact and regular view
-    var oldColor;
-    var oldBG;
-    var oldCSS;
     if(checkedValue === undefined){
       checkedValue = true; //first call
     }
     if(checkedValue === true){ //if changes to compact view
       oldBG = $("body").css('background-image');
       oldCSS = $("link").attr("href");
+      console.log("start: "+oldCSS);
       changeView(oldColor, "compact.css", "Regular View");
       $("body").css({"background-size": "cover"});
       checkedValue = false;
     } else if (checkedValue == false) { //if changes to regular view
+     console.log("Changing to compact" + oldCSS);
       changeView(oldColor, oldCSS, "Compact View");
       $("body").css({"background-size": "auto"});
       $("body").css({"background-image": oldBG});
@@ -247,6 +246,7 @@ function changeView(strOldColor, strCssLink, strView){
   if (typeof strCssLink === 'string' && typeof strView == 'string'){
     $("#navB").css({"background-color": strOldColor});
     $("link").attr("href", strCssLink);
+    console.log("str: "+strCSSLink);
     $("#compact").html(strView);
   }
 }
