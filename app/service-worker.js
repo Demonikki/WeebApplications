@@ -4,7 +4,7 @@ const offlineImg = '/media/offlineImg.jpg';
 const offlineAudio = '/media/offlineAudio.mp3';
 const loadConfig =  '/load_config.json';
 const errorImg = '/media/error-img.jpg';
-var filesToCache = [offlineUrl, offlineCSS, offlineImg, offlineAudio];
+var filesToCache = [offlineUrl, offlineCSS, offlineImg, offlineAudio, loadConfig, errorImg];
 
 /*
 need to add:
@@ -20,7 +20,7 @@ self.addEventListener('install', function(event) {
     caches.open('offline')
       .then(function(cache) {
         console.log('Opened cache');
-        return cache.addAll(filesToCache);
+        return cache.addAll(filesToCache).then(function(){console.log("Files added to cache")});
       })
   );
 });

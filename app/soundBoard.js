@@ -25,8 +25,9 @@ const iNumOfCells = 12;
 
 function hideSplashScreen() {
     if(!navigator.onLine) {
-        alert("Offline");
+        console.log("Loading offline page");
         window.location = "offline.html";
+        console.log(load_config);
     }
     else {
         $("#splash").fadeOut(5000);
