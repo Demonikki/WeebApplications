@@ -43,3 +43,5 @@ All Errors and Warnings are vendor specific function.
 3		Property -ms-text-size-adjust is an unknown vendor extension
 111	Property -webkit-box-flex is an unknown vendor extension
 112	Property -webkit-flex is an unknown vendor extension
+
+### HTML errors
